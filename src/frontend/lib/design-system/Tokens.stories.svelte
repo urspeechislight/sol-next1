@@ -19,10 +19,7 @@
 <Story name="Surfaces">
   <div class="grid grid-cols-4 gap-3">
     {#each surfaces as s}
-      <div
-        class="rounded-md p-6 border border-border-1"
-        style:background={`var(--color-${s})`}
-      >
+      <div class="border-border-1 rounded-md border p-6" style:background={`var(--color-${s})`}>
         <Text size="sm" family="mono">{s}</Text>
       </div>
     {/each}
@@ -32,7 +29,7 @@
 <Story name="Status colors">
   <div class="grid grid-cols-3 gap-3">
     {#each statuses as s}
-      <div class="rounded-md p-4 bg-bg-1 border border-border-1">
+      <div class="bg-bg-1 border-border-1 rounded-md border p-4">
         <Stack direction="row" gap={3} align="center">
           <span class="h-8 w-8 rounded-full" style:background={`var(--color-${s})`}></span>
           <Text family="mono" size="sm">{s}</Text>
@@ -45,10 +42,7 @@
 <Story name="Radii">
   <div class="grid grid-cols-5 gap-3">
     {#each radii as r}
-      <div
-        class="bg-bg-2 p-6 border border-border-1"
-        style:border-radius={`var(--radius-${r})`}
-      >
+      <div class="bg-bg-2 border-border-1 border p-6" style:border-radius={`var(--radius-${r})`}>
         <Text family="mono" size="sm">{r}</Text>
       </div>
     {/each}

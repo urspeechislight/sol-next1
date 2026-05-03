@@ -3,17 +3,17 @@
   import Stack from '../primitives/Stack.svelte';
   import Text from '../primitives/Text.svelte';
 
-  type Props = {
+  interface Props {
     title: string;
     subtitle?: string | undefined;
     actions?: Snippet | undefined;
     class?: string | undefined;
-  };
+  }
 
   let { title, subtitle, actions, class: extra = '' }: Props = $props();
 </script>
 
-<header class="border-b border-border-1 pb-6 mb-8 {extra}">
+<header class="border-border-1 mb-8 border-b pb-6 {extra}">
   <Stack direction="row" align="end" justify="between" gap={4} wrap>
     <Stack gap={1}>
       <Text as="h1" size="3xl" weight="semibold" family="display" class="tracking-tight">

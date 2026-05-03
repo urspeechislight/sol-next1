@@ -22,6 +22,7 @@ from uuid import UUID
 
 # === Provenance and degradation ====================================
 
+
 @dataclass(frozen=True)
 class EvidenceAnchor:
     """Where in the source manuscript a claim is grounded.
@@ -82,6 +83,7 @@ class ValidationIssue:
 
 # === Document structure ============================================
 
+
 @dataclass(frozen=True)
 class HierarchyPath:
     """A span's position in the document's Kitab/Bab/Fasl structure.
@@ -96,6 +98,7 @@ class HierarchyPath:
 
 
 # === Core text-bearing types =======================================
+
 
 @dataclass
 class Page:
@@ -189,6 +192,7 @@ class Edge:
 
 
 # === The phase-flow container ======================================
+
 
 @dataclass
 class Manuscript:

@@ -71,9 +71,7 @@ def ingest(manuscript: Manuscript, config: Config) -> Manuscript:
     return manuscript
 
 
-def _populate_metadata(
-    manuscript: Manuscript, frontmatter: object, config: Config
-) -> None:
+def _populate_metadata(manuscript: Manuscript, frontmatter: object, config: Config) -> None:
     """Set title, author, category on the manuscript from frontmatter.
 
     `frontmatter` is typed as object because it comes straight from json.loads;

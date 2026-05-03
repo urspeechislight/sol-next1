@@ -32,7 +32,7 @@ def check(ctx: HookContext) -> Decision:
         return Decision.allow(HANDLER)
 
     try:
-        proc = subprocess.run(
+        proc = subprocess.run(  # noqa: S603  -- ruff is the configured project linter
             [ruff, "check", "--no-cache", str(ctx.file_path)],
             capture_output=True,
             text=True,

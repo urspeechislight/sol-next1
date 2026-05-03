@@ -27,7 +27,7 @@
 <Stack gap={8}>
   <section>
     <Text as="h2" size="xl" weight="semibold" family="display" class="mb-4">Metrics</Text>
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+    <div class="grid grid-cols-1 gap-4 md:grid-cols-4">
       <MetricCard label="Manuscripts" value="142" trend="up" delta="+8 this month" />
       <MetricCard label="Pages parsed" value="38,210" trend="up" delta="+1.2K" />
       <MetricCard label="Open issues" value="7" trend="down" delta="-3" />

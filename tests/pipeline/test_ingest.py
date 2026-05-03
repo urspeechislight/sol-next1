@@ -71,9 +71,7 @@ def test_should_raise_contract_error_when_source_path_missing(config: Config) ->
         validate_manuscript_for_phase(manuscript, PHASE_INGEST, config)
 
 
-def test_should_ingest_real_book_and_populate_pages(
-    config: Config, sample_book_path: Path
-) -> None:
+def test_should_ingest_real_book_and_populate_pages(config: Config, sample_book_path: Path) -> None:
     """Golden path: real sample book ingests into a populated Manuscript."""
     raw = json.loads(sample_book_path.read_text())
     book_id_str = str(raw["frontmatter"]["book_id"])
@@ -119,21 +117,23 @@ def test_should_raise_phase_error_when_source_file_missing(config: Config) -> No
     assert exc_info.value.phase == PHASE_INGEST
 
 
-def test_should_raise_phase_error_when_book_type_unknown(
-    config: Config, tmp_path: Path
-) -> None:
+def test_should_raise_phase_error_when_book_type_unknown(config: Config, tmp_path: Path) -> None:
     """A book whose frontmatter.book_type is not in the registry raises."""
     fake_book = tmp_path / "fake.json"
-    fake_book.write_text(json.dumps({
-        "frontmatter": {
-            "sol_id": "FAKE0001",
-            "book_id": 1,
-            "title": "fake",
-            "author": "fake",
-            "book_type": "this-category-does-not-exist",
-        },
-        "content": {"1": []},
-    }))
+    fake_book.write_text(
+        json.dumps(
+            {
+                "frontmatter": {
+                    "sol_id": "FAKE0001",
+                    "book_id": 1,
+                    "title": "fake",
+                    "author": "fake",
+                    "book_type": "this-category-does-not-exist",
+                },
+                "content": {"1": []},
+            }
+        )
+    )
     manuscript = Manuscript(
         id=make_id("manuscript", "FAKE0001"),
         urn="urn:sol:book:FAKE0001",

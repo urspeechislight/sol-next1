@@ -65,9 +65,9 @@ sol-next1/
 - `frontend/` keeps a flat internal layout — no inner `src/` — by overriding
   `kit.files.routes`, `kit.files.lib`, etc. in `svelte.config.js`.
 - Python packages under `src/` have flat layout (no inner `src/`). They share
-  the workspace `pyproject.toml` at the repo root. If a service ever needs to
-  be extracted into its own publishable package, that extraction is the moment
-  to switch *that one* to a per-service pyproject.
+  the workspace `pyproject.toml` at the repo root. If a service ever needs to be
+  extracted into its own publishable package, that extraction is the moment to
+  switch _that one_ to a per-service pyproject.
 
 ### `tests/`
 
@@ -78,8 +78,8 @@ sol-next1/
 
 ### `docs/`
 
-- Every Markdown doc except the root `README.md` and `CLAUDE.md` lives here.
-  The harness handler `docs_location` blocks writes that violate this.
+- Every Markdown doc except the root `README.md` and `CLAUDE.md` lives here. The
+  harness handler `docs_location` blocks writes that violate this.
 - Architecture decisions go in `docs/adr/NNNN-title.md`.
 
 ### `data/`
@@ -99,11 +99,11 @@ sol-next1/
 
 - Single `src/` matches user preference and avoids the `apps/`/`packages/`
   duality of a Turborepo while still working with pnpm + uv workspaces.
-- Per-app project roots inside `src/` (frontend has its own `package.json`)
-  are unavoidable for SvelteKit; the framework expects its own root. We
-  flatten everything *inside* it via `kit.files`.
-- Tests mirror `src/`, not colocate, because Python idiom favors
-  out-of-tree tests; Vitest in the frontend favors colocation. Both are
-  honored where they belong.
-- All docs in one place keeps cross-references trivial and the rest of the
-  tree free of stray Markdown.
+- Per-app project roots inside `src/` (frontend has its own `package.json`) are
+  unavoidable for SvelteKit; the framework expects its own root. We flatten
+  everything _inside_ it via `kit.files`.
+- Tests mirror `src/`, not colocate, because Python idiom favors out-of-tree
+  tests; Vitest in the frontend favors colocation. Both are honored where they
+  belong.
+- All docs in one place keeps cross-references trivial and the rest of the tree
+  free of stray Markdown.

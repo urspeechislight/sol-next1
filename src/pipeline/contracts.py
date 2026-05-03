@@ -70,9 +70,7 @@ def _is_field_populated(manuscript: Manuscript, field_name: str) -> bool:
     return True
 
 
-def validate_manuscript_for_phase(
-    manuscript: Manuscript, phase: str, config: Config
-) -> None:
+def validate_manuscript_for_phase(manuscript: Manuscript, phase: str, config: Config) -> None:
     """Verify the manuscript meets the input contract of `phase`.
 
     Per ADR 0005 §2 — first executable line of every phase function.
@@ -92,8 +90,7 @@ def validate_manuscript_for_phase(
         )
 
     unpopulated = [
-        f for f in contract.requires_fields_populated
-        if not _is_field_populated(manuscript, f)
+        f for f in contract.requires_fields_populated if not _is_field_populated(manuscript, f)
     ]
     if unpopulated:
         raise ContractError(
@@ -110,9 +107,7 @@ def validate_manuscript_for_phase(
         )
 
 
-def validate_manuscript_after_phase(
-    manuscript: Manuscript, phase: str, config: Config
-) -> None:
+def validate_manuscript_after_phase(manuscript: Manuscript, phase: str, config: Config) -> None:
     """Verify the manuscript meets the output contract of the just-finished `phase`.
 
     Per ADR 0005 §2 — last executable line of every phase function before return.
@@ -123,10 +118,7 @@ def validate_manuscript_after_phase(
     if contract is None:
         raise ContractError(f"No phase_contract defined for phase '{phase}'")
 
-    unpopulated = [
-        f for f in contract.produces_fields
-        if not _is_field_populated(manuscript, f)
-    ]
+    unpopulated = [f for f in contract.produces_fields if not _is_field_populated(manuscript, f)]
     if unpopulated:
         raise ContractError(
             f"Phase '{phase}' did not populate guaranteed fields: {unpopulated} "

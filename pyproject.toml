@@ -94,8 +94,8 @@ ignore = [
 ]
 
 [tool.ruff.lint.per-file-ignores]
-"tests/**/*.py" = ["S101", "PLR2004"]   # asserts and magic numbers ok in tests
-".claude/tests/**/*.py" = ["S101", "PLR2004"]
+"tests/**/*.py" = ["S101", "PLR2004", "S108"]   # asserts and magic numbers ok in tests
+".claude/tests/**/*.py" = ["S101", "PLR2004", "S108"]
 
 [tool.ruff.format]
 quote-style = "double"

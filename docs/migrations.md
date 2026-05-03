@@ -9,8 +9,8 @@ uv sync --group dev
 uv run alembic init src/migrations    # only if env.py doesn't already exist
 ```
 
-The repo ships with `env.py` and `script.py.mako` already — there is nothing
-to bootstrap.
+The repo ships with `env.py` and `script.py.mako` already — there is nothing to
+bootstrap.
 
 ## Generate a revision
 
@@ -35,8 +35,8 @@ uv run alembic history             # history
 
 ## Connection URL
 
-Read from `Settings.database_url` (env var `SOL_DATABASE_URL`).
-The `alembic.ini` value is a fallback for offline runs.
+Read from `Settings.database_url` (env var `SOL_DATABASE_URL`). The
+`alembic.ini` value is a fallback for offline runs.
 
 ## Convention
 

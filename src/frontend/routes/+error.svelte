@@ -3,11 +3,8 @@
   import { Button, Card, PageHeader, Stack, Text } from '$lib/design-system';
 </script>
 
-<Stack gap={8} class="max-w-xl mx-auto py-16">
-  <PageHeader
-    title={`${page.status}`}
-    subtitle={page.error?.message ?? 'Something went wrong.'}
-  />
+<Stack gap={8} class="mx-auto max-w-xl py-16">
+  <PageHeader title={`${page.status}`} subtitle={page.error?.message ?? 'Something went wrong.'} />
   <Card>
     <Stack gap={4}>
       <Text tone="secondary">

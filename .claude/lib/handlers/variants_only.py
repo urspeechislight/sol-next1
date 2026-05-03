@@ -21,6 +21,9 @@ from ..paths import is_in
 
 HANDLER = "variants_only"
 RULE_ID = "DS-004"
+# Variant maps must declare ≥ N status keys before being flagged as
+# a status→palette map living outside variants.ts.
+_MIN_STATUS_HITS = 3
 DOC = "docs/design-system.md#hard-rules"
 
 _STATUS_KEYS = {
@@ -73,8 +76,7 @@ def _max_status_hits(content: str) -> int:
                 block = content[start + 1 : i]
                 keys = {m.group(1) or m.group(2) for m in _KEY.finditer(block)}
                 hits = len(keys & _STATUS_KEYS)
-                if hits > max_hits:
-                    max_hits = hits
+                max_hits = max(max_hits, hits)
                 start = -1
     return max_hits
 
@@ -90,7 +92,7 @@ def check(ctx: HookContext) -> Decision:
 
     cleaned = _strip_noise(ctx.new_content)
     hits = _max_status_hits(cleaned)
-    if hits < 3:
+    if hits < _MIN_STATUS_HITS:
         return Decision.allow(HANDLER)
 
     return Decision.deny(

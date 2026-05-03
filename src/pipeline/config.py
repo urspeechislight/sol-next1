@@ -141,9 +141,7 @@ def _expand_includes(raw: dict[str, Any], base_dir: Path) -> dict[str, Any]:
     if includes is None:
         return raw
     if not isinstance(includes, list):
-        raise ConfigError(
-            f"__includes__ must be a list of paths, got {type(includes).__name__}"
-        )
+        raise ConfigError(f"__includes__ must be a list of paths, got {type(includes).__name__}")
     for include_path in includes:
         if not isinstance(include_path, str):
             raise ConfigError(f"__includes__ entry must be a string, got {include_path!r}")
@@ -152,9 +150,7 @@ def _expand_includes(raw: dict[str, Any], base_dir: Path) -> dict[str, Any]:
         shard = _expand_includes(shard, target.parent)
         collisions = set(shard.keys()) & set(raw.keys())
         if collisions:
-            raise ConfigError(
-                f"include {target} collides with existing keys: {sorted(collisions)}"
-            )
+            raise ConfigError(f"include {target} collides with existing keys: {sorted(collisions)}")
         raw.update(shard)
     return raw
 
@@ -321,9 +317,7 @@ def _build_file_entries(
     entries: dict[str, LexiconEntry] = {}
     for surface_raw, canonical_id in mapping.items():
         if not isinstance(surface_raw, str) or not isinstance(canonical_id, str):
-            raise ConfigError(
-                f"{source_file}:{registry_name}: keys and values must be strings"
-            )
+            raise ConfigError(f"{source_file}:{registry_name}: keys and values must be strings")
         if canonical_id not in valid_ids:
             raise ConfigError(
                 f"{source_file}:{registry_name}: surface {surface_raw!r} maps to "
@@ -332,8 +326,7 @@ def _build_file_entries(
         normalized = normalize_arabic(surface_raw)
         if not normalized:
             raise ConfigError(
-                f"{source_file}:{registry_name}: surface {surface_raw!r} "
-                "normalizes to empty string"
+                f"{source_file}:{registry_name}: surface {surface_raw!r} normalizes to empty string"
             )
         prior = entries.get(normalized)
         if prior is not None and prior.canonical_id != canonical_id:

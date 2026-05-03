@@ -48,9 +48,7 @@ _PATH_PATTERN = re.compile(
     + r")\b"
 )
 # JS/TS imports / require() / dynamic import.
-_JS_IMPORT = re.compile(
-    r"""(?:from|import|require)\s*\(?\s*['"]([^'"]+)['"]"""
-)
+_JS_IMPORT = re.compile(r"""(?:from|import|require)\s*\(?\s*['"]([^'"]+)['"]""")
 # Python imports — bare module names.
 _PY_IMPORT = re.compile(
     r"^\s*(?:from\s+(?P<from>[\w.]+)|import\s+(?P<import>[\w., ]+))",
@@ -73,7 +71,7 @@ def _py_module_is_external(module: str) -> bool:
     return root in _FORBIDDEN_ALL
 
 
-def check(ctx: HookContext) -> Decision:
+def check(ctx: HookContext) -> Decision:  # noqa: PLR0911  -- one return per deny pattern
     """Return a deny if external project references appear."""
     if not ctx.is_write or ctx.new_content is None:
         return Decision.allow(HANDLER)
@@ -107,8 +105,8 @@ def check(ctx: HookContext) -> Decision:
         for match in _PY_IMPORT.finditer(content):
             module = match.group("from") or match.group("import") or ""
             for chunk in module.split(","):
-                chunk = chunk.strip().split(" as ", 1)[0]
-                if chunk and _py_module_is_external(chunk):
+                name = chunk.strip().split(" as ", 1)[0]
+                if name and _py_module_is_external(name):
                     return Decision.deny(
                         handler=HANDLER,
                         rule_id=RULE_ID,

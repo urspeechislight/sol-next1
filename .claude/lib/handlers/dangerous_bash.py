@@ -43,7 +43,7 @@ def _force_push_to_protected(cmd: str) -> bool:
     return bool(_GIT_FORCE.search(cmd))
 
 
-def check(ctx: HookContext) -> Decision:
+def check(ctx: HookContext) -> Decision:  # noqa: PLR0911  -- one return per dangerous-pattern category
     """Return a deny if the bash command matches a danger pattern."""
     if not ctx.is_bash or ctx.command is None:
         return Decision.allow(HANDLER)

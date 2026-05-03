@@ -29,8 +29,8 @@ src/frontend/
 
 ## Writing a story
 
-We use **Svelte CSF** via `@storybook/addon-svelte-csf`. Stories are written
-as Svelte components with a `defineMeta` script block:
+We use **Svelte CSF** via `@storybook/addon-svelte-csf`. Stories are written as
+Svelte components with a `defineMeta` script block:
 
 ```svelte
 <script context="module" lang="ts">
@@ -54,22 +54,24 @@ as Svelte components with a `defineMeta` script block:
 
 ## Theme switcher
 
-`@storybook/addon-themes` flips `data-theme` on the iframe root, exactly the
-way the app does it. The token system reacts automatically.
+`@storybook/addon-themes` flips `data-theme` on the iframe root, exactly the way
+the app does it. The token system reacts automatically.
 
 ## Conventions
 
 - One `.stories.svelte` per primitive, sitting next to the component.
 - Title structure: `Tokens/...`, `Primitives/...`, `Composed/...` — keeps the
   Storybook nav grouped by design-system layer.
-- Always include an `Intents` or `Variants` story showing every option side-by-side.
+- Always include an `Intents` or `Variants` story showing every option
+  side-by-side.
 - Tag with `'autodocs'` for components — Storybook auto-builds a docs page.
 
 ## Why Storybook over Histoire
 
-- **Svelte 5 support** is currently more reliable in Storybook 8 + Svelte CSF v4.
+- **Svelte 5 support** is currently more reliable in Storybook 8 + Svelte CSF
+  v4.
 - Mature ecosystem of addons (a11y, interactions, themes, viewport).
 - Auto-generated `argTypes` from TS prop types when supported.
 
-The trade-off is bundle size — Storybook adds ~50 MB of dev dependencies,
-but it doesn't ship to production.
+The trade-off is bundle size — Storybook adds ~50 MB of dev dependencies, but it
+doesn't ship to production.

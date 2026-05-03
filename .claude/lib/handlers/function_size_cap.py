@@ -20,12 +20,8 @@ DOC = "docs/quality-standards.md#size-caps"
 _PY_DEF = re.compile(r"^(\s*)(?:async\s+)?def\s+(\w+)\s*\(", re.MULTILINE)
 
 # TS/JS function-shape openers we care about. Each captures the function name.
-_TS_FN_DECL = re.compile(
-    r"\b(?:export\s+)?(?:async\s+)?function\s+(\w+)\s*[<(]"
-)
-_TS_FN_ARROW = re.compile(
-    r"\b(?:export\s+)?(?:const|let|var)\s+(\w+)\s*[:=][^=\n]*=>\s*\{?"
-)
+_TS_FN_DECL = re.compile(r"\b(?:export\s+)?(?:async\s+)?function\s+(\w+)\s*[<(]")
+_TS_FN_ARROW = re.compile(r"\b(?:export\s+)?(?:const|let|var)\s+(\w+)\s*[:=][^=\n]*=>\s*\{?")
 _TS_METHOD = re.compile(
     r"^\s+(?:async\s+|public\s+|private\s+|protected\s+|static\s+)*(\w+)\s*\([^)]*\)\s*[:{]",
     re.MULTILINE,
@@ -54,7 +50,7 @@ def _scan_python(content: str) -> list[tuple[str, int]]:
     return out
 
 
-def _count_braces_body(content: str, opening_brace_pos: int) -> int:
+def _count_braces_body(content: str, opening_brace_pos: int) -> int:  # noqa: PLR0912  -- brace-state machine has unavoidable branches
     """Starting at the position of an opening `{`, return the LOC of the
     body until the matching closing brace.
 

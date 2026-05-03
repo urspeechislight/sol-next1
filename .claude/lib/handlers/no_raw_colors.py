@@ -54,7 +54,7 @@ def check(ctx: HookContext) -> Decision:
     if not hits:
         return Decision.allow(HANDLER)
 
-    sample = ", ".join(sorted({h for h in hits})[:5])
+    sample = ", ".join(sorted(set(hits))[:5])
     return Decision.deny(
         handler=HANDLER,
         rule_id=RULE_ID,

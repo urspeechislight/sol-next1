@@ -33,7 +33,7 @@ class Decision:
     metadata: dict[str, str] = field(default_factory=dict)
 
     @staticmethod
-    def allow(handler: str = "") -> "Decision":
+    def allow(handler: str = "") -> Decision:
         """Return an allow verdict — no opinion, continue chain."""
         return Decision(severity="allow", handler=handler)
 
@@ -45,7 +45,7 @@ class Decision:
         why: str,
         fix: str = "",
         doc: str = "",
-    ) -> "Decision":
+    ) -> Decision:
         """Return an advisory verdict — print warning, continue chain."""
         return Decision(
             severity="advisory",
@@ -64,7 +64,7 @@ class Decision:
         why: str,
         fix: str,
         doc: str = "",
-    ) -> "Decision":
+    ) -> Decision:
         """Return a deny verdict — first one wins, dispatcher will block."""
         return Decision(
             severity="block",

@@ -53,6 +53,10 @@
   let { size = 'md', tone = 'current', label, class: extra = '', children }: Props = $props();
 </script>
 
-<span class={icon({ size, tone, class: extra })} role={label ? 'img' : 'presentation'} aria-label={label}>
+<span
+  class={icon({ size, tone, class: extra })}
+  role={label ? 'img' : 'presentation'}
+  aria-label={label}
+>
   {#if children}{@render children()}{/if}
 </span>

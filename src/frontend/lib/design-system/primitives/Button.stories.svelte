@@ -7,7 +7,10 @@
     component: Button,
     tags: ['autodocs'],
     argTypes: {
-      intent: { control: { type: 'select' }, options: ['accent', 'danger', 'ghost', 'outline', 'subtle'] },
+      intent: {
+        control: { type: 'select' },
+        options: ['accent', 'danger', 'ghost', 'outline', 'subtle'],
+      },
       size: { control: { type: 'select' }, options: ['sm', 'md', 'lg'] },
       block: { control: { type: 'boolean' } },
       disabled: { control: { type: 'boolean' } },
@@ -22,7 +25,7 @@
 </Story>
 
 <Story name="Intents">
-  <div class="flex gap-3 flex-wrap">
+  <div class="flex flex-wrap gap-3">
     <Button intent="accent">Accent</Button>
     <Button intent="subtle">Subtle</Button>
     <Button intent="outline">Outline</Button>
@@ -32,7 +35,7 @@
 </Story>
 
 <Story name="Sizes">
-  <div class="flex gap-3 items-center">
+  <div class="flex items-center gap-3">
     <Button size="sm">Small</Button>
     <Button size="md">Medium</Button>
     <Button size="lg">Large</Button>

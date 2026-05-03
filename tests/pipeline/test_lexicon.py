@@ -84,9 +84,7 @@ def test_should_raise_when_lexicon_value_not_in_registry(tmp_path: Path) -> None
     (tmp_path / "shards").mkdir()
     (tmp_path / "shards" / "test.yaml").write_text("test_grades:\n  - VALID_ID\n")
     (tmp_path / "lexicons").mkdir()
-    (tmp_path / "lexicons" / "test.yaml").write_text(
-        "test_grades:\n  ثقة: BOGUS_ID\n"
-    )
+    (tmp_path / "lexicons" / "test.yaml").write_text("test_grades:\n  ثقة: BOGUS_ID\n")
     with pytest.raises(ConfigError) as exc_info:
         load_config(sol)
     assert "BOGUS_ID" in str(exc_info.value)
@@ -97,14 +95,10 @@ def test_should_raise_when_lexicon_collides_within_file(tmp_path: Path) -> None:
     sol = tmp_path / "sol.yaml"
     sol.write_text(_minimal_sol_yaml(includes=["shards/test.yaml"]))
     (tmp_path / "shards").mkdir()
-    (tmp_path / "shards" / "test.yaml").write_text(
-        "test_grades:\n  - FIRST\n  - SECOND\n"
-    )
+    (tmp_path / "shards" / "test.yaml").write_text("test_grades:\n  - FIRST\n  - SECOND\n")
     (tmp_path / "lexicons").mkdir()
     # ثِقَة and ثقة normalize identically (diacritics stripped) but map to different ids.
-    (tmp_path / "lexicons" / "test.yaml").write_text(
-        "test_grades:\n  ثِقَة: FIRST\n  ثقة: SECOND\n"
-    )
+    (tmp_path / "lexicons" / "test.yaml").write_text("test_grades:\n  ثِقَة: FIRST\n  ثقة: SECOND\n")
     with pytest.raises(ConfigError) as exc_info:
         load_config(sol)
     assert "normalize" in str(exc_info.value)
@@ -114,9 +108,7 @@ def _minimal_sol_yaml(includes: list[str]) -> str:
     """Write a minimal-but-valid sol.yaml that only includes test shards."""
     includes_block = "".join(f"  - {p}\n" for p in includes)
     return (
-        "__includes__:\n"
-        + includes_block
-        + "features:\n"
+        "__includes__:\n" + includes_block + "features:\n"
         "  rijal_enabled: false\n"
         "  translation_enabled: false\n"
         "  embedding_enabled: false\n"

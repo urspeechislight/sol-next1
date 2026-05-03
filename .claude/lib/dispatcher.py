@@ -56,7 +56,7 @@ def run(*, event: str, handlers: list[Handler]) -> None:
     for handler in handlers:
         try:
             verdict = handler(ctx)
-        except Exception:  # noqa: BLE001  — handler crashes are fail-closed
+        except Exception:
             tb = traceback.format_exc(limit=3).strip().splitlines()[-1]
             verdict = Decision.deny(
                 handler=getattr(handler, "__name__", "unknown"),

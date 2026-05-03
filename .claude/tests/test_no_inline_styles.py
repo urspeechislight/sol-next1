@@ -11,7 +11,7 @@ from lib.handlers import no_inline_styles
 def _ctx(content: str) -> HookContext:
     return HookContext(
         tool_name="Write",
-        file_path=Path("/tmp/X.svelte").resolve(),  # noqa: S108  -- not a real temp file, just a fixture path for HookContext
+        file_path=Path("/tmp/X.svelte").resolve(),
         command=None,
         new_content=content,
         old_content=None,

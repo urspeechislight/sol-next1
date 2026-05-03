@@ -28,7 +28,14 @@
   );
 
   type BadgeVariants = CvaProps<{
-    status: { accent: string; success: string; warning: string; danger: string; info: string; muted: string };
+    status: {
+      accent: string;
+      success: string;
+      warning: string;
+      danger: string;
+      info: string;
+      muted: string;
+    };
     variant: { soft: string; outline: string };
     size: { sm: string; md: string };
   }>;
@@ -43,7 +50,13 @@
     children?: Snippet | undefined;
   };
 
-  let { status = 'muted', variant = 'soft', size = 'sm', class: extra = '', children }: Props = $props();
+  let {
+    status = 'muted',
+    variant = 'soft',
+    size = 'sm',
+    class: extra = '',
+    children,
+  }: Props = $props();
 </script>
 
 <span class={badge({ status, variant, size, class: extra })}>

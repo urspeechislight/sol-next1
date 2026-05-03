@@ -93,14 +93,7 @@ export const motionTokens = {
 
 /* ----- Status semantic vocabulary -------------------------------------------- */
 
-export const STATUS_KEYS = [
-  'accent',
-  'success',
-  'warning',
-  'danger',
-  'info',
-  'muted',
-] as const;
+export const STATUS_KEYS = ['accent', 'success', 'warning', 'danger', 'info', 'muted'] as const;
 
 export type StatusKey = (typeof STATUS_KEYS)[number];
 

@@ -25,8 +25,8 @@ DOC = "docs/quality-standards.md#bash-file-writes"
 
 # Paths that are always safe to write to from Bash (diagnostics, scratch).
 _SAFE_PREFIXES: tuple[str, ...] = (
-    "/tmp/",
-    "/var/tmp/",
+    "/tmp/",  # noqa: S108  -- this is a safe-prefix allowlist, not a file op
+    "/var/tmp/",  # noqa: S108  -- safe-prefix allowlist
     "/dev/null",
     "/dev/stdout",
     "/dev/stderr",
@@ -43,18 +43,12 @@ _REDIRECT = re.compile(
     # optional quote, capture path until shell metachar
     r'(?P<q>["\']?)(?P<target>[^\s"\'<>|&;`]+)(?P=q)'
 )
-_TEE = re.compile(
-    r"\btee\b(?:\s+-[a-zA-Z]+)*\s+(?P<q>[\"']?)(?P<target>[^\s\"'<>|&;`]+)(?P=q)"
-)
+_TEE = re.compile(r"\btee\b(?:\s+-[a-zA-Z]+)*\s+(?P<q>[\"']?)(?P<target>[^\s\"'<>|&;`]+)(?P=q)")
 _DD_OF = re.compile(r"\bdd\b[^\n]*\bof=(?P<q>[\"']?)(?P<target>[^\s\"';|&]+)(?P=q)")
 _SED_INPLACE = re.compile(r"\bsed\b[^\n]*\s-i\b")
 _PERL_INPLACE = re.compile(r"\bperl\b[^\n]*\s-i\b")
-_PYTHON_OPEN = re.compile(
-    r"\b(?:python3?|py)\b[^\n]*-c\s+[\"'].*\bopen\s*\(\s*[\"']([^\"']+)"
-)
-_NODE_WRITE = re.compile(
-    r"\bnode\b[^\n]*-e\s+[\"'].*write(?:File|FileSync)\s*\(\s*[\"']([^\"']+)"
-)
+_PYTHON_OPEN = re.compile(r"\b(?:python3?|py)\b[^\n]*-c\s+[\"'].*\bopen\s*\(\s*[\"']([^\"']+)")
+_NODE_WRITE = re.compile(r"\bnode\b[^\n]*-e\s+[\"'].*write(?:File|FileSync)\s*\(\s*[\"']([^\"']+)")
 _GIT_APPLY = re.compile(r"\bgit\s+apply\b")
 _CP_MV = re.compile(
     r"\b(?:cp|mv)\b(?:\s+-[a-zA-Z]+)*\s+\S+\s+(?P<q>[\"']?)(?P<target>[^\s\"'<>|&;`]+)(?P=q)\s*$",

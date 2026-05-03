@@ -21,12 +21,8 @@ HANDLER = "import_boundaries"
 RULE_ID = "BND-001"
 DOC = "docs/quality-standards.md#imports--boundaries"
 
-_INTERNAL_IMPORT = re.compile(
-    r'''(?:from|import)\s+["']\$lib/design-system/internal["']'''
-)
-_BACKEND_FROM_FRONTEND = re.compile(
-    r'''(?:from|import)\s+["'](?:backend|pipeline)(?:\.|/|["'])'''
-)
+_INTERNAL_IMPORT = re.compile(r"""(?:from|import)\s+["']\$lib/design-system/internal["']""")
+_BACKEND_FROM_FRONTEND = re.compile(r"""(?:from|import)\s+["'](?:backend|pipeline)(?:\.|/|["'])""")
 
 
 def check(ctx: HookContext) -> Decision:
@@ -38,7 +34,9 @@ def check(ctx: HookContext) -> Decision:
 
     if is_in(ctx.file_path, "src/frontend"):
         # Routes / feature code cannot reach internal/.
-        if not is_in(ctx.file_path, "src/frontend/lib/design-system") and _INTERNAL_IMPORT.search(content):
+        if not is_in(ctx.file_path, "src/frontend/lib/design-system") and _INTERNAL_IMPORT.search(
+            content
+        ):
             return Decision.deny(
                 handler=HANDLER,
                 rule_id=RULE_ID,

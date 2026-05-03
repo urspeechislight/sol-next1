@@ -28,9 +28,7 @@ _GOOD_PY = re.compile(r"^test_should_[a-z][a-z0-9]+(?:_[a-z0-9]+){2,}$")
 #   • "should"           — no predicate
 #   • "shoulda"          — typo (no separator after "should")
 #   • "renders correctly"— no "should" prefix
-_GOOD_TS = re.compile(
-    r"^should(?:[\s_][a-z0-9].*|[A-Z][A-Za-z0-9].*)$"
-)
+_GOOD_TS = re.compile(r"^should(?:[\s_][a-z0-9].*|[A-Z][A-Za-z0-9].*)$")
 
 
 def check(ctx: HookContext) -> Decision:
@@ -57,7 +55,10 @@ def check(ctx: HookContext) -> Decision:
             return Decision.deny(
                 handler=HANDLER,
                 rule_id=RULE_ID,
-                why=f"Python test name(s) don't follow `test_should_<verb>_<object>_<condition>`: {bad[0]}",
+                why=(
+                    "Python test name(s) don't follow "
+                    f"`test_should_<verb>_<object>_<condition>`: {bad[0]}"
+                ),
                 fix="Rename to e.g. `test_should_return_404_when_user_not_found`.",
                 doc=DOC,
             )

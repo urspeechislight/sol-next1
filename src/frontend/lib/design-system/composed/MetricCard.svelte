@@ -4,13 +4,13 @@
   import Text from '../primitives/Text.svelte';
   import { trendToStatus, trendGlyph, type TrendDirection } from '../variants.js';
 
-  type Props = {
+  interface Props {
     label: string;
     value: string | number;
     trend?: TrendDirection | undefined;
     delta?: string | undefined;
     class?: string | undefined;
-  };
+  }
 
   let { label, value, trend, delta, class: extra = '' }: Props = $props();
 
@@ -26,7 +26,8 @@
     {#if trend && delta}
       <Stack direction="row" gap={1} align="center">
         <Text size="sm" tone={trendStatus ?? 'secondary'} weight="medium">
-          {trendGlyph[trend]} {delta}
+          {trendGlyph[trend]}
+          {delta}
         </Text>
       </Stack>
     {/if}

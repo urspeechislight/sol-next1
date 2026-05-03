@@ -18,7 +18,7 @@
 </script>
 
 <Story name="All statuses">
-  <div class="flex gap-2 flex-wrap">
+  <div class="flex flex-wrap gap-2">
     <Badge status="accent">accent</Badge>
     <Badge status="success">success</Badge>
     <Badge status="warning">warning</Badge>
@@ -29,7 +29,7 @@
 </Story>
 
 <Story name="Variants">
-  <div class="flex gap-2 flex-wrap">
+  <div class="flex flex-wrap gap-2">
     <Badge status="success" variant="soft">soft</Badge>
     <Badge status="success" variant="outline">outline</Badge>
   </div>

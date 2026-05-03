@@ -33,14 +33,7 @@ def check(ctx: HookContext) -> Decision:
 
     if rel in _ALLOWED_TOP_LEVEL:
         return Decision.allow(HANDLER)
-    if (
-        rel.startswith("docs/")
-        or rel.startswith(".github/")
-        or rel.startswith("node_modules/")
-        or rel.startswith(".venv/")
-        or rel.startswith("build/")
-        or rel.startswith(".svelte-kit/")
-    ):
+    if rel.startswith(("docs/", ".github/", "node_modules/", ".venv/", "build/", ".svelte-kit/")):
         return Decision.allow(HANDLER)
 
     # Allow inline LICENSE files, etc.

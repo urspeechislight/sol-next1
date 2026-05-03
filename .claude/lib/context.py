@@ -46,7 +46,7 @@ class HookContext:
         return self.tool_name == "Bash" and self.command is not None
 
     @staticmethod
-    def from_payload(payload: dict[str, Any]) -> "HookContext":
+    def from_payload(payload: dict[str, Any]) -> HookContext:
         """Construct a HookContext from the raw stdin payload."""
         tool_name = str(payload.get("tool_name", ""))
         tool_input = payload.get("tool_input", {}) or {}

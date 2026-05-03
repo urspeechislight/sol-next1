@@ -23,8 +23,7 @@ def _enforce_python_version() -> None:
         actual = ".".join(str(p) for p in sys.version_info[:3])
         required = ".".join(str(p) for p in MIN_PYTHON)
         print(
-            f"sol-next1 harness requires Python {required}+, found {actual} "
-            f"at {sys.executable}.",
+            f"sol-next1 harness requires Python {required}+, found {actual} at {sys.executable}.",
             file=sys.stderr,
         )
         print(
