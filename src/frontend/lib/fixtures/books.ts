@@ -1,0 +1,148 @@
+/**
+ * Featured books used in library category pages, search results, and the
+ * home rotation carousel. These are real Islamic textual works; the URN
+ * is opaque and only meaningful within this prototype.
+ *
+ * `sect` and `canonical` map to typed status keys via the variants registry —
+ * never re-derive a color from these strings outside `variants.ts`.
+ */
+
+import type { Book } from './types.js';
+
+export const BOOKS: Book[] = [
+  {
+    urn: 'OXlyzwsl',
+    titleAr: 'كتاب الرجال',
+    titleEn: 'Rijal al-Najashi',
+    author: 'Ahmad ibn ʿAli al-Najashi',
+    authorAr: 'أحمد بن علي النجاشي',
+    deathYearAh: 450,
+    deathYearCe: 1058,
+    pageCount: 624,
+    category: 'shia-hadith-narrators',
+    sect: 'imami',
+    madhab: null,
+    canonical: 'primary',
+    language: 'Arabic',
+    blurb:
+      'The foundational biographical dictionary of Imami narrators; a primary source for evaluating chains.',
+  },
+  {
+    urn: 'TaqTah52',
+    titleAr: 'تقريب التهذيب',
+    titleEn: 'Taqrib al-Tahdhib',
+    author: 'Ibn Hajar al-ʿAsqalani',
+    authorAr: 'ابن حجر العسقلاني',
+    deathYearAh: 852,
+    deathYearCe: 1449,
+    pageCount: 777,
+    category: 'sunni-hadith-narrators',
+    sect: 'sunni',
+    madhab: 'Shafiʿi',
+    canonical: 'primary',
+    language: 'Arabic',
+    blurb: 'Condensed biographical evaluations of the narrators of the six canonical collections.',
+  },
+  {
+    urn: 'KafSlm32',
+    titleAr: 'الكافي',
+    titleEn: 'al-Kafi',
+    author: 'Muhammad ibn Yaʿqub al-Kulayni',
+    authorAr: 'محمد بن يعقوب الكليني',
+    deathYearAh: 329,
+    deathYearCe: 941,
+    pageCount: 2148,
+    category: 'shia-hadith-general',
+    sect: 'imami',
+    madhab: null,
+    canonical: 'primary',
+    language: 'Arabic',
+    blurb:
+      'The earliest of the Four Books of Twelver hadith; ~16,000 reports across uṣūl, furūʿ, and rawḍa.',
+  },
+  {
+    urn: 'BukhJam2',
+    titleAr: 'صحيح البخاري',
+    titleEn: 'Sahih al-Bukhari',
+    author: 'Muhammad ibn Ismaʿil al-Bukhari',
+    authorAr: 'محمد بن إسماعيل البخاري',
+    deathYearAh: 256,
+    deathYearCe: 870,
+    pageCount: 1814,
+    category: 'sunni-hadith-general',
+    sect: 'sunni',
+    madhab: null,
+    canonical: 'primary',
+    language: 'Arabic',
+    blurb: 'The most widely cited hadith collection in Sunni tradition.',
+  },
+  {
+    urn: 'FathBari',
+    titleAr: 'فتح الباري بشرح صحيح البخاري',
+    titleEn: 'Fath al-Bari',
+    author: 'Ibn Hajar al-ʿAsqalani',
+    authorAr: 'ابن حجر العسقلاني',
+    deathYearAh: 852,
+    deathYearCe: 1449,
+    pageCount: 7800,
+    category: 'sunni-hadith-general',
+    sect: 'sunni',
+    madhab: 'Shafiʿi',
+    canonical: 'commentary',
+    language: 'Arabic',
+    blurb: 'The towering commentary on Sahih al-Bukhari; an encyclopedia of hadith sciences.',
+  },
+  {
+    urn: 'WasShia',
+    titleAr: 'وسائل الشيعة',
+    titleEn: 'Wasaʾil al-Shiʿa',
+    author: 'al-Hurr al-ʿAmili',
+    authorAr: 'الحر العاملي',
+    deathYearAh: 1104,
+    deathYearCe: 1693,
+    pageCount: 14200,
+    category: 'shia-hadith-fiqh',
+    sect: 'imami',
+    madhab: null,
+    canonical: 'primary',
+    language: 'Arabic',
+    blurb: 'Topically arranged corpus of Imami legal hadith; ~36,000 reports.',
+  },
+  {
+    urn: 'TafsTab',
+    titleAr: 'جامع البيان',
+    titleEn: 'Jamiʿ al-Bayan',
+    author: 'al-Tabari',
+    authorAr: 'الطبري',
+    deathYearAh: 310,
+    deathYearCe: 923,
+    pageCount: 6300,
+    category: 'sunni-tafsir',
+    sect: 'sunni',
+    madhab: null,
+    canonical: 'commentary',
+    language: 'Arabic',
+    blurb: 'The earliest comprehensive Sunni tafsir; reports parallel exegetical traditions.',
+  },
+  {
+    urn: 'MizanQM',
+    titleAr: 'الميزان في تفسير القرآن',
+    titleEn: 'al-Mizan fi Tafsir al-Qurʾan',
+    author: 'al-Tabatabaʾi',
+    authorAr: 'الطباطبائي',
+    deathYearAh: 1402,
+    deathYearCe: 1981,
+    pageCount: 5400,
+    category: 'shia-tafsir',
+    sect: 'imami',
+    madhab: null,
+    canonical: 'commentary',
+    language: 'Arabic',
+    blurb: 'A 20th-c. tafsir interpreting Qurʾan-by-Qurʾan with extensive philosophical excurses.',
+  },
+];
+
+/** Lookup helper. Returns `undefined` for unknown URNs. */
+export function findBook(urn: string): Book | undefined {
+  return BOOKS.find((b) => b.urn === urn);
+}
