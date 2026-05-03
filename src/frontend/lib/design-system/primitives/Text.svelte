@@ -28,6 +28,7 @@
         warning: 'text-warning',
         danger: 'text-danger',
         info: 'text-info',
+        muted: 'text-muted',
       },
       family: {
         sans: 'font-sans',
@@ -72,6 +73,7 @@
       warning: string;
       danger: string;
       info: string;
+      muted: string;
     };
     family: { sans: string; mono: string; display: string };
     align: { left: string; center: string; right: string };

@@ -19,7 +19,7 @@
         false: '',
       },
     },
-    defaults: { surface: '1', padding: 'md', interactive: false },
+    defaults: { surface: 1, padding: 'md', interactive: false },
   });
 
   type CardVariants = CvaProps<{
@@ -39,7 +39,7 @@
   };
 
   let {
-    surface = '1',
+    surface = 1,
     padding = 'md',
     interactive = false,
     class: extra = '',
