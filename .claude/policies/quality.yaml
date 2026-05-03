@@ -66,7 +66,7 @@ rules:
   - id: QUAL-012
     handler: no_silent_except
     severity: block
-    summary: No bare `except:` or `except: pass`.
+    summary: 'No bare `except:` or `except: pass`.'
     doc: docs/quality-standards.md#code-quality
 
   # ---- Python typing ---------------------------------------------------------

@@ -7,8 +7,7 @@ sensitive-path detection (e.g., reading ``.env``, private keys).
 
 from __future__ import annotations
 
-import _bootstrap  # noqa: F401 — runs the Python version check
-
+import _bootstrap  # noqa: F401  # pyright: ignore[reportUnusedImport] — runs the Python version check
 from lib import dispatcher
 from lib.handlers import sensitive_read
 

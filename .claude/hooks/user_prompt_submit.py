@@ -7,8 +7,9 @@ prompt looks like it might cause SSOT violations). Currently passes through.
 
 from __future__ import annotations
 
-import _bootstrap  # noqa: F401 — runs the Python version check
 import sys
+
+import _bootstrap  # noqa: F401  # pyright: ignore[reportUnusedImport] — runs the Python version check
 
 
 def main() -> None:

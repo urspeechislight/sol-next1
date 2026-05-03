@@ -43,7 +43,7 @@
     state = 'default',
     class: extra = '',
     type = 'text',
-    value = $bindable(),
+    value = $bindable<HTMLInputAttributes['value']>(),
     ...rest
   }: Props = $props();
 </script>

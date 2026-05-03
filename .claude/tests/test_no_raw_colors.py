@@ -5,7 +5,7 @@ from __future__ import annotations
 from pathlib import Path
 
 import pytest
-
+from lib import paths
 from lib.context import HookContext
 from lib.handlers import no_raw_colors
 
@@ -42,10 +42,10 @@ def test_should_block_when_oklch_function_outside_tokens(tmp_path: Path) -> None
     assert decision.severity == "block"
 
 
-def test_should_allow_when_writing_to_tokens_css(tmp_path: Path, monkeypatch) -> None:
+def test_should_allow_when_writing_to_tokens_css(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
     """The token SSOT file IS allowed to contain raw colors."""
-    from lib import paths
-
     repo = tmp_path / "repo"
     target = repo / "src/frontend/lib/design-system/tokens.css"
     target.parent.mkdir(parents=True)

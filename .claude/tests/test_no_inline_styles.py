@@ -11,7 +11,7 @@ from lib.handlers import no_inline_styles
 def _ctx(content: str) -> HookContext:
     return HookContext(
         tool_name="Write",
-        file_path=Path("/tmp/X.svelte").resolve(),
+        file_path=Path("/tmp/X.svelte").resolve(),  # noqa: S108  -- not a real temp file, just a fixture path for HookContext
         command=None,
         new_content=content,
         old_content=None,
@@ -41,13 +41,13 @@ def test_should_allow_when_svelte_style_directive_used() -> None:
 
 def test_should_block_when_unquoted_style_attr() -> None:
     """`style=color:red` (no quotes) is denied."""
-    decision = no_inline_styles.check(_ctx('<div style=color:red>y</div>'))
+    decision = no_inline_styles.check(_ctx("<div style=color:red>y</div>"))
     assert decision.severity == "block"
 
 
 def test_should_block_when_bind_style_used() -> None:
     """`bind:style={...}` is denied — Svelte directive doesn't whitewash."""
-    decision = no_inline_styles.check(_ctx('<div bind:style={dynamic}>y</div>'))
+    decision = no_inline_styles.check(_ctx("<div bind:style={dynamic}>y</div>"))
     assert decision.severity == "block"
 
 
@@ -65,5 +65,5 @@ def test_should_block_when_dom_csstext_assignment() -> None:
 
 def test_should_allow_when_style_directive_with_token() -> None:
     """`style:background={var(...)}` directive is allowed."""
-    code = '<div style:background={`var(--color-${s})`}>y</div>'
+    code = "<div style:background={`var(--color-${s})`}>y</div>"
     assert no_inline_styles.check(_ctx(code)).severity == "allow"

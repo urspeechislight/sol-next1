@@ -30,13 +30,14 @@ def test_should_pass_when_python_meets_minimum() -> None:
     """Running on a supported Python — module loads without exit."""
     mod = _load_bootstrap()
     # If we got here, the version guard didn't sys.exit.
-    assert mod.MIN_PYTHON <= sys.version_info[:2]
+    assert sys.version_info[:2] >= mod.MIN_PYTHON
 
 
-def test_should_exit_when_python_below_minimum(monkeypatch, capsys) -> None:
+def test_should_exit_when_python_below_minimum(
+    monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
+) -> None:
     """Simulated old Python — guard exits with code 2."""
     mod = _load_bootstrap()
-    fake = type("V", (), {"__lt__": lambda self, other: True})()
     monkeypatch.setattr(sys, "version_info", (3, 9, 0, "final", 0))
     with pytest.raises(SystemExit) as exc:
         mod._enforce_python_version()

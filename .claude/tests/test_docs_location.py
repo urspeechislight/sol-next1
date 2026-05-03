@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
+import pytest
 from lib import paths
 from lib.context import HookContext
 from lib.handlers import docs_location
@@ -19,7 +20,9 @@ def _ctx(file_path: Path, content: str = "# x") -> HookContext:
     )
 
 
-def test_should_allow_when_writing_to_docs_dir(tmp_path: Path, monkeypatch) -> None:
+def test_should_allow_when_writing_to_docs_dir(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
     """Files inside docs/ pass."""
     repo = tmp_path / "repo"
     target = repo / "docs/architecture.md"
@@ -28,7 +31,7 @@ def test_should_allow_when_writing_to_docs_dir(tmp_path: Path, monkeypatch) -> N
     assert docs_location.check(_ctx(target)).severity == "allow"
 
 
-def test_should_allow_root_readme(tmp_path: Path, monkeypatch) -> None:
+def test_should_allow_root_readme(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     """Root README.md is allowed (entry point)."""
     repo = tmp_path / "repo"
     repo.mkdir()
@@ -36,7 +39,7 @@ def test_should_allow_root_readme(tmp_path: Path, monkeypatch) -> None:
     assert docs_location.check(_ctx(repo / "README.md")).severity == "allow"
 
 
-def test_should_block_when_md_in_lib(tmp_path: Path, monkeypatch) -> None:
+def test_should_block_when_md_in_lib(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     """A README inside lib/ is rejected — must move to docs/."""
     repo = tmp_path / "repo"
     target = repo / "src/frontend/lib/design-system/README.md"

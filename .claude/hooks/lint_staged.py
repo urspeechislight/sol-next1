@@ -16,14 +16,14 @@ If invoked with no args, derives the list from
 
 Exits 0 on clean, 1 if any staged file has a block-level violation.
 """
-from __future__ import annotations
 
-import _bootstrap  # noqa: F401  — sets up sys.path so lib.* imports work
+from __future__ import annotations
 
 import subprocess
 import sys
 from pathlib import Path
 
+import _bootstrap  # noqa: F401  # pyright: ignore[reportUnusedImport]  — sets up sys.path so lib.* imports work
 from lib.context import HookContext
 from lib.decision import Decision
 from lib.handlers import (
@@ -70,7 +70,7 @@ HANDLERS = [
 def _staged_files_from_git() -> list[str]:
     """Return staged paths (Added/Copied/Modified/Renamed) from git index."""
     out = subprocess.run(
-        ["git", "diff", "--cached", "--name-only", "--diff-filter=ACMR"],
+        ["git", "diff", "--cached", "--name-only", "--diff-filter=ACMR"],  # noqa: S607  -- trusted git on PATH
         capture_output=True,
         text=True,
         check=True,
@@ -86,8 +86,8 @@ def _staged_content(path: str) -> str | None:
     argv for ad-hoc debugging on files that aren't in the index.
     """
     try:
-        out = subprocess.run(
-            ["git", "show", f":{path}"],
+        out = subprocess.run(  # noqa: S603  -- trusted git, path is from staged-file list, not user input
+            ["git", "show", f":{path}"],  # noqa: S607  -- trusted git on PATH
             capture_output=True,
             check=True,
         )

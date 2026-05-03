@@ -63,28 +63,32 @@ def install(app: FastAPI) -> None:
     """Register all error handlers on the app."""
 
     @app.exception_handler(AppError)
-    async def _app_error(_request: Request, exc: AppError) -> JSONResponse:
+    async def _app_error(_request: Request, exc: AppError) -> JSONResponse:  # pyright: ignore[reportUnusedFunction]
         return JSONResponse(
             status_code=exc.status_code,
             content=_envelope(exc.code, exc.message, exc.detail),
         )
 
     @app.exception_handler(HTTPException)
-    async def _http_error(_request: Request, exc: HTTPException) -> JSONResponse:
+    async def _http_error(_request: Request, exc: HTTPException) -> JSONResponse:  # pyright: ignore[reportUnusedFunction]
         return JSONResponse(
             status_code=exc.status_code,
             content=_envelope("http_error", str(exc.detail), {}),
         )
 
     @app.exception_handler(RequestValidationError)
-    async def _validation_error(_request: Request, exc: RequestValidationError) -> JSONResponse:
+    async def _validation_error(_request: Request, exc: RequestValidationError) -> JSONResponse:  # pyright: ignore[reportUnusedFunction]
         return JSONResponse(
             status_code=status.HTTP_422_UNPROCESSABLE_CONTENT,
-            content=_envelope("invalid_request", "Request body failed validation", {"errors": exc.errors()}),
+            content=_envelope(
+                "invalid_request",
+                "Request body failed validation",
+                {"errors": exc.errors()},
+            ),
         )
 
     @app.exception_handler(Exception)
-    async def _unhandled(_request: Request, exc: Exception) -> JSONResponse:
+    async def _unhandled(_request: Request, exc: Exception) -> JSONResponse:  # pyright: ignore[reportUnusedFunction]
         _log.exception("unhandled_error", error=str(exc))
         return JSONResponse(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,

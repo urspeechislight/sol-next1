@@ -8,8 +8,9 @@ authoritative rules live in ``CLAUDE.md`` and ``docs/quality-standards.md``.
 
 from __future__ import annotations
 
-import _bootstrap  # noqa: F401 — runs the Python version check
 import sys
+
+import _bootstrap  # noqa: F401  # pyright: ignore[reportUnusedImport] — runs the Python version check
 
 BANNER = """
 ╭─ sol-next1 harness active ──────────────────────────────────────────────╮

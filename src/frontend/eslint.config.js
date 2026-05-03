@@ -63,6 +63,37 @@ export default [
     },
   },
   {
+    // Design-system primitives wrap an HTML element and intentionally
+    // pass arbitrary HTML attributes through via ...rest. The Svelte
+    // custom-element warning doesn't apply (these aren't custom elements),
+    // and HTMLAttributes contains untyped event handlers that trigger
+    // no-unsafe-assignment on the destructuring.
+    files: ['lib/design-system/primitives/**/*.svelte'],
+    rules: {
+      'svelte/valid-compile': ['error', { ignoreWarnings: true }],
+      '@typescript-eslint/no-unsafe-assignment': 'off',
+    },
+  },
+  {
+    // Config files, test setup, and SvelteKit hooks live outside the
+    // type-checked source tree. Disable type-aware rules for them so
+    // eslint can lint without requiring them to be in tsconfig.json's
+    // project.
+    files: [
+      '.storybook/**/*.ts',
+      'e2e/**/*.ts',
+      'hooks.client.ts',
+      'hooks.server.ts',
+      'app.d.ts',
+      'vitest-setup.ts',
+      '**/*.config.{ts,js}',
+      'eslint.config.js',
+      'svelte.config.js',
+      'playwright.config.ts',
+    ],
+    ...ts.configs.disableTypeChecked,
+  },
+  {
     ignores: [
       '.svelte-kit/',
       'build/',
@@ -72,6 +103,8 @@ export default [
       'playwright-report/',
       'test-results/',
       '.histoire/',
+      // CSS is not linted by eslint; stylelint covers it.
+      '**/*.css',
     ],
   },
 ];

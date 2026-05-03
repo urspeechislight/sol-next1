@@ -28,7 +28,11 @@ type VariantValue = string;
 type VariantMap = Record<VariantKey, Record<VariantValue, string>>;
 
 /** True if the variant has both `true` and `false` keys (a boolean variant). */
-type IsBooleanVariant<V> = 'true' extends keyof V ? ('false' extends keyof V ? true : false) : false;
+type IsBooleanVariant<V> = 'true' extends keyof V
+  ? 'false' extends keyof V
+    ? true
+    : false
+  : false;
 
 /**
  * Prop type for one variant key. Boolean variants accept `boolean | 'true' | 'false'`;
@@ -43,7 +47,7 @@ type VariantProps<V extends VariantMap> = {
 export interface CvaConfig<V extends VariantMap> {
   variants?: V;
   defaults?: VariantProps<V>;
-  compound?: Array<VariantProps<V> & { class: string }>;
+  compound?: (VariantProps<V> & { class: string })[];
 }
 
 export type CvaProps<V extends VariantMap> = VariantProps<V> & {
@@ -51,7 +55,7 @@ export type CvaProps<V extends VariantMap> = VariantProps<V> & {
 };
 
 /** Coerce booleans → 'true'/'false' string keys for variant lookup. */
-function coerceKey(value: unknown): string | undefined {
+function coerceKey(value: string | number | boolean | null | undefined): string | undefined {
   if (value === undefined || value === null) return undefined;
   if (typeof value === 'boolean') return value ? 'true' : 'false';
   return String(value);
@@ -64,7 +68,7 @@ export function cva<V extends VariantMap>(base: string, config: CvaConfig<V> = {
     const classes: string[] = [base];
 
     if (variants) {
-      for (const key of Object.keys(variants) as Array<keyof V>) {
+      for (const key of Object.keys(variants) as (keyof V)[]) {
         const chosen = props[key] ?? defaults?.[key];
         const lookupKey = coerceKey(chosen);
         if (lookupKey !== undefined) {
@@ -77,7 +81,7 @@ export function cva<V extends VariantMap>(base: string, config: CvaConfig<V> = {
     if (compound) {
       for (const rule of compound) {
         const { class: extra, ...match } = rule;
-        const allMatch = (Object.keys(match) as Array<keyof V>).every((k) => {
+        const allMatch = (Object.keys(match) as (keyof V)[]).every((k) => {
           const want = coerceKey(match[k]);
           const got = coerceKey(props[k] ?? defaults?.[k]);
           return want === got;

@@ -8,8 +8,13 @@ pre-commit:
       glob: '*.{ts,js,svelte,json,md,yaml,yml,css}'
       run: pnpm prettier --check {staged_files}
     eslint:
+      # root: scopes lefthook to src/frontend so {staged_files} are
+      # relativized to that dir. Without this, pnpm --filter changes cwd
+      # to src/frontend but the staged paths are still repo-rooted, so
+      # eslint can't find them.
+      root: src/frontend
       glob: '*.{ts,js,svelte}'
-      run: pnpm --filter frontend exec eslint {staged_files} --max-warnings=0
+      run: pnpm exec eslint {staged_files} --max-warnings=0
     svelte-check:
       glob: 'src/frontend/**/*.{ts,svelte}'
       run: pnpm --filter frontend check

@@ -11,3 +11,20 @@ test-results
 **/*.lockb
 pnpm-lock.yaml
 package-lock.json
+
+# ADRs are historical snapshots where layout intent matters
+# (e.g. metadata-line breaks, identifier underscores like text_en that
+# prettier ambiguously interprets as italic). Excluded from autofix.
+docs/adr/**
+
+# config/shards/ are mid-migration to the lexicon pattern (see
+# config/lexicons/rijal.yaml as the model: shard files become pure ID
+# lists; Arabic surface forms move to config/lexicons/<shard>.yaml).
+# 9 of 15 shards still carry Arabic gloss as column-aligned comments;
+# prettier flattens that alignment, which churns the diff and conflicts
+# with the migration. Excluded until each shard's annotations are
+# migrated to its corresponding lexicon file.
+# TODO: drop this entry once config/lexicons/ has entries for all
+# annotated shards (alignment, disciplines, fiqh, hadith, kalam,
+# masumin, quranic, shia_imamate, tasawwuf).
+config/shards/**

@@ -7,8 +7,7 @@ treat it as a confirmation step the operator can override.
 
 from __future__ import annotations
 
-import _bootstrap  # noqa: F401
-
+import _bootstrap  # noqa: F401  # pyright: ignore[reportUnusedImport]
 from lib import dispatcher
 from lib.handlers import bash_file_write, dangerous_bash
 

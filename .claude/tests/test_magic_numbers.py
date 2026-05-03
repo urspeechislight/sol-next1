@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
+import pytest
 from lib import paths
 from lib.context import HookContext
 from lib.handlers import magic_numbers
@@ -19,14 +20,16 @@ def _ctx(file_path: Path, content: str) -> HookContext:
     )
 
 
-def _repo(tmp_path: Path, monkeypatch) -> Path:
+def _repo(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Path:
     repo = tmp_path / "repo"
     repo.mkdir()
     monkeypatch.setattr(paths, "REPO_ROOT", repo)
     return repo
 
 
-def test_should_advise_when_magic_number_in_backend(tmp_path: Path, monkeypatch) -> None:
+def test_should_advise_when_magic_number_in_backend(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
     """A literal not in {-1,0,1,2,100} triggers advisory in production code."""
     repo = _repo(tmp_path, monkeypatch)
     target = repo / "src/backend/x.py"
@@ -35,7 +38,9 @@ def test_should_advise_when_magic_number_in_backend(tmp_path: Path, monkeypatch)
     assert magic_numbers.check(_ctx(target, code)).severity == "advisory"
 
 
-def test_should_allow_when_only_whitelisted_literals(tmp_path: Path, monkeypatch) -> None:
+def test_should_allow_when_only_whitelisted_literals(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
     """`-1`, `0`, `1`, `2`, `100` are fine bare."""
     repo = _repo(tmp_path, monkeypatch)
     target = repo / "src/backend/x.py"
@@ -44,7 +49,7 @@ def test_should_allow_when_only_whitelisted_literals(tmp_path: Path, monkeypatch
     assert magic_numbers.check(_ctx(target, code)).severity == "allow"
 
 
-def test_should_allow_when_constants_file(tmp_path: Path, monkeypatch) -> None:
+def test_should_allow_when_constants_file(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     """`constants.py` is the home of magic values; allowed."""
     repo = _repo(tmp_path, monkeypatch)
     target = repo / "src/backend/core/constants.py"
@@ -53,7 +58,9 @@ def test_should_allow_when_constants_file(tmp_path: Path, monkeypatch) -> None:
     assert magic_numbers.check(_ctx(target, code)).severity == "allow"
 
 
-def test_should_allow_when_outside_production(tmp_path: Path, monkeypatch) -> None:
+def test_should_allow_when_outside_production(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
     """Tests may use any literal."""
     repo = _repo(tmp_path, monkeypatch)
     target = repo / "tests/backend/test_x.py"
@@ -62,7 +69,9 @@ def test_should_allow_when_outside_production(tmp_path: Path, monkeypatch) -> No
     assert magic_numbers.check(_ctx(target, code)).severity == "allow"
 
 
-def test_should_allow_when_literal_in_type_annotation(tmp_path: Path, monkeypatch) -> None:
+def test_should_allow_when_literal_in_type_annotation(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
     """`Literal[200]` is exempt — annotations are allowed to carry constants."""
     repo = _repo(tmp_path, monkeypatch)
     target = repo / "src/backend/x.py"

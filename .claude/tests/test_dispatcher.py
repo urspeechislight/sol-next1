@@ -3,16 +3,16 @@
 from __future__ import annotations
 
 import json
-from pathlib import Path
 
 import pytest
-
 from lib import dispatcher
 from lib.context import HookContext
 from lib.decision import Decision
 
 
-def test_should_allow_when_no_handler_blocks(monkeypatch, capsys) -> None:
+def test_should_allow_when_no_handler_blocks(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
     """Empty advisory chain → exit 0."""
     monkeypatch.setattr("sys.stdin", _StringIn("{}"))
     with pytest.raises(SystemExit) as exc:
@@ -20,7 +20,10 @@ def test_should_allow_when_no_handler_blocks(monkeypatch, capsys) -> None:
     assert exc.value.code == 0
 
 
-def test_should_exit_two_when_handler_blocks(monkeypatch, capsys) -> None:
+def test_should_exit_two_when_handler_blocks(
+    monkeypatch: pytest.MonkeyPatch,
+    capsys: pytest.CaptureFixture[str],
+) -> None:
     """First deny → exit 2, structured envelope on stderr."""
     monkeypatch.setattr("sys.stdin", _StringIn("{}"))
 
@@ -38,7 +41,7 @@ def test_should_exit_two_when_handler_blocks(monkeypatch, capsys) -> None:
     assert envelope["rule_id"] == "X"
 
 
-def test_should_treat_handler_crash_as_deny(monkeypatch) -> None:
+def test_should_treat_handler_crash_as_deny(monkeypatch: pytest.MonkeyPatch) -> None:
     """A handler exception is a deny, not a silent allow."""
     monkeypatch.setattr("sys.stdin", _StringIn("{}"))
 

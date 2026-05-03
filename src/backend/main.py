@@ -7,8 +7,8 @@ Keep this file thin — domain logic belongs in `services/`, transport in
 
 from __future__ import annotations
 
+from collections.abc import AsyncIterator
 from contextlib import asynccontextmanager
-from typing import AsyncIterator
 
 import structlog
 from fastapi import FastAPI
@@ -22,7 +22,7 @@ from backend.routers import health
 _log = structlog.get_logger(__name__)
 
 
-@asynccontextmanager
+@asynccontextmanager  # pyright: ignore[reportDeprecated]  -- contextlib.asynccontextmanager is the standard pattern; pyright stub deprecation flag is a false positive
 async def lifespan(app: FastAPI) -> AsyncIterator[None]:
     """Application lifespan: startup + shutdown hooks."""
     settings = get_settings()

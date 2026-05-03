@@ -19,9 +19,9 @@ config = context.config
 if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
-# When models are added under backend/models/, import their metadata here.
-# Example: from backend.models.account import Base
-# target_metadata = Base.metadata
+# When models are added under backend/models/, set this to the
+# Base.metadata that aggregates them so alembic autogenerate sees
+# the schema. Until then None disables autogenerate.
 target_metadata = None
 
 

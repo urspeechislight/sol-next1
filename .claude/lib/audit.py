@@ -16,6 +16,7 @@ import json
 import os
 import sys
 import time
+import types
 from contextlib import suppress
 from dataclasses import asdict
 from pathlib import Path
@@ -28,11 +29,11 @@ AUDIT_PATH = AUDIT_DIR / "events.jsonl"
 MAX_BYTES = 8 * 1024 * 1024  # 8 MB — recent history in primary log
 
 try:
-    import fcntl
-
-    _HAS_FLOCK = True
+    import fcntl as _fcntl_module
 except ImportError:  # pragma: no cover — non-POSIX
-    _HAS_FLOCK = False
+    fcntl: types.ModuleType | None = None
+else:
+    fcntl = _fcntl_module
 
 
 def append(
@@ -59,13 +60,13 @@ def append(
     try:
         _rotate_if_needed()
         with AUDIT_PATH.open("a", encoding="utf-8") as fh:
-            if _HAS_FLOCK:
+            if fcntl is not None:
                 fcntl.flock(fh.fileno(), fcntl.LOCK_EX)
             try:
                 fh.write(line)
                 fh.flush()
             finally:
-                if _HAS_FLOCK:
+                if fcntl is not None:
                     with suppress(OSError):
                         fcntl.flock(fh.fileno(), fcntl.LOCK_UN)
     except OSError as e:  # pragma: no cover — best-effort
