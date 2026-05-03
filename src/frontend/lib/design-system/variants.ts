@@ -86,3 +86,52 @@ export const trendGlyph: Record<TrendDirection, string> = {
   down: '▼',
   flat: '▬',
 };
+
+/* ---- Sect → status (Imami / Sunni / Zaidi / Ismaili schools) ---------------- */
+
+export type Sect = 'imami' | 'sunni' | 'zaidi' | 'ismaili' | 'unknown';
+
+export const sectToStatus: Record<Sect, StatusKey> = {
+  imami: 'accent',
+  sunni: 'info',
+  zaidi: 'success',
+  ismaili: 'warning',
+  unknown: 'muted',
+};
+
+export const sectLabel: Record<Sect, string> = {
+  imami: 'Imami',
+  sunni: 'Sunni',
+  zaidi: 'Zaidi',
+  ismaili: 'Ismaili',
+  unknown: 'Unknown',
+};
+
+/* ---- Canonical tier → status (book canonicity) ------------------------------ */
+
+export type CanonicalTier = 'primary' | 'secondary' | 'commentary' | 'reference';
+
+export const canonicalTierToStatus: Record<CanonicalTier, StatusKey> = {
+  primary: 'success',
+  secondary: 'accent',
+  commentary: 'info',
+  reference: 'muted',
+};
+
+export const canonicalTierLabel: Record<CanonicalTier, string> = {
+  primary: 'Primary',
+  secondary: 'Secondary',
+  commentary: 'Commentary',
+  reference: 'Reference',
+};
+
+/* ---- Ingest phase → status (1-ingest, 2-segment, ...) ----------------------- */
+
+export type IngestPhaseStatus = 'active' | 'next' | 'planned' | 'done';
+
+export const ingestPhaseToStatus: Record<IngestPhaseStatus, StatusKey> = {
+  active: 'success',
+  next: 'warning',
+  planned: 'muted',
+  done: 'accent',
+};
