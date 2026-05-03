@@ -125,13 +125,13 @@ class Span:
     text: str
 
     # Phase 2 (SEGMENT):
-    patterns: list[str] = field(default_factory=list)
+    patterns: list[str] = field(default_factory=lambda: [])  # noqa: PIE807
     behavior: str | None = None
     hierarchy: HierarchyPath | None = None
 
     # Phase 3 (EXTRACT):
-    entity_ids: list[UUID] = field(default_factory=list)
-    unit_ids: list[UUID] = field(default_factory=list)
+    entity_ids: list[UUID] = field(default_factory=lambda: [])  # noqa: PIE807
+    unit_ids: list[UUID] = field(default_factory=lambda: [])  # noqa: PIE807
 
 
 @dataclass
@@ -211,19 +211,19 @@ class Manuscript:
     category: str | None = None
 
     # Phase 1 (INGEST):
-    pages: list[Page] = field(default_factory=list)
+    pages: list[Page] = field(default_factory=lambda: [])  # noqa: PIE807
 
     # Phase 2 (SEGMENT):
-    spans: list[Span] = field(default_factory=list)
+    spans: list[Span] = field(default_factory=lambda: [])  # noqa: PIE807
 
     # Phase 3 (EXTRACT):
-    units: list[Unit] = field(default_factory=list)
-    entities: list[Entity] = field(default_factory=list)
+    units: list[Unit] = field(default_factory=lambda: [])  # noqa: PIE807
+    entities: list[Entity] = field(default_factory=lambda: [])  # noqa: PIE807
 
     # Phase 5 (GRAPH):
-    edges: list[Edge] = field(default_factory=list)
+    edges: list[Edge] = field(default_factory=lambda: [])  # noqa: PIE807
 
     # Cross-phase tracking:
-    completed_phases: set[str] = field(default_factory=set)
-    degraded_modes: set[DegradedMode] = field(default_factory=set)
-    validation_issues: list[ValidationIssue] = field(default_factory=list)
+    completed_phases: set[str] = field(default_factory=lambda: set())  # noqa: PLW0108
+    degraded_modes: set[DegradedMode] = field(default_factory=lambda: set())  # noqa: PLW0108
+    validation_issues: list[ValidationIssue] = field(default_factory=lambda: [])  # noqa: PIE807

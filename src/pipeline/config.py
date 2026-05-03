@@ -80,7 +80,7 @@ class Config:
     phase_contracts: dict[str, PhaseContract]
     thresholds: dict[str, float]
     features: FeatureFlags
-    lexicons: dict[str, Lexicon] = field(default_factory=dict)
+    lexicons: dict[str, Lexicon] = field(default_factory=lambda: {})  # noqa: PIE807
 
 
 def load_config(path: Path) -> Config:
@@ -126,7 +126,7 @@ def _parse_yaml(path: Path) -> dict[str, Any]:
         raise ConfigError(f"YAML parse error in {path}: {exc}") from exc
     if not isinstance(raw, dict):
         raise ConfigError(f"Config root must be a mapping, got {type(raw).__name__}")
-    return raw
+    return raw  # type: ignore[no-any-return]
 
 
 def _expand_includes(raw: dict[str, Any], base_dir: Path) -> dict[str, Any]:
@@ -142,7 +142,7 @@ def _expand_includes(raw: dict[str, Any], base_dir: Path) -> dict[str, Any]:
         return raw
     if not isinstance(includes, list):
         raise ConfigError(f"__includes__ must be a list of paths, got {type(includes).__name__}")
-    for include_path in includes:
+    for include_path in includes:  # pyright: ignore[reportUnknownVariableType]
         if not isinstance(include_path, str):
             raise ConfigError(f"__includes__ entry must be a string, got {include_path!r}")
         target = (base_dir / include_path).resolve()
@@ -242,8 +242,11 @@ def _extract_registry_ids(merged: dict[str, Any]) -> dict[str, frozenset[str]]:
     for key, value in merged.items():
         if key in _NON_REGISTRY_KEYS:
             continue
-        if isinstance(value, list) and all(isinstance(item, str) for item in value):
-            registries[key] = frozenset(value)
+        if not isinstance(value, list):
+            continue
+        items: list[object] = list(value)  # type: ignore[arg-type]  -- yaml-Any
+        if all(isinstance(item, str) for item in items):
+            registries[key] = frozenset(item for item in items if isinstance(item, str))
     return registries
 
 
@@ -302,13 +305,16 @@ def _load_one_lexicon(
             )
         valid_ids = registry_index[registry_name]
         out[registry_name] = _build_file_entries(
-            mapping, registry_name, valid_ids, source_file=str(path)
+            mapping,  # pyright: ignore[reportUnknownArgumentType]  -- yaml-Any
+            registry_name,
+            valid_ids,
+            source_file=str(path),
         )
     return out
 
 
 def _build_file_entries(
-    mapping: dict[Any, Any],
+    mapping: dict[str, Any],
     registry_name: str,
     valid_ids: frozenset[str],
     source_file: str,
@@ -316,8 +322,8 @@ def _build_file_entries(
     """Build per-file LexiconEntry dict, normalizing keys and validating values."""
     entries: dict[str, LexiconEntry] = {}
     for surface_raw, canonical_id in mapping.items():
-        if not isinstance(surface_raw, str) or not isinstance(canonical_id, str):
-            raise ConfigError(f"{source_file}:{registry_name}: keys and values must be strings")
+        if not isinstance(canonical_id, str):
+            raise ConfigError(f"{source_file}:{registry_name}: lexicon values must be strings")
         if canonical_id not in valid_ids:
             raise ConfigError(
                 f"{source_file}:{registry_name}: surface {surface_raw!r} maps to "

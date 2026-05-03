@@ -48,7 +48,7 @@ def ingest(manuscript: Manuscript, config: Config) -> Manuscript:
         )
 
     try:
-        raw = json.loads(manuscript.source_path.read_text())
+        parsed: object = json.loads(manuscript.source_path.read_text())
     except json.JSONDecodeError as exc:
         raise PhaseError(
             PHASE_INGEST,
@@ -57,29 +57,29 @@ def ingest(manuscript: Manuscript, config: Config) -> Manuscript:
             cause=str(exc),
         ) from exc
 
-    if not isinstance(raw, dict) or "frontmatter" not in raw or "content" not in raw:
+    if not isinstance(parsed, dict) or "frontmatter" not in parsed or "content" not in parsed:
         raise PhaseError(
             PHASE_INGEST,
             "missing required keys 'frontmatter' or 'content'",
             path=str(manuscript.source_path),
         )
+    raw: dict[str, object] = {str(k): v for k, v in parsed.items()}  # type: ignore[misc]
+    frontmatter_raw = raw["frontmatter"]
+    if not isinstance(frontmatter_raw, dict):
+        raise PhaseError(PHASE_INGEST, "'frontmatter' is not a mapping")
+    frontmatter: dict[str, object] = {str(k): v for k, v in frontmatter_raw.items()}  # type: ignore[misc]
 
-    _populate_metadata(manuscript, raw["frontmatter"], config)
-    _populate_pages(manuscript, raw["frontmatter"], raw["content"])
+    _populate_metadata(manuscript, frontmatter, config)
+    _populate_pages(manuscript, frontmatter, raw["content"])
 
     validate_manuscript_after_phase(manuscript, PHASE_INGEST, config)
     return manuscript
 
 
-def _populate_metadata(manuscript: Manuscript, frontmatter: object, config: Config) -> None:
-    """Set title, author, category on the manuscript from frontmatter.
-
-    `frontmatter` is typed as object because it comes straight from json.loads;
-    the isinstance check below narrows it.
-    """
-    if not isinstance(frontmatter, dict):
-        raise PhaseError(PHASE_INGEST, "'frontmatter' is not a mapping")
-
+def _populate_metadata(
+    manuscript: Manuscript, frontmatter: dict[str, object], config: Config
+) -> None:
+    """Set title, author, category on the manuscript from frontmatter."""
     title = frontmatter.get("title")
     if not isinstance(title, str) or not title:
         raise PhaseError(PHASE_INGEST, "frontmatter.title is missing or empty")
@@ -117,28 +117,31 @@ def _populate_pages(
 
     if not isinstance(content_block, dict):
         raise PhaseError(PHASE_INGEST, "'content' is not a mapping")
+    content: dict[str, object] = {str(k): v for k, v in content_block.items()}  # type: ignore[misc]
 
-    pages_raw = content_block.get(book_id_str)
+    pages_raw = content.get(book_id_str)
     if pages_raw is None:
         raise PhaseError(
             PHASE_INGEST,
             f"content section has no entry for book_id {book_id_str!r}",
-            keys=list(content_block.keys()),
+            keys=sorted(content.keys()),
         )
     if not isinstance(pages_raw, list):
         raise PhaseError(PHASE_INGEST, f"content[{book_id_str!r}] is not a list")
+    pages_list: list[object] = list(pages_raw)  # type: ignore[arg-type]
 
-    for index, page_raw in enumerate(pages_raw):
+    for index, page_raw in enumerate(pages_list):
         if not isinstance(page_raw, dict):
             raise PhaseError(PHASE_INGEST, f"content page #{index} is not a mapping")
-        page_number = page_raw.get("page_number")
+        page_dict: dict[str, object] = {str(k): v for k, v in page_raw.items()}  # type: ignore[misc]
+        page_number = page_dict.get("page_number")
         if not isinstance(page_number, int):
             raise PhaseError(
                 PHASE_INGEST,
                 f"content page #{index} missing or non-integer page_number",
             )
-        text = page_raw.get("content", "")
-        footnote = page_raw.get("footnote")
+        text = page_dict.get("content", "")
+        footnote = page_dict.get("footnote")
         page = Page(
             id=make_id("page", sol_id, str(page_number), str(index)),
             manuscript_id=manuscript.id,

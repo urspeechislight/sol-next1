@@ -30,7 +30,7 @@ class Decision:
     why: str = ""
     fix: str = ""
     doc: str = ""
-    metadata: dict[str, str] = field(default_factory=dict)
+    metadata: dict[str, str] = field(default_factory=lambda: {})  # noqa: PIE807
 
     @staticmethod
     def allow(handler: str = "") -> Decision:

@@ -17,10 +17,10 @@ import os
 import sys
 import time
 import types
+from collections.abc import Mapping
 from contextlib import suppress
 from dataclasses import asdict
 from pathlib import Path
-from typing import Any
 
 from .decision import Decision
 
@@ -40,7 +40,7 @@ def append(
     *,
     event: str,
     tool_name: str,
-    payload: dict[str, Any],
+    payload: Mapping[str, object],
     decisions: list[Decision],
     blocked: bool,
 ) -> None:
@@ -86,15 +86,13 @@ def _rotate_if_needed() -> None:
         AUDIT_PATH.rename(rotated)
 
 
-def _extract_target(payload: dict[str, Any]) -> str:
+def _extract_target(payload: Mapping[str, object]) -> str:
     """Pull a sensible 'target' string out of the tool payload for the log."""
     tool_input = payload.get("tool_input", {})
-    if isinstance(tool_input, dict):
-        return str(
-            tool_input.get("file_path")
-            or tool_input.get("command")
-            or tool_input.get("url")
-            or tool_input.get("pattern")
-            or ""
-        )
+    if not isinstance(tool_input, Mapping):
+        return ""
+    for key in ("file_path", "command", "url", "pattern"):
+        value = tool_input.get(key)  # type: ignore[misc]  -- Mapping value type is object
+        if isinstance(value, str) and value:
+            return value
     return ""

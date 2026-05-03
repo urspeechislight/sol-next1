@@ -15,8 +15,7 @@ from __future__ import annotations
 import json
 import sys
 import traceback
-from collections.abc import Callable
-from typing import Any
+from collections.abc import Callable, Mapping
 
 from . import audit
 from .context import HookContext
@@ -25,16 +24,20 @@ from .decision import Decision, emit_advisory, emit_block
 Handler = Callable[[HookContext], Decision]
 
 
-def _read_payload() -> dict[str, Any]:
+def _read_payload() -> Mapping[str, object]:
     """Read the stdin JSON payload. On any failure, return an empty dict."""
     raw = sys.stdin.read()
     if not raw.strip():
         return {}
     try:
-        parsed = json.loads(raw)
+        parsed: object = json.loads(raw)
     except json.JSONDecodeError:
         return {}
-    return parsed if isinstance(parsed, dict) else {}
+    if not isinstance(parsed, dict):
+        return {}
+    # Coerce keys to str; JSON object keys are always strings at the wire
+    # but the type system can't see that without a cast.
+    return {str(k): v for k, v in parsed.items()}  # type: ignore[misc]
 
 
 def run(*, event: str, handlers: list[Handler]) -> None:

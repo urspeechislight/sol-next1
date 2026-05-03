@@ -12,6 +12,7 @@ are also blocked.
 from __future__ import annotations
 
 import re
+from collections.abc import Mapping
 from pathlib import Path
 
 from ..context import HookContext
@@ -89,10 +90,10 @@ def _extract_path(ctx: HookContext) -> Path | None:
     if ctx.file_path is not None:
         return ctx.file_path
     tool_input = ctx.raw.get("tool_input")
-    if not isinstance(tool_input, dict):
+    if not isinstance(tool_input, Mapping):
         return None
     for key in ("file_path", "path", "pattern"):
-        value = tool_input.get(key)
+        value = tool_input.get(key)  # type: ignore[misc]
         if isinstance(value, str) and value:
             return Path(value)
     return None

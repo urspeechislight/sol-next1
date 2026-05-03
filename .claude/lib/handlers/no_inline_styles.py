@@ -48,13 +48,13 @@ def check(ctx: HookContext) -> Decision:
         return Decision.allow(HANDLER)
 
     content = ctx.new_content
-    attribute_hits = _ATTRIBUTE.findall(content)
-    dom_hits = _DOM_STYLE_WRITE.findall(content)
+    attribute_hits: list[str] = _ATTRIBUTE.findall(content)
+    dom_hits: list[str] = _DOM_STYLE_WRITE.findall(content)
     total = len(attribute_hits) + len(dom_hits)
     if total == 0:
         return Decision.allow(HANDLER)
 
-    why_parts = []
+    why_parts: list[str] = []
     if attribute_hits:
         why_parts.append(f"{len(attribute_hits)} inline style attribute(s)")
     if dom_hits:

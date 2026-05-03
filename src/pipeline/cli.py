@@ -47,8 +47,14 @@ def bootstrap_manuscript(book_path: Path) -> Manuscript:
     Reads only the frontmatter to derive identity (sol_id is the stable handle).
     Phase 1 (INGEST) re-reads the full file to populate pages and metadata.
     """
-    raw = json.loads(book_path.read_text())
-    frontmatter = raw.get("frontmatter") or {}
+    parsed: object = json.loads(book_path.read_text())
+    if not isinstance(parsed, dict):
+        raise PipelineError(f"book file at {book_path} has no JSON object root")
+    raw: dict[str, object] = {str(k): v for k, v in parsed.items()}  # type: ignore[misc]
+    frontmatter_raw: object = raw.get("frontmatter", {})
+    if not isinstance(frontmatter_raw, dict):
+        raise PipelineError(f"book file at {book_path} frontmatter is not a mapping")
+    frontmatter: dict[str, object] = {str(k): v for k, v in frontmatter_raw.items()}  # type: ignore[misc]
     sol_id = frontmatter.get("sol_id")
     if not isinstance(sol_id, str) or not sol_id:
         raise PipelineError(f"book file at {book_path} has no frontmatter.sol_id")

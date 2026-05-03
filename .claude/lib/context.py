@@ -14,9 +14,42 @@ Handlers receive a :class:`HookContext` constructed from this payload.
 
 from __future__ import annotations
 
+from collections.abc import Mapping
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Any
+
+# Payload values come from JSON parsing — `object` is honest about
+# "we don't know the type without checking." Pyright then narrows
+# correctly through isinstance checks instead of propagating `Any`.
+JsonValue = object
+HookPayload = Mapping[str, JsonValue]
+
+
+def _as_dict(value: JsonValue) -> Mapping[str, JsonValue]:
+    """Return value as a Mapping[str, object] if it is one, else empty."""
+    if isinstance(value, Mapping):
+        # Filter to string keys; tool_input is always JSON-object so this
+        # is a defensive cast, not a real-world filter.
+        return {str(k): v for k, v in value.items()}  # type: ignore[misc]
+    return {}
+
+
+def _as_str(value: JsonValue) -> str | None:
+    """Return value if it is a string, else None."""
+    return value if isinstance(value, str) else None
+
+
+def _multiedit_pieces(edits: JsonValue) -> str | None:
+    """Concatenate `new_string` fields from a MultiEdit `edits` list."""
+    if not isinstance(edits, list):
+        return None
+    pieces: list[str] = []
+    for e in edits:  # type: ignore[reportUnknownVariableType]
+        if isinstance(e, Mapping):
+            ns = e.get("new_string")  # type: ignore[misc]
+            if isinstance(ns, str):
+                pieces.append(ns)
+    return "\n".join(pieces) if pieces else None
 
 
 @dataclass(frozen=True, slots=True)
@@ -28,7 +61,7 @@ class HookContext:
     command: str | None
     new_content: str | None
     old_content: str | None
-    raw: dict[str, Any] = field(default_factory=dict)
+    raw: HookPayload = field(default_factory=lambda: {})  # noqa: PIE807
 
     @property
     def suffix(self) -> str:
@@ -46,36 +79,26 @@ class HookContext:
         return self.tool_name == "Bash" and self.command is not None
 
     @staticmethod
-    def from_payload(payload: dict[str, Any]) -> HookContext:
+    def from_payload(payload: HookPayload) -> HookContext:
         """Construct a HookContext from the raw stdin payload."""
         tool_name = str(payload.get("tool_name", ""))
-        tool_input = payload.get("tool_input", {}) or {}
-        if not isinstance(tool_input, dict):
-            tool_input = {}
-        fp_raw = tool_input.get("file_path")
-        file_path = Path(fp_raw).resolve() if isinstance(fp_raw, str) and fp_raw else None
-        command = tool_input.get("command") if isinstance(tool_input.get("command"), str) else None
+        tool_input = _as_dict(payload.get("tool_input", {}))
+
+        fp_raw = _as_str(tool_input.get("file_path"))
+        file_path = Path(fp_raw).resolve() if fp_raw else None
+        command = _as_str(tool_input.get("command"))
 
         new_content: str | None = None
         if tool_name == "Write":
-            content = tool_input.get("content")
-            if isinstance(content, str):
-                new_content = content
+            new_content = _as_str(tool_input.get("content"))
         elif tool_name == "Edit":
-            new_string = tool_input.get("new_string")
-            if isinstance(new_string, str):
-                new_content = new_string
+            new_content = _as_str(tool_input.get("new_string"))
         elif tool_name == "MultiEdit":
-            edits = tool_input.get("edits")
-            if isinstance(edits, list):
-                pieces = [e.get("new_string", "") for e in edits if isinstance(e, dict)]
-                new_content = "\n".join(p for p in pieces if isinstance(p, str))
+            new_content = _multiedit_pieces(tool_input.get("edits"))
 
         old_content: str | None = None
         if tool_name == "Edit":
-            old = tool_input.get("old_string")
-            if isinstance(old, str):
-                old_content = old
+            old_content = _as_str(tool_input.get("old_string"))
 
         return HookContext(
             tool_name=tool_name,

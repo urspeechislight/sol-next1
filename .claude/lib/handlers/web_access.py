@@ -9,6 +9,7 @@ in policies as you discover hostile destinations).
 from __future__ import annotations
 
 import re
+from collections.abc import Mapping
 from urllib.parse import urlparse
 
 from ..context import HookContext
@@ -29,11 +30,12 @@ _DENY_PATTERNS: tuple[re.Pattern[str], ...] = (
 def check(ctx: HookContext) -> Decision:
     """Block deny-listed hosts; advisory for everything else."""
     tool_input = ctx.raw.get("tool_input")
-    if not isinstance(tool_input, dict):
+    if not isinstance(tool_input, Mapping):
         return Decision.allow(HANDLER)
-    url = tool_input.get("url") or tool_input.get("query")
-    if not isinstance(url, str) or not url:
+    raw_url = tool_input.get("url") or tool_input.get("query")  # type: ignore[misc]
+    if not isinstance(raw_url, str) or not raw_url:
         return Decision.allow(HANDLER)
+    url: str = raw_url
 
     for pat in _DENY_PATTERNS:
         if pat.search(url):
