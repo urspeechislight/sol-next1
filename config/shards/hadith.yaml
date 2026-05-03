@@ -10,133 +10,133 @@
 # pre-split (MUDRAJ_ISNAD / MUDRAJ_MATN) for historical reasons; other
 # verdict types use this axis instead.
 hadith_component:
-  - ISNAD              # السند — the chain of transmission
-  - MATN               # المتن — the text / content of the report
-  - BOTH               # defect affects both layers (rare but attested)
+  - ISNAD # the chain of transmission
+  - MATN # the text / content of the report
+  - BOTH # defect affects both layers (rare but attested)
 
 # Chain-height (uluw/nuzul) classification. Nukhbat p.68-72.
 # A "high" chain has fewer intermediaries between the transmitter and
 # the Prophet. Classical scholars valued high chains for reduced
 # probability of error.
 chain_height:
-  - ULUW_MUTLAQ        # العلو المطلق — absolute highness; chain reaches
-                       #               Prophet with fewest intermediaries (Nukhbat p.69)
-  - ULUW_NISBI         # العلو النسبي — relative highness; high relative to
-                       #               an established compiler's chain (Nukhbat p.69)
-  - NUZUL              # النزول — low chain; many intermediaries (Nukhbat p.73)
+  - ULUW_MUTLAQ # absolute highness; chain reaches
+    #               Prophet with fewest intermediaries (Nukhbat p.69)
+  - ULUW_NISBI # relative highness; high relative to
+    #               an established compiler's chain (Nukhbat p.69)
+  - NUZUL # low chain; many intermediaries (Nukhbat p.73)
 
 # Sub-types of ULUW_NISBI. Nukhbat p.70-72.
 uluw_nisbi_subtype:
-  - MUWAFAQA           # الموافقة — reaching a compiler's teacher via another route
-                       #            (Nukhbat p.70)
-  - BADAL              # البدل — reaching the teacher's teacher via another route
-                       #         (Nukhbat p.71)
-  - MUSAWAT            # المساواة — chain length equal to a compiler's chain
-                       #            (Nukhbat p.71)
-  - MUSAFAHA           # المصافحة — chain length equal to a compiler's student
-                       #            (Nukhbat p.72)
+  - MUWAFAQA # reaching a compiler's teacher via another route
+    #            (Nukhbat p.70)
+  - BADAL # reaching the teacher's teacher via another route
+    #         (Nukhbat p.71)
+  - MUSAWAT # chain length equal to a compiler's chain
+    #            (Nukhbat p.71)
+  - MUSAFAHA # chain length equal to a compiler's student
+    #            (Nukhbat p.72)
 
 # Top-level transmission classification. Nukhbat p.14-17.
 hadith_transmission_class:
-  - MUTAWATIR          # Nukhbat p.15 — chains preclude collusion
-  - AHAD               # Nukhbat p.17 — umbrella for non-mutawatir
+  - MUTAWATIR # Nukhbat p.15 — chains preclude collusion
+  - AHAD # Nukhbat p.17 — umbrella for non-mutawatir
 
 # Sub-classification of AHAD by chain count. Nukhbat p.16-17.
 # NOTE: Ibn Hajar himself uses MUSTAFID for >2; MASHHUR is the later
 # popularized alias.
 khabar_ahad_count_class:
-  - MUSTAFID           # Nukhbat p.16 — chains > 2 (Ibn Hajar's primary term)
-  - MASHHUR            # alias of MUSTAFID in later usage; Hanafis sometimes use stricter
-  - AZIZ               # Nukhbat p.17 — chains = 2
-  - GHARIB             # Nukhbat p.17 — single chain at some level
+  - MUSTAFID # Nukhbat p.16 — chains > 2 (Ibn Hajar's primary term)
+  - MASHHUR # alias of MUSTAFID in later usage; Hanafis sometimes use stricter
+  - AZIZ # Nukhbat p.17 — chains = 2
+  - GHARIB # Nukhbat p.17 — single chain at some level
 
 # Sub-classification of GHARIB. Nukhbat p.20-21.
 gharib_subtype:
-  - FARD_MUTLAQ        # Nukhbat p.20 — solo at chain root
-  - FARD_NISBI         # Nukhbat p.21 — solo at some intermediate level
+  - FARD_MUTLAQ # Nukhbat p.20 — solo at chain root
+  - FARD_NISBI # Nukhbat p.21 — solo at some intermediate level
 
 # Reliability grades. Nukhbat p.22-30.
 hadith_reliability_grade:
-  - SAHIH_LI_DHATIHI   # Nukhbat p.22 — sound by itself
-  - SAHIH_LI_GHAYRIHI  # by chain combination
-  - HASAN_LI_DHATIHI   # Nukhbat p.25 — good by itself (reduced precision)
-  - HASAN_LI_GHAYRIHI  # by chain combination
-  - DAIF               # weak
-  - MAWDU              # fabricated (the worst)
-  - SHADH              # Nukhbat p.29 — anomalous (vs. al-mahfuz)
-  - MUNKAR             # Nukhbat p.30 — rejected (vs. al-maʿruf)
+  - SAHIH_LI_DHATIHI # Nukhbat p.22 — sound by itself
+  - SAHIH_LI_GHAYRIHI # by chain combination
+  - HASAN_LI_DHATIHI # Nukhbat p.25 — good by itself (reduced precision)
+  - HASAN_LI_GHAYRIHI # by chain combination
+  - DAIF # weak
+  - MAWDU # fabricated (the worst)
+  - SHADH # Nukhbat p.29 — anomalous (vs. al-mahfuz)
+  - MUNKAR # Nukhbat p.30 — rejected (vs. al-maʿruf)
 
 # Narration attribution — where the chain TERMINATES.
 # CRITICAL: these are NOT chain defects. Nukhbat p.64-67.
 narration_attribution:
-  - MARFU              # Nukhbat p.64-67 — to the Prophet
-  - MAWQUF             # Nukhbat p.67 — to a Companion
-  - MAQTU              # Nukhbat p.67 — to a Successor
-  - QUDSI              # marfuʿ in which Prophet quotes God in non-Qurʾanic words
+  - MARFU # Nukhbat p.64-67 — to the Prophet
+  - MAWQUF # Nukhbat p.67 — to a Companion
+  - MAQTU # Nukhbat p.67 — to a Successor
+  - QUDSI # marfuʿ in which Prophet quotes God in non-Qurʾanic words
 
 # Chain-discontinuity defects. Nukhbat p.38-43.
 chain_discontinuity_defect:
-  - MUALLAQ            # Nukhbat p.38 — gap at start (compiler end)
-  - MURSAL             # Nukhbat p.39 — Successor → Prophet (Companion missing)
-  - MUADDAL            # Nukhbat p.40 — two consecutive narrators dropped
-  - MUNQATI            # Nukhbat p.41 — single gap mid-chain
-  - MUDALLAS           # Nukhbat p.42 — concealed discontinuity
-  - MURSAL_KHAFI       # Nukhbat p.43 — gap from non-meeting contemporaries
+  - MUALLAQ # Nukhbat p.38 — gap at start (compiler end)
+  - MURSAL # Nukhbat p.39 — Successor → Prophet (Companion missing)
+  - MUADDAL # Nukhbat p.40 — two consecutive narrators dropped
+  - MUNQATI # Nukhbat p.41 — single gap mid-chain
+  - MUDALLAS # Nukhbat p.42 — concealed discontinuity
+  - MURSAL_KHAFI # Nukhbat p.43 — gap from non-meeting contemporaries
 
 # Sub-types of TADLIS (concealment).
 tadlis_subtype:
-  - TADLIS_AL_ISNAD    # concealing a teacher's name
-  - TADLIS_AL_SHUYUKH  # using an unfamiliar name for a known teacher
-  - TADLIS_AL_TASWIYA  # Walid b. Muslim's notorious form
+  - TADLIS_AL_ISNAD # concealing a teacher's name
+  - TADLIS_AL_SHUYUKH # using an unfamiliar name for a known teacher
+  - TADLIS_AL_TASWIYA # Walid b. Muslim's notorious form
 
 # Narrator-level defect causes. The 10 categories Ibn Hajar enumerates.
 # Nukhbat p.44-45.
 narrator_defect_cause:
-  - KIDHB              # Nukhbat p.44 — proven lying
-  - TUHMA_BI_L_KADHB   # accused of lying
-  - FAHSH_AL_GHALAT    # Nukhbat p.45 — excessive error
-  - GHAFLA             # heedlessness
-  - FISQ               # open immorality
-  - WAHM               # error/imagination
-  - MUKHALAFA          # contradiction
-  - JAHALA             # unknown
-  - BIDA               # innovation in religion
-  - SU_AL_HIFZ         # poor memory
+  - KIDHB # Nukhbat p.44 — proven lying
+  - TUHMA_BI_L_KADHB # accused of lying
+  - FAHSH_AL_GHALAT # Nukhbat p.45 — excessive error
+  - GHAFLA # heedlessness
+  - FISQ # open immorality
+  - WAHM # error/imagination
+  - MUKHALAFA # contradiction
+  - JAHALA # unknown
+  - BIDA # innovation in religion
+  - SU_AL_HIFZ # poor memory
 
 # Verdict types arising from defects. Nukhbat p.46-54.
 hadith_verdict_type:
-  - MAWDU              # Nukhbat p.46 — fabricated [from kidhb]
-  - MATRUK             # Nukhbat p.47 — abandoned [from tuhma]
-  - MUALLAL            # Nukhbat p.49 — defective [from wahm + chain collation]
-  - MUDRAJ_ISNAD       # Nukhbat p.50 — interpolation in chain
-  - MUDRAJ_MATN        # Nukhbat p.50 — interpolation in matn (mawquf into marfu)
-  - MAQLUB             # Nukhbat p.51 — inverted/transposed
-  - MAZID              # Nukhbat p.52 — added narrator
-  - MUDTARIB           # Nukhbat p.53 — confused/contradicted
-  - MUSAHHAF           # Nukhbat p.54 — orthographic corruption
-  - MUHARRAF           # Nukhbat p.54 — vocalization corruption
-  - MUKHTALIT          # Nukhbat p.62 — temporary memory loss (vs. permanent SHADH)
+  - MAWDU # Nukhbat p.46 — fabricated [from kidhb]
+  - MATRUK # Nukhbat p.47 — abandoned [from tuhma]
+  - MUALLAL # Nukhbat p.49 — defective [from wahm + chain collation]
+  - MUDRAJ_ISNAD # Nukhbat p.50 — interpolation in chain
+  - MUDRAJ_MATN # Nukhbat p.50 — interpolation in matn (mawquf into marfu)
+  - MAQLUB # Nukhbat p.51 — inverted/transposed
+  - MAZID # Nukhbat p.52 — added narrator
+  - MUDTARIB # Nukhbat p.53 — confused/contradicted
+  - MUSAHHAF # Nukhbat p.54 — orthographic corruption
+  - MUHARRAF # Nukhbat p.54 — vocalization corruption
+  - MUKHTALIT # Nukhbat p.62 — temporary memory loss (vs. permanent SHADH)
 
 # Jahala sub-types. Nukhbat p.59 — note MASTUR = MAJHUL_AL_HAL synonyms.
 jahala_subtype:
-  - MAJHUL_AYN         # Nukhbat p.59 — only one transmitter narrates
-  - MAJHUL_HAL_MASTUR  # Nukhbat p.59 — multiple transmitters, no tawthiq
+  - MAJHUL_AYN # Nukhbat p.59 — only one transmitter narrates
+  - MAJHUL_HAL_MASTUR # Nukhbat p.59 — multiple transmitters, no tawthiq
 
 # Bidʿa sub-types. Nukhbat p.60.
 bida_subtype:
-  - BIDA_MUKAFFIRA     # Nukhbat p.60 — kufr-level innovation (rejected by majority)
-  - BIDA_MUFASSIQA     # Nukhbat p.61 — fisq-level (accepted from non-propagandist)
+  - BIDA_MUKAFFIRA # Nukhbat p.60 — kufr-level innovation (rejected by majority)
+  - BIDA_MUFASSIQA # Nukhbat p.61 — fisq-level (accepted from non-propagandist)
 
 # Modes of transmission (siyagh al-ada). Nukhbat p.80.
 transmission_mode:
-  - SAMITU             # سمعت "I heard"
-  - HADDATHANI         # حدثني "he narrated to me"
-  - HADDATHANA         # حدثنا "he narrated to us"
-  - AKHBARANI          # أخبرني "he informed me"
-  - AKHBARANA          # أخبرنا "he informed us"
-  - QARAATU_ALAYHI     # قرأت عليه "I read to him"
-  - QURIA_ALAYHI       # قرئ عليه وأنا أسمع
-  - NAWALANI           # ناولني — physical handover with permission
-  - SHAFAHANI          # شافهني — face-to-face
-  - KATABA_ILAYYA      # كتب إلي — written license
-  - AN                 # عن — vague (only valid if narrators known to have met)
+  - SAMITU # "I heard"
+  - HADDATHANI # "he narrated to me"
+  - HADDATHANA # "he narrated to us"
+  - AKHBARANI # "he informed me"
+  - AKHBARANA # "he informed us"
+  - QARAATU_ALAYHI # "I read to him"
+  - QURIA_ALAYHI
+  - NAWALANI # physical handover with permission
+  - SHAFAHANI # face-to-face
+  - KATABA_ILAYYA # written license
+  - AN # vague (only valid if narrators known to have met)

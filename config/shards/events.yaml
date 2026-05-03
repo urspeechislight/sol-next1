@@ -6,67 +6,67 @@
 # separate axes, not parallel categories.
 
 event_types:
-  - BATTLE             # maʿraka, waqʿa
-  - SIEGE              # ḥiṣār
-  - GHAZWA             # raid led by Prophet himself
-  - SARIYYA            # delegated raid (Prophet absent)
-  - BATH               # mission/delegation
-  - SAIFA              # Abbasid summer raid
-  - SHATIYA            # Abbasid winter raid
-  - TREATY             # muʿahada
-  - SULH               # peace settlement (specific subtype of treaty)
-  - BAYA               # oath of allegiance (canonical from time of Prophet)
-  - NASS               # designation of successor (Ghadir Khumm paradigm)
-  - SHURA              # consultative council
-  - TAHKIM             # arbitration (Siffin paradigm)
-  - DAWA               # declarative call to allegiance (Abbasid daʿwa, Ismaili daʿwa)
-  - PROCLAMATION       # khutba siyasiyya, public political declaration
-  - APPOINTMENT        # tawliya / taʿyin (caliph, governor, judge)
-  - DEPOSITION         # ʿazl
-  - REBELLION          # khurug / baghy
-  - ASSASSINATION      # ightiyal
-  - EXECUTION          # state-sanctioned killing
-  - MUBAHALA           # mutual imprecation (Q. 3:61 paradigm)
-  - MUNAZARA           # theological debate
-  - FATWA              # jurist's response
-  - QADA               # judge's ruling
+  - BATTLE # maʿraka, waqʿa
+  - SIEGE # ḥiṣār
+  - GHAZWA # raid led by Prophet himself
+  - SARIYYA # delegated raid (Prophet absent)
+  - BATH # mission/delegation
+  - SAIFA # Abbasid summer raid
+  - SHATIYA # Abbasid winter raid
+  - TREATY # muʿahada
+  - SULH # peace settlement (specific subtype of treaty)
+  - BAYA # oath of allegiance (canonical from time of Prophet)
+  - NASS # designation of successor (Ghadir Khumm paradigm)
+  - SHURA # consultative council
+  - TAHKIM # arbitration (Siffin paradigm)
+  - DAWA # declarative call to allegiance (Abbasid daʿwa, Ismaili daʿwa)
+  - PROCLAMATION # khutba siyasiyya, public political declaration
+  - APPOINTMENT # tawliya / taʿyin (caliph, governor, judge)
+  - DEPOSITION # ʿazl
+  - REBELLION # khurug / baghy
+  - ASSASSINATION # ightiyal
+  - EXECUTION # state-sanctioned killing
+  - MUBAHALA # mutual imprecation (Q. 3:61 paradigm)
+  - MUNAZARA # theological debate
+  - FATWA # jurist's response
+  - QADA # judge's ruling
   - HIJRA_TO_ABYSSINIA # 615 + 616 CE
-  - HIJRA_TO_MEDINA    # 622 CE — the canonical Hijra
-  - WAHY               # revelation event
-  - MIRAJ              # Prophet's Night Journey
-  - CONQUEST           # fatḥ (futuh)
-  - BIRTH              # mawlid
-  - DEATH              # wafat
-  - MAJLIS_ILM         # teaching session
-  - MAJLIS_SAMA        # audition session for hadith licensing
-  - IJAZA              # license-granting event
+  - HIJRA_TO_MEDINA # 622 CE — the canonical Hijra
+  - WAHY # revelation event
+  - MIRAJ # Prophet's Night Journey
+  - CONQUEST # fatḥ (futuh)
+  - BIRTH # mawlid
+  - DEATH # wafat
+  - MAJLIS_ILM # teaching session
+  - MAJLIS_SAMA # audition session for hadith licensing
+  - IJAZA # license-granting event
 
 participation_roles:
-  - COMMANDER          # amir
-  - COMBATANT          # muqatil
-  - STANDARD_BEARER    # ḥamil al-liwaʾ
-  - SIGNATORY          # to a treaty
-  - SCRIBE             # katib (e.g. Hudaybiyya scribe)
-  - WITNESS            # shahid (general)
-  - EYEWITNESS         # shahid ʿayn
+  - COMMANDER # amir
+  - COMBATANT # muqatil
+  - STANDARD_BEARER # ḥamil al-liwaʾ
+  - SIGNATORY # to a treaty
+  - SCRIBE # katib (e.g. Hudaybiyya scribe)
+  - WITNESS # shahid (general)
+  - EYEWITNESS # shahid ʿayn
   - VICTIM
-  - PERPETRATOR        # qatil / bagh in classical idiom
+  - PERPETRATOR # qatil / bagh in classical idiom
   - NEGOTIATOR
-  - ENVOY              # rasul/safir
-  - JUDGE              # ḥakim (e.g. Siffin arbiters)
-  - IMAM               # prayer-leader at the event
-  - KHATIB             # orator
-  - MAWLA              # client/patron (structurally significant in early factions)
-  - POET               # shaʿir — propagandist role at battles
+  - ENVOY # rasul/safir
+  - JUDGE # ḥakim (e.g. Siffin arbiters)
+  - IMAM # prayer-leader at the event
+  - KHATIB # orator
+  - MAWLA # client/patron (structurally significant in early factions)
+  - POET # shaʿir — propagandist role at battles
 
 # Manner of death — observable, factual.
 manner_of_death:
   - KILLED_IN_BATTLE
   - ASSASSINATED
   - EXECUTED
-  - CRUCIFIED          # ṣulb (Ibn al-Zubayr, hadith-fabricators)
-  - BEHEADED           # ḍuriba ʿunuquhu — significant for Karbala
-  - POISONED           # musamm — recurring in early Islamic history
+  - CRUCIFIED # ṣulb (Ibn al-Zubayr, hadith-fabricators)
+  - BEHEADED # ḍuriba ʿunuquhu — significant for Karbala
+  - POISONED # musamm — recurring in early Islamic history
   - WOUNDED_FATALLY
   - DROWNED
   - DIED_NATURALLY
@@ -76,26 +76,26 @@ manner_of_death:
 
 # Evaluative classification — source-relative; tag with perspective.
 evaluative_classification:
-  - SHAHID             # martyr
-  - MAQTUL             # slain (neutral)
-  - BAGHI              # rebel killed in rebellion
-  - MAZLUM             # wronged
-  - QATIL_BI_HAQQ      # justly killed (rebel-against-just-imam framing)
+  - SHAHID # martyr
+  - MAQTUL # slain (neutral)
+  - BAGHI # rebel killed in rebellion
+  - MAZLUM # wronged
+  - QATIL_BI_HAQQ # justly killed (rebel-against-just-imam framing)
 
 # Other event-level outcomes (not death-specific).
 participation_outcomes:
   - CAPTURED
   - IMPRISONED
-  - EXILED             # manfi / tarid
+  - EXILED # manfi / tarid
   - WOUNDED
   - SURVIVED
   - VICTORIOUS_IN_BATTLE
   - DEFEATED
-  - RECONCILED         # muṣaliḥ
-  - WITHDREW           # iʿtazala
-  - CONVERTED          # aslama
-  - ASCENDED_TO_RULE   # tawalla l-amr
+  - RECONCILED # muṣaliḥ
+  - WITHDREW # iʿtazala
+  - CONVERTED # aslama
+  - ASCENDED_TO_RULE # tawalla l-amr
   - ACCEPTED_TAHKIM
   - REJECTED_TAHKIM
-  - MUTILATED          # muthla — explicitly prohibited; historically marked
-  - CALLED_TO_BAYA_AND_REFUSED  # recognized historical outcome category
+  - MUTILATED # muthla — explicitly prohibited; historically marked
+  - CALLED_TO_BAYA_AND_REFUSED # recognized historical outcome category

@@ -1,0 +1,50 @@
+# Arabic surface forms → canonical IDs in `disciplines` registries.
+#
+# Mirrors the rijal lexicon model. Loader normalizes keys via
+# pipeline.utils.arabic.normalize_arabic before dict insertion.
+# Multiple surface forms may map to the same id (synonyms).
+
+linguistic_discipline:
+  علم النحو: NAHW
+  علم الصرف: SARF
+  علم البلاغة: BALAGHA
+  علم العروض: ARUD
+  علم القافية: QAFIYA
+  علم اللغة: LUGHA
+  فقه اللغة: FIQH_AL_LUGHA
+  علم الاشتقاق: ISHTIQAQ
+  علم الأصوات: ASWAT
+  علم الخط: KHATT
+  علم الإنشاء: INSHA
+
+balagha_subdiscipline:
+  علم المعاني: MAANI
+  علم البيان: BAYAN
+  علم البديع: BADI
+
+philosophical_discipline:
+  علم المنطق: MANTIQ
+  الفلسفة: FALSAFA
+  العلم الإلهي: ILM_ILAHI
+  العلم الطبيعي: ILM_TABII
+  العلم الرياضي: ILM_RIYADI
+  الحكمة: HIKMA
+  الإشراق: ISHRAQ
+  الحكمة المتعالية: HIKMA_MUTAALIYA
+  علم الأخلاق: AKHLAQ
+
+natural_science:
+  علم الطب: TIBB
+  علم الهندسة: HANDASA
+  علم الهيئة: HAIA
+  علم النجوم: NUJUM
+  أحكام النجوم: NUJUM
+  علم المواقيت: MIQAT
+  علم الزيجات والتقاويم: ZIJAT
+  علم العدد: ADAD
+  علم المساحة: MISAHA
+  علم المناظر: MANAZIR
+  علم الكيمياء: KIMIYA
+  علم الفلاحة: FALAHA
+  علم الفراسة: FIRASA
+  علم تعبير الرؤيا: TABIR_AL_RUYA

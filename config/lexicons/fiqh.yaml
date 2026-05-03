@@ -1,0 +1,113 @@
+# Arabic surface forms → canonical IDs in `fiqh` registries.
+#
+# Mirrors the rijal lexicon model. Loader normalizes keys via
+# pipeline.utils.arabic.normalize_arabic before dict insertion.
+# Multiple surface forms may map to the same id (synonyms).
+
+hukm_type:
+  واجب: WAJIB
+  مندوب: MANDUB
+  مستحب: MANDUB
+  مباح: MUBAH
+  مكروه: MAKRUH
+  حرام: HARAM
+
+usul_source:
+  القرآن: QURAN
+  الكتاب: QURAN
+  السنة: SUNNA
+  الإجماع: IJMA
+  القياس: QIYAS
+  الاستحسان: ISTIHSAN
+  المصلحة المرسلة: MASLAHA_MURSALA
+  سد الذرائع: SADD_AL_DHARAI
+  العرف: URF
+  الاستصحاب: ISTISHAB
+  قول الصحابي: QAWL_AL_SAHABI
+  العقل: AQL
+  إجماع أهل البيت: IJMA_AHL_AL_BAYT
+
+usul_al_fiqh_topic:
+  القطب الأول: AL_HUKM
+  القطب الثاني: AL_ADILLA
+  القطب الثالث: TURUQ_ISTITHMAR
+  القطب الرابع: AL_MUSTATHMIR
+  عام: AAMM_KHASS
+  خاص: AAMM_KHASS
+  مطلق: MUTLAQ_MUQAYYAD
+  مقيد: MUTLAQ_MUQAYYAD
+  مجمل: MUJMAL_MUBAYYAN
+  مبين: MUJMAL_MUBAYYAN
+  حقيقة: HAQIQA_MAJAZ
+  مجاز: HAQIQA_MAJAZ
+  أمر: AMR_NAHY
+  نهي: AMR_NAHY
+  منطوق: MANTUQ_MAFHUM
+  مفهوم: MANTUQ_MAFHUM
+  دلالة النص: DALALAT_AL_NASS
+  ناسخ: NASIKH_MANSUKH
+  منسوخ: NASIKH_MANSUKH
+  تعارض الأدلة: TAARUDH_AL_ADILLA
+  ترجيح: TARJIH
+  اجتهاد: IJTIHAD
+  تقليد: TAQLID
+  فتوى: FATWA
+  إفتاء: IFTAA
+
+furu_al_fiqh_chapter:
+  الطهارة: TAHARA
+  الصلاة: SALAT
+  الجنائز: JANAIZ
+  الزكاة: ZAKAT
+  الخمس: KHUMS
+  الصوم: SAWM
+  الحج: HAJJ
+  العمرة: UMRA
+  الجهاد: JIHAD
+  السلم: SALAM
+  الصرف: SARF
+  الإجارة: IJARA
+  الشركة: SHARIKA
+  المضاربة: MUDARABA
+  الوكالة: WAKALA
+  الحوالة: HAWALA
+  الضمان والكفالة: DAMAN_KAFALA
+  الرهن: RAHN
+  القرض: QARD
+  العارية: ARIYA
+  اللقطة: LUQATA
+  الغصب: GHASB
+  إحياء الموات: IHYA_AL_MAWAT
+  السبق والرماية: SABQ_RAMI
+  الهبة: HIBA
+  الصلح: SULH
+  الوقف: WAQF
+  الوصايا: WASAYA
+  الأشربة: ASHRIBA
+  الصيد والذبائح: SAYD_DHABH
+  الأيمان: AYMAN
+  النذور: NUDHUR
+  الكفارات: KAFFARAT
+  النكاح: NIKAH
+  الصداق: SADAQ_MAHR
+  المهر: SADAQ_MAHR
+  الطلاق: TALAQ
+  الإيلاء: ILA
+  الظهار: ZIHAR
+  العدة: IDDA
+  الرضاع: RIDA
+  الحضانة: HADANA
+  النفقة: NAFAQA
+  القصاص: QISAS
+  الديات: DIYAT
+  الحدود: HUDUD
+  البغاة: BUGHAT
+  البينة: BAYYINA
+  الشهادة: SHAHADA
+  اليمين: YAMIN
+  القسامة: QASAMA
+  آداب القاضي: ADAB_AL_QADI
+  الفرائض: FARAID
+  الميراث: MIRATH
+  الحجب: HAJB
+  العول والرد: AWAL_RADD

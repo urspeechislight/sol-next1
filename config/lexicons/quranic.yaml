@@ -1,0 +1,140 @@
+# Arabic surface forms → canonical IDs in `quranic` registries.
+#
+# Mirrors the rijal lexicon model. Loader normalizes keys via
+# pipeline.utils.arabic.normalize_arabic before dict insertion.
+# Multiple surface forms may map to the same id (synonyms).
+
+quranic_science:
+  أسباب النزول: ASBAB_NUZUL
+  المكي والمدني: MAKKI_MADANI
+  أول وآخر ما نزل: AWWAL_AKHIR_NUZUL
+  كيفية إنزاله: KAYFIYYAT_INZAL
+  جمع القرآن: JAM_AL_QURAN
+  تقسيم القرآن: TAQSIM_AL_QURAN
+  أسماء القرآن: ASMA_AL_QURAN
+  تواتر القرآن: TAWATUR
+  معاضدة السنة للقرآن: MUDADAT_AL_SUNNA
+  علم القراءات: QIRAAT
+  توجيه القراءات: TAWJIH_QIRAAT
+  اختلاف الألفاظ: IKHTILAF_ALFAZ
+  الوقف والابتداء: WAQF_IBTIDA
+  مرسوم الخط: RASM_AL_MUSHAF
+  علم التجويد: TAJWID
+  غريب القرآن: GHARIB_AL_QURAN
+  الكلمات غير العربية: MUARRAB
+  لهجات القبائل: LAHAJAT
+  على كم لغة نزل: LUGHAT_NUZUL
+  التصريف: TASRIF_QURANI
+  المفردات والأدوات: MUFRADAT_ADAWAT
+  المناسبات بين الآيات: MUNASABAT
+  الفواصل ورؤوس الآي: FAWASIL
+  الوجوه: WUJUH
+  النظائر: NAZAIR
+  أسرار الفواتح والسور: ASRAR_FAWATIH
+  خواتم السور: KHAWATIM_SUWAR
+  التقديم والتأخير: TAQDIM_TAKHIR
+  علم التفسير: TAFSIR
+  علم التأويل: TAWIL
+  المحكم والمتشابه: MUHKAM_MUTASHABIH
+  المتشابه: MUTASHABIH_LAFZI
+  المبهمات: MUBHAMAT
+  الناسخ والمنسوخ: NASIKH_MANSUKH
+  الموهم والمختلف: MUWAHIM_MUKHTALIF
+  آيات الصفات: AYAT_SIFAT
+  وجوه المخاطبات: WUJUH_MUKHATABAT
+  أساليب القرآن: ASBAH_AL_KALAM
+  إعجاز القرآن: IJAZ
+  الحقيقة والمجاز: HAQIQA_MAJAZ
+  الكناية والتعريض: KINAYA_TARID
+  أمثال القرآن: AMTHAL
+  جدل القرآن: JADAL_AL_QURAN
+  الفصاحة: FASAHA_QURANIYYA
+  أحكام القرآن: AHKAM_AL_QURAN
+  الإحكام والإفراد والتركيب: IHKAM_IFRAD_TARKIB
+  أقسام معنى الكلام: AQSAM_AL_KALAM
+  فضائل القرآن: FADAIL_AL_QURAN
+  خواص القرآن: KHAWASS_AL_QURAN
+  تفاضل الآي: TAFADUL_AYAT
+  آداب تلاوة: ADAB_TILAWA
+  استعمال آيات في الكتابة: ISTIMAL_AYAT
+
+wujuh_mukhatabat_subtype:
+  خطاب العام والمراد به العموم: AL_AAMM_LIL_AAMM
+  خطاب الخاص والمراد به الخصوص: AL_KHASS_LIL_KHASS
+  خطاب الخاص والمراد به العموم: AL_KHASS_LIL_AAMM
+  خطاب العام والمراد به الخصوص: AL_AAMM_LIL_KHASS
+  خطاب الجنس: KHITAB_AL_JINS
+  خطاب النوع: KHITAB_AL_NAW
+  خطاب العين: KHITAB_AL_AYN
+  خطاب المدح: KHITAB_AL_MADH
+  خطاب الذم: KHITAB_AL_DHAMM
+  خطاب الكرامة: KHITAB_AL_KARAMA
+  خطاب الإهانة: KHITAB_AL_IHANA
+  خطاب التهكم: KHITAB_AL_TAHAKKUM
+  خطاب الجمع بلفظ الواحد: JAM_BI_LAFZ_AL_WAHID
+  خطاب الواحد بلفظ الجمع: WAHID_BI_LAFZ_AL_JAM
+  خطاب الواحد والجمع بلفظ الاثنين: WAHID_WA_JAM_BI_ITHNAYN
+  خطاب الاثنين بلفظ الواحد: ITHNAYN_BI_LAFZ_AL_WAHID
+  خطاب الجميع بلفظ الواحد: JAMI_BI_LAFZ_AL_WAHID
+  خطاب عين والمراد غيره: AYN_WAL_MURAD_GHAYRAHU
+  خطاب الاعتبار: KHITAB_AL_ITIBAR
+  خطاب الشخص ثم العدول إلى غيره: SHAKHS_THUMMA_UDUL
+  خطاب التلوين: KHITAB_AL_TALWIN
+  خطاب الجمادات خطاب من يعقل: KHITAB_AL_JAMADAT
+  خطاب للمعدوم: KHITAB_LIL_MADUM
+  خطاب التهييج: KHITAB_AL_TAHIJ
+  خطاب الإغضاب: KHITAB_AL_IGHDAB
+  خطاب التشجيع والتحريض: KHITAB_AL_TASHJI_TAHRID
+  خطاب التنفير: KHITAB_AL_TANFIR
+  خطاب التحنن والاستعطاف: KHITAB_AL_TAHANNUN
+  خطاب التحبيب: KHITAB_AL_TAHBIB
+  خطاب التعجيز: KHITAB_AL_TAJIZ
+  خطاب التحسير والتلهف: KHITAB_AL_TAHSIR_TALAHHUF
+  التكذيب: KHITAB_AL_TAKDHIB
+  خطاب التشريف: KHITAB_AL_TASHRIF
+
+ijaz_view:
+  الصرفة: SARFA
+  التأليف الخاص: TALIF_KHASS
+  الإخبار عن الغيوب المستقبلة: IKHBAR_GHAYBI
+  نظمه وفصاحته: NAZM_FASAHA
+  لا يمكن وصفه: LA_YUSAF
+  استمرار الفصاحة: ISTIMRAR_FASAHA
+
+majaz_type:
+  إيقاع المسبب موقع السبب: MUSABBAB_FOR_SABAB
+  إطلاق اسم الكل على الجزء: KULL_FOR_JUZ
+  إطلاق اسم الجزء على الكل: JUZ_FOR_KULL
+  إطلاق اسم الملزوم على اللازم: MALZUM_FOR_LAZIM
+  إطلاق اسم اللازم على الملزوم: LAZIM_FOR_MALZUM
+  إطلاق اسم المطلق على المقيد: MUTLAQ_FOR_MUQAYYAD
+  إطلاق اسم الخاص وإرادة العام: KHASS_FOR_AAMM
+  إطلاق اسم العام وإرادة الخاص: AAMM_FOR_KHASS
+  إطلاق الجمع وإرادة المثنى: JAM_FOR_MUTHANNA
+  النقصان: NUQSAN
+  الزيادة: ZIYADA
+  تسمية الشئ بما يؤول إليه: NAME_BY_FUTURE_STATE
+  تسمية الشئ بما كان عليه: NAME_BY_FORMER_STATE
+  إطلاق اسم المحل على الحال: MAHAL_FOR_HAL
+  إطلاق اسم الحال على المحل: HAL_FOR_MAHAL
+  إطلاق اسم آلة الشئ على الآخر: INSTRUMENT_FOR_RESULT
+  إطلاق اسم الضدين على الآخر: OPPOSITE_FOR_OPPOSITE
+  تسمية الداعي إلى الشئ باسم الصارف عنه: DAI_FOR_SARIF
+  إقامة صيغة مقام أخرى: SIGHA_FOR_SIGHA
+  إطلاق الأمر وإرادة التهديد والتلوين: AMR_FOR_TAHDID
+  إطلاق الأمر بالشئ للتلبس به والمراد دوامه: AMR_FOR_DAWAM
+  إضافة الفعل إلى ما ليس فاعله في الحقيقة: FIL_TO_NON_AGENT
+  إطلاق الفعل والمراد مقاربته ومشارفته: FIL_FOR_PROXIMITY
+  إطلاق اسم البشرى على المبشر به: BUSHRA_FOR_MUBASHSHAR_BIH
+
+kinaya_form:
+  الكناية: KINAYA
+  التعريض: TARID
+  التلويح: TALWIH
+  التوجيه: TAWJIH
+
+uslub_category:
+  التأكيد: TAKID
+  التأكيد الصناعي: TAKID_SINAI
+  مؤكدات الجمل الفعلية: TAKID_JUMAL_FILIYYA
+  الصفة: SIFA

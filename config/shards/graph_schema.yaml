@@ -22,46 +22,45 @@
 # One Person type covers narrators, scholars, historical figures, authors —
 # roles are edges, not subtypes (ADR 0004 §1, "one Person type for everyone").
 entity_types:
-  - MANUSCRIPT          # one digitized book; container of pages
-  - PAGE                # one page of a manuscript
-  - SPAN                # structural text segment, bridge between text and graph
-  - UNIT                # atomic semantic unit extracted from a Span
-  - PERSON              # any human (narrator, scholar, historical figure, author)
-  - FACTION             # controlled-vocabulary stance/alignment node (singletons)
-  - EVENT               # historical event (battle, treaty, oath, martyrdom, ...)
-  - PLACE               # geographic location
-  - VERSE               # Qur'anic verse (sura, ayah)
-  - HADITH              # logical tradition (matn + one-or-more sanads)
-  - SANAD               # single isnad chain instance
-  - CHAIN_DEFECT        # defect attached to a Sanad (tadlis, irsal, ...)
-  - WORK                # abstract work, independent of manifestation/edition
-  - ROOT                # Arabic linguistic root (3- or 4-letter)
-  - LEMMA               # canonical form / lexeme
+  - MANUSCRIPT # one digitized book; container of pages
+  - PAGE # one page of a manuscript
+  - SPAN # structural text segment, bridge between text and graph
+  - UNIT # atomic semantic unit extracted from a Span
+  - PERSON # any human (narrator, scholar, historical figure, author)
+  - FACTION # controlled-vocabulary stance/alignment node (singletons)
+  - EVENT # historical event (battle, treaty, oath, martyrdom, ...)
+  - PLACE # geographic location
+  - VERSE # Qur'anic verse (sura, ayah)
+  - HADITH # logical tradition (matn + one-or-more sanads)
+  - SANAD # single isnad chain instance
+  - CHAIN_DEFECT # defect attached to a Sanad (tadlis, irsal, ...)
+  - WORK # abstract work, independent of manifestation/edition
+  - ROOT # Arabic linguistic root (3- or 4-letter)
+  - LEMMA # canonical form / lexeme
 
 # === Edge types ==============================================================
 edge_types:
-
   # --- Structural (deterministic, confidence = 1.0) --------------------------
   CONTAINS:
     source_types: [MANUSCRIPT, SPAN]
     target_types: [PAGE, SPAN]
     multiplicity: one_to_many
     properties: {}
-    note: "Manuscript→Page or Span→Span (hierarchy)"
+    note: 'Manuscript→Page or Span→Span (hierarchy)'
 
   NEXT:
     source_types: [PAGE, SPAN]
     target_types: [PAGE, SPAN]
     multiplicity: one_to_one
     properties: {}
-    note: "Page→Page or Span→Span sequencing"
+    note: 'Page→Page or Span→Span sequencing'
 
   HAS_SECTION:
     source_types: [SPAN]
     target_types: [SPAN]
     multiplicity: one_to_many
     properties: {}
-    note: "Span (heading) → Span (body)"
+    note: 'Span (heading) → Span (body)'
 
   HAS_FOOTNOTE:
     source_types: [SPAN]
@@ -80,7 +79,7 @@ edge_types:
     target_types: [WORK]
     multiplicity: many_to_one
     properties: {}
-    note: "Concrete manuscript manifests an abstract Work"
+    note: 'Concrete manuscript manifests an abstract Work'
 
   # --- Hadith / isnad --------------------------------------------------------
   HAS_SANAD:
@@ -100,8 +99,8 @@ edge_types:
     target_types: [PERSON]
     multiplicity: one_to_many
     properties:
-      position: int           # 0 = closest to source (Prophet/Companion)
-    note: "Authoritative chain composition; NARRATES_FROM is denormalized projection"
+      position: int # 0 = closest to source (Prophet/Companion)
+    note: 'Authoritative chain composition; NARRATES_FROM is denormalized projection'
 
   NARRATES_FROM:
     source_types: [PERSON]
@@ -109,14 +108,14 @@ edge_types:
     multiplicity: many_to_many
     properties:
       evidence_anchor: ref
-    note: "Denormalized for fast traversal; primary truth is INCLUDES_NARRATOR"
+    note: 'Denormalized for fast traversal; primary truth is INCLUDES_NARRATOR'
 
   HAS_DEFECT:
     source_types: [SANAD]
     target_types: [CHAIN_DEFECT]
     multiplicity: one_to_many
     properties:
-      component: enum:hadith_component  # ISNAD/MATN/BOTH (hadith.yaml)
+      component: enum:hadith_component # ISNAD/MATN/BOTH (hadith.yaml)
 
   PARALLEL_TO:
     source_types: [HADITH]
@@ -136,7 +135,7 @@ edge_types:
       source_passage_id: ref
       confidence: float
       evidence_anchor: ref
-    note: "Multiple HAS_STANCE edges per Person allowed; each carries its own attribution"
+    note: 'Multiple HAS_STANCE edges per Person allowed; each carries its own attribution'
 
   STUDENT_OF:
     source_types: [PERSON]
@@ -145,14 +144,14 @@ edge_types:
     properties:
       source_work_id: ref
       evidence_anchor: ref
-    note: "TEACHER_OF is NOT stored — query inverse direction instead"
+    note: 'TEACHER_OF is NOT stored — query inverse direction instead'
 
   BIOGRAPHY_OF:
     source_types: [SPAN]
     target_types: [PERSON]
     multiplicity: many_to_one
     properties: {}
-    note: "Span is biographical material about the target Person"
+    note: 'Span is biographical material about the target Person'
 
   # --- Events ----------------------------------------------------------------
   PARTICIPATED_IN:
@@ -161,11 +160,12 @@ edge_types:
     multiplicity: many_to_many
     properties:
       role: enum:participation_roles
-      side: str                              # event-local, not corpus-global
+      side: str # event-local, not corpus-global
       outcome_event: enum:participation_outcomes
-      manner_of_death: enum:manner_of_death  # if applicable
-      evaluative_classification: enum:evaluative_classification
-                                              # source-relative; tag with source perspective
+      manner_of_death: enum:manner_of_death # if applicable
+      evaluative_classification:
+        enum:evaluative_classification
+        # source-relative; tag with source perspective
       source_work_id: ref
       source_passage_id: ref
       evidence_anchor: ref
@@ -181,7 +181,7 @@ edge_types:
     target_types: [PERSON]
     multiplicity: many_to_many
     properties: {}
-    note: "Weaker than PARTICIPATED_IN; for mention-only witnesses"
+    note: 'Weaker than PARTICIPATED_IN; for mention-only witnesses'
 
   # --- Tafsir, verse, linguistics --------------------------------------------
   INTERPRETS_VERSE:
@@ -189,14 +189,14 @@ edge_types:
     target_types: [VERSE]
     multiplicity: many_to_many
     properties: {}
-    note: "Span has tafsir behavior and links to the verse it interprets"
+    note: 'Span has tafsir behavior and links to the verse it interprets'
 
   REFERENCES_VERSE:
     source_types: [SPAN]
     target_types: [VERSE]
     multiplicity: many_to_many
     properties: {}
-    note: "Verse mentioned but not interpreted (weaker than INTERPRETS_VERSE)"
+    note: 'Verse mentioned but not interpreted (weaker than INTERPRETS_VERSE)'
 
   HAS_LEMMA:
     source_types: [SPAN]
@@ -218,13 +218,13 @@ edge_types:
     target_types: [PERSON]
     multiplicity: many_to_many
     properties:
-      tradition: enum:traditions             # SUNNI/SHIA/NEUTRAL — required
-      term: str                              # validated against per-tradition list
-      grade_numeric: float                   # optional 0..1 normalized score
+      tradition: enum:traditions # SUNNI/SHIA/NEUTRAL — required
+      term: str # validated against per-tradition list
+      grade_numeric: float # optional 0..1 normalized score
       source_work_id: ref
       source_passage_id: ref
       evidence_anchor: ref
-    note: "Source = grading scholar; Target = narrator. Term validated against rijal_grades_<tradition>."
+    note: 'Source = grading scholar; Target = narrator. Term validated against rijal_grades_<tradition>.'
 
   # --- Generic mention edges (Phase 3 produces, before resolution) -----------
   MENTIONS_PERSON:
@@ -257,4 +257,4 @@ edge_types:
     multiplicity: many_to_many
     properties:
       confidence: float
-      resolution_status: str                 # candidate | resolved | ambiguous
+      resolution_status: str # candidate | resolved | ambiguous

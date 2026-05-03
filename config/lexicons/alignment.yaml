@@ -1,0 +1,18 @@
+# Arabic surface forms → canonical IDs in `alignment` registries.
+#
+# Mirrors the rijal lexicon model. Loader normalizes keys via
+# pipeline.utils.arabic.normalize_arabic before dict insertion.
+# Multiple surface forms may map to the same id (synonyms).
+
+theological_school:
+  المعتزلة: MUTAZILI
+  الأشعرية: ASHARI
+  الماتريدية: MATURIDI
+  الأثرية: ATHARI
+  أهل الحديث: ATHARI
+  المرجئة: MURJII
+  الجهمية: JAHMI
+  القدرية: QADARI
+  الجبرية: JABRI
+  الحشوية: HASHWI
+  الباطنية: BATINI

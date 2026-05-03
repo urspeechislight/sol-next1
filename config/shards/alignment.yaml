@@ -9,16 +9,16 @@
 # Ibn Hajar's Taqrib al-Tahdhib intro p.25 (sol_id qjQXdmB-_01):
 # tashayyuʿ, qadar, nasb, irjaʾ, tajahhum — these ARE formal rijal tags.
 theological_school:
-  - MUTAZILI         # المعتزلة
-  - ASHARI           # الأشعرية
-  - MATURIDI         # الماتريدية
-  - ATHARI           # الأثرية / أهل الحديث
-  - MURJII           # المرجئة (irjaʾ — Taqrib §rank-5)
-  - JAHMI            # الجهمية (tajahhum — Taqrib §rank-5)
-  - QADARI           # القدرية (qadar — Taqrib §rank-5)
-  - JABRI            # الجبرية
-  - HASHWI           # الحشوية
-  - BATINI           # الباطنية (umbrella; use w/ caution — polemical)
+  - MUTAZILI
+  - ASHARI
+  - MATURIDI
+  - ATHARI
+  - MURJII # (irjaʾ — Taqrib §rank-5)
+  - JAHMI # (tajahhum — Taqrib §rank-5)
+  - QADARI # (qadar — Taqrib §rank-5)
+  - JABRI
+  - HASHWI
+  - BATINI # (umbrella; use w/ caution — polemical)
 
 # Juridical school (madhhab fiqhi).
 juridical_school:
@@ -27,22 +27,22 @@ juridical_school:
   - SHAFII
   - HANBALI
   - ZAHIRI
-  - AWZAI            # extinct
-  - JAFARI           # Imami Shia
-  - ZAYDI_FIQH       # Zaydi Shia juridical school
-  - ISMAILI_FIQH     # Ismaili juridical tradition
-  - IBADI            # Ibadi (only surviving Khariji branch)
+  - AWZAI # extinct
+  - JAFARI # Imami Shia
+  - ZAYDI_FIQH # Zaydi Shia juridical school
+  - ISMAILI_FIQH # Ismaili juridical tradition
+  - IBADI # Ibadi (only surviving Khariji branch)
 
 # Political-dynastic loyalty.
 political_loyalty:
-  - UMAWI            # Umayyad
-  - ABBASI           # Abbasid
-  - ZUBAYRI          # Ibn al-Zubayr's faction
-  - ALAWI            # ʿAlid claimant supporter
-  - UTHMANI          # pro-ʿUthmān, often pre-/early-Umayyad piety
-  - KHARIJI          # Kharijite
-  - MUHAKKIMA        # early Khariji self-label
-  - FATIMID          # Fatimid loyalist
+  - UMAWI # Umayyad
+  - ABBASI # Abbasid
+  - ZUBAYRI # Ibn al-Zubayr's faction
+  - ALAWI # ʿAlid claimant supporter
+  - UTHMANI # pro-ʿUthmān, often pre-/early-Umayyad piety
+  - KHARIJI # Kharijite
+  - MUHAKKIMA # early Khariji self-label
+  - FATIMID # Fatimid loyalist
   - UNKNOWN
   - NEUTRAL
 
@@ -51,17 +51,17 @@ political_loyalty:
 # [Source: Taqrib al-Tahdhib intro p.25 (qjQXdmB-_01); Mizan al-Iʿtidal
 # (al-Dhahabi) for nasibi definition.]
 ahl_al_bayt_stance:
-  - AHL_AL_BAYT_MEMBER  # min ahl al-bayt
-  - MUTASHAYYI          # mild pro-ʿAli leaning (Taqrib rank 5: tashayyu)
-  - SHII                # partisan of ʿAli (early sense, before sectarian crystal)
-  - RAFIDI              # rejecting Abu Bakr/ʿUmar (Dhahabi, Mizan)
-  - IMAMI               # Twelver Imami
-  - ZAYDI_SHIA          # Zaydi sub-sect
-  - ISMAILI_SHIA        # Ismaili sub-sect
-  - WAQIFI              # stopped at Imam Musa al-Kazim (Shia rijal modifier)
-  - FATHI               # recognized ʿAbdallah al-Aftah (Shia rijal modifier)
-  - GHALI               # extremist (technical Shia rijal usage)
-  - NASIBI              # anti-ʿAli (Taqrib rank 5: nasb)
+  - AHL_AL_BAYT_MEMBER # min ahl al-bayt
+  - MUTASHAYYI # mild pro-ʿAli leaning (Taqrib rank 5: tashayyu)
+  - SHII # partisan of ʿAli (early sense, before sectarian crystal)
+  - RAFIDI # rejecting Abu Bakr/ʿUmar (Dhahabi, Mizan)
+  - IMAMI # Twelver Imami
+  - ZAYDI_SHIA # Zaydi sub-sect
+  - ISMAILI_SHIA # Ismaili sub-sect
+  - WAQIFI # stopped at Imam Musa al-Kazim (Shia rijal modifier)
+  - FATHI # recognized ʿAbdallah al-Aftah (Shia rijal modifier)
+  - GHALI # extremist (technical Shia rijal usage)
+  - NASIBI # anti-ʿAli (Taqrib rank 5: nasb)
   - NEUTRAL
   - UNKNOWN
 
@@ -70,6 +70,6 @@ ahl_al_bayt_stance:
 spiritual_orientation:
   - SUFI
   - SALAFI
-  - AKHBARI            # Shia traditionalist (anti-ijtihad school)
-  - USULI              # Shia rationalist (pro-ijtihad school)
+  - AKHBARI # Shia traditionalist (anti-ijtihad school)
+  - USULI # Shia rationalist (pro-ijtihad school)
   - NONE

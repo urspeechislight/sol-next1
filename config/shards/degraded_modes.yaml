@@ -3,17 +3,17 @@
 # load_config validates this match at startup.
 degraded_modes:
   NER_UNAVAILABLE:
-    description: "Named entity recognition service unavailable"
+    description: 'Named entity recognition service unavailable'
     owner_phase: extract
   GAZETTEER_UNAVAILABLE:
-    description: "Gazetteer (place/person lookup) unavailable"
+    description: 'Gazetteer (place/person lookup) unavailable'
     owner_phase: extract
   RIJAL_UNAVAILABLE:
-    description: "Rijal grading database unavailable; per-narrator grades skipped"
+    description: 'Rijal grading database unavailable; per-narrator grades skipped'
     owner_phase: enrich
   TRANSLATION_FAILED:
-    description: "Translation API failed; English unit text unavailable"
+    description: 'Translation API failed; English unit text unavailable'
     owner_phase: enrich
   EMBEDDING_PARTIAL:
-    description: "Some units could not be embedded; downstream similarity reduced"
+    description: 'Some units could not be embedded; downstream similarity reduced'
     owner_phase: enrich

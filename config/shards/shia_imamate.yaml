@@ -19,53 +19,53 @@
 # also include ʿAdl. The five-principle scheme is canonical Imami; some
 # medieval authorities also list Tabarri / Tawalli as distinct.
 shia_usul_al_din:
-  - TAWHID                # التوحيد — divine unity
-  - ADL                   # العدل — divine justice (specifically Imami emphasis;
-                          #         shared with Mu'tazila)
-  - NUBUWWA               # النبوة — prophecy
-  - IMAMA                 # الإمامة — imamate (the distinctive Imami principle)
-  - MAAD                  # المعاد — resurrection / afterlife
+  - TAWHID # divine unity
+  - ADL # divine justice (specifically Imami emphasis;
+    #         shared with Mu'tazila)
+  - NUBUWWA # prophecy
+  - IMAMA # imamate (the distinctive Imami principle)
+  - MAAD # resurrection / afterlife
 
 # === Imamate-specific doctrinal concepts =====================================
 # These are the technical concepts that constitute the Imami theological
 # framework around the Imamate. Each is a distinct doctrinal position with
 # substantial classical and modern literature.
 shia_imamate_concept:
-  - NASS                  # النص — explicit textual designation of an Imam
-                          #   (Ghadir Khumm hadith is the paradigm; cf. event
-                          #   types.NASS for the event itself)
-  - ISMA                  # العصمة — infallibility; extends to Prophet,
-                          #   Fatima, and the 12 Imams (the 14 Maʿsumin)
-  - GHAYBA                # الغيبة — occultation (umbrella; sub-types below)
-  - GHAYBA_SUGHRA         # الغيبة الصغرى — minor occultation (260-329 AH);
-                          #   communication via four sufara' (deputies)
-  - GHAYBA_KUBRA          # الغيبة الكبرى — major occultation (329 AH-present);
-                          #   no formal deputy
-  - RAJA                  # الرجعة — return of certain Imams (and others) to
-                          #   the world before the Last Day
-  - TAQIYYA               # التقية — protective dissimulation under threat;
-                          #   permitted (sometimes obligatory) when life or
-                          #   dignity is at stake
-  - WALAYA                # الولاية — allegiance / guardianship of ʿAli and
-                          #   the Imams; sometimes treated as a usul al-din
-                          #   alongside the five
-  - TAWALLI               # التولي — affirmative loyalty to Ahl al-Bayt
-                          #   (companion concept to walaya)
-  - BARAA                 # البراءة — disavowal of enemies of the Imams;
-                          #   companion to tawalli
-  - BIDA                  # البداء — God's "appearing to change" His decree;
-                          #   distinctively Imami concept (controversial in
-                          #   wider Islamic discourse). Note: distinct from
-                          #   bidʿa (innovation in religion) in `narrator_defect_cause`.
-  - ILM_AL_IMAM           # علم الإمام — the Imam's divinely-imparted
-                          #   knowledge of all things needed for his function
-  - MAHDAWIYYA            # المهدوية — eschatological doctrine of al-Mahdi's
-                          #   reappearance and global justice
-  - SHAFAA                # الشفاعة — intercession; the Imams (and Prophet)
-                          #   may intercede for believers on Judgment Day
-  - WILAYAT_AL_FAQIH      # ولاية الفقيه — guardianship of the jurist;
-                          #   modern doctrine (Khomeini) extending walaya
-                          #   to the senior jurist during ghayba kubra
-  - MARJAIYYA             # المرجعية — institution of the marja' al-taqlid
-                          #   (highest jurist whose rulings are followed);
-                          #   modern Imami practice during ghayba kubra
+  - NASS # explicit textual designation of an Imam
+    #   (Ghadir Khumm hadith is the paradigm; cf. event
+    #   types.NASS for the event itself)
+  - ISMA # infallibility; extends to Prophet,
+    #   Fatima, and the 12 Imams (the 14 Maʿsumin)
+  - GHAYBA # occultation (umbrella; sub-types below)
+  - GHAYBA_SUGHRA # minor occultation (260-329 AH);
+    #   communication via four sufara' (deputies)
+  - GHAYBA_KUBRA # major occultation (329 AH-present);
+    #   no formal deputy
+  - RAJA # return of certain Imams (and others) to
+    #   the world before the Last Day
+  - TAQIYYA # protective dissimulation under threat;
+    #   permitted (sometimes obligatory) when life or
+    #   dignity is at stake
+  - WALAYA # allegiance / guardianship of ʿAli and
+    #   the Imams; sometimes treated as a usul al-din
+    #   alongside the five
+  - TAWALLI # affirmative loyalty to Ahl al-Bayt
+    #   (companion concept to walaya)
+  - BARAA # disavowal of enemies of the Imams;
+    #   companion to tawalli
+  - BIDA # God's "appearing to change" His decree;
+    #   distinctively Imami concept (controversial in
+    #   wider Islamic discourse). Note: distinct from
+    #   bidʿa (innovation in religion) in `narrator_defect_cause`.
+  - ILM_AL_IMAM # the Imam's divinely-imparted
+    #   knowledge of all things needed for his function
+  - MAHDAWIYYA # eschatological doctrine of al-Mahdi's
+    #   reappearance and global justice
+  - SHAFAA # intercession; the Imams (and Prophet)
+    #   may intercede for believers on Judgment Day
+  - WILAYAT_AL_FAQIH # guardianship of the jurist;
+    #   modern doctrine (Khomeini) extending walaya
+    #   to the senior jurist during ghayba kubra
+  - MARJAIYYA # institution of the marja' al-taqlid
+    #   (highest jurist whose rulings are followed);
+    #   modern Imami practice during ghayba kubra

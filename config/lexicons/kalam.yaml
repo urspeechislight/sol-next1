@@ -1,0 +1,98 @@
+# Arabic surface forms → canonical IDs in `kalam` registries.
+#
+# Mirrors the rijal lexicon model. Loader normalizes keys via
+# pipeline.utils.arabic.normalize_arabic before dict insertion.
+# Multiple surface forms may map to the same id (synonyms).
+
+sunni_arkan_al_iman:
+  الإيمان بالله: IMAN_BILLAH
+  الإيمان بالملائكة: IMAN_BIL_MALAIKA
+  الإيمان بالكتب: IMAN_BIL_KUTUB
+  الإيمان بالرسل: IMAN_BIL_RUSUL
+  الإيمان باليوم الآخر: IMAN_BIL_YAWM_AKHIR
+  الإيمان بالقدر خيره وشره: IMAN_BIL_QADAR
+
+mutazili_usul_khamsa:
+  التوحيد: TAWHID
+  العدل: ADL
+  الوعد والوعيد: WAD_WA_WAID
+  المنزلة بين المنزلتين: MANZILA_BAYNA_AL_MANZILATAYN
+  الأمر بالمعروف والنهي عن المنكر: AMR_NAHY_KALAMI
+
+kalam_topic:
+  وجود واجب الوجود: WUJUD_WAJIB
+  الصفات الثبوتية: SIFAT_THUBUTIYYA
+  الصفات السلبية: SIFAT_SALBIYYA
+  الصفات الفعلية: SIFAT_FILIYYA
+  الصفات الذاتية: SIFAT_DHATIYYA
+  الذات والصفات: DHAT_WA_SIFAT
+  التشبيه والتنزيه: TASHBIH_TANZIH
+  التجسيم والتعطيل: TAJSIM_TATIL
+  الجبر والاختيار: JABR_IKHTIYAR
+  الكسب: KASB
+  القدر والقضاء: QADAR_QADAA
+  اللطف: LUTF
+  خلق الأفعال: KHALQ_AL_AFAL
+  خلق القرآن: KHALQ_AL_QURAN
+  الكلام النفسي: KALAM_NAFSI
+  الكلام اللفظي: KALAM_LAFZI
+  الرؤية: RUYA
+  الشفاعة: SHAFAA
+  وجوب المعاد: WUJUB_AL_MAAD
+  الحساب والثواب والعقاب: HISAB_THAWAB_IQAB
+  الجنة والنار: JANNA_NAR
+  الصراط: SIRAT
+  الميزان: MIZAN
+  وجوب النبوة: WUJUB_NUBUWWA
+  عصمة الأنبياء: ISMAT_ANBIYA
+  المعجزة: MUJIZA
+  الكرامة: KARAMA
+  ختم النبوة: KHATM_NUBUWWA
+  وجوب الإمامة: WUJUB_IMAMA
+  عصمة الإمام: ISMAT_IMAM
+  النص على الإمامة: NASS_AL_IMAMA
+  الغيبة: GHAYBA
+  الرجعة: RAJAA
+  التقية: TAQIYYA
+  الولاية: WALAYA_KALAMI
+  البداء: BADAA
+  الكبيرة والكفر: KABIRA_KUFR
+  الإيمان والعمل: IMAN_AML
+  زيادة الإيمان ونقصانه: ZIYADA_NUQSAN_IMAN
+  التكفير: TAKFIR
+  الحسن والقبح العقليان: HUSN_QUBH_AQLI
+  تكليف ما لا يطاق: TAKLIF_MA_LA_YUTAQ
+  عوض الآلام: IWAD_AL_ALAM
+
+sunni_sifat_al_maani:
+  الحياة: HAYAT
+  العلم: ILM
+  القدرة: QUDRA
+  الإرادة: IRADA
+  السمع: SAM
+  البصر: BASAR
+  الكلام: KALAM
+
+imami_sifat_thubutiyya:
+  قادر مختار: QADIR_MUKHTAR
+  عالم: ALIM
+  حي: HAYY
+  مريد كاره: MURID_KARIH
+  مدرك: MUDRIK
+  قديم أزلي باقي أبدي: QADIM_AZALI_BAQI
+  متكلم: MUTAKALLIM
+  صادق: SADIQ
+
+imami_sifat_salbiyya:
+  ليس بجسم ولا عرض: LAYSA_BI_JISM
+  لا في محل: LA_FI_MAHALL
+  لا لذة ولا ألم: LA_LADHDHA_ALAM
+  لا يتحد بغيره: LA_YATTAHID
+  ليس محلا للحوادث: LAYSA_MAHALL_HAWADITH
+  لا تجوز عليه الرؤية: LA_RUYA
+  لا شريك له: LA_SHARIK
+  غني: GHANI
+  لا معاني ولا أحوال: LA_MAANI_AHWAL
+
+kalam_controversy:
+  المحنة: MIHNA

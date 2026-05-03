@@ -1,0 +1,33 @@
+# Arabic surface forms → canonical IDs in `hadith` registries.
+#
+# Mirrors the rijal lexicon model. Loader normalizes keys via
+# pipeline.utils.arabic.normalize_arabic before dict insertion.
+# Multiple surface forms may map to the same id (synonyms).
+
+hadith_component:
+  السند: ISNAD
+  المتن: MATN
+
+chain_height:
+  العلو المطلق: ULUW_MUTLAQ
+  العلو النسبي: ULUW_NISBI
+  النزول: NUZUL
+
+uluw_nisbi_subtype:
+  الموافقة: MUWAFAQA
+  البدل: BADAL
+  المساواة: MUSAWAT
+  المصافحة: MUSAFAHA
+
+transmission_mode:
+  سمعت: SAMITU
+  حدثني: HADDATHANI
+  حدثنا: HADDATHANA
+  أخبرني: AKHBARANI
+  أخبرنا: AKHBARANA
+  قرأت عليه: QARAATU_ALAYHI
+  قرئ عليه وأنا أسمع: QURIA_ALAYHI
+  ناولني: NAWALANI
+  شافهني: SHAFAHANI
+  كتب إلي: KATABA_ILAYYA
+  عن: AN

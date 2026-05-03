@@ -1,0 +1,121 @@
+# Arabic surface forms → canonical IDs in `tasawwuf` registries.
+#
+# Mirrors the rijal lexicon model. Loader normalizes keys via
+# pipeline.utils.arabic.normalize_arabic before dict insertion.
+# Multiple surface forms may map to the same id (synonyms).
+
+maqamat_ahwal:
+  التوبة: TAWBA
+  المجاهدة: MUJAHADA
+  الخلوة والعزلة: KHALWA_UZLA
+  التقوى: TAQWA
+  الورع: WARA
+  الزهد: ZUHD
+  الصمت: SAMT
+  الخوف: KHAWF
+  الرجاء: RAJA
+  الحزن: HUZN
+  الجوع وترك الشهوة: JU_TARK_SHAHWA
+  الخشوع والتواضع: KHUSHU_TAWADUI
+  مخالفة النفس: MUKHALAFAT_NAFS
+  القناعة: QANAA
+  التوكل: TAWAKKUL
+  الشكر: SHUKR
+  اليقين: YAQIN
+  الصبر: SABR
+  المراقبة: MURAQABA
+  الرضا: RIDA
+  العبودية: UBUDIYYA
+  الإرادة: IRADA
+  الاستقامة: ISTIQAMA
+  الإخلاص: IKHLAS
+  الصدق: SIDQ
+  الحياء: HAYA
+  الحرية: HURRIYYA
+  الذكر: DHIKR
+  الدعاء: DUA
+  السماع: SAMAA
+  الفتوة: FUTUWWA
+  الفراسة: FIRASA
+  الخلق: KHULQ
+  الجود والسخاء: JUD_SAKHA
+  الغيرة: GHIRA
+  الأدب: ADAB
+  الحسد: HASAD
+  الغيبة: GHIBA
+  الولاية: WALAYA
+  الفقر: FAQR
+  التصوف: TASAWWUF_AS_STATE
+  أحكام السفر: AHKAM_SAFAR
+  الصحبة: SUHBA
+  حفظ قلوب المشايخ: HIFZ_QULUB_MASHAYIKH
+  الوصية للمريدين: WASIYYA_LIL_MURIDIN
+  التوحيد: TAWHID
+  المعرفة بالله: MARIFA_BILLAH
+  المحبة: MAHABBA
+  الشوق: SHAWQ
+  أحوال عند الخروج من الدنيا: AHWAL_KHURUJ_DUNYA
+  كرامات الأولياء: KARAMAT_AWLIYA
+  رؤيا القوم: RUYA_AL_QAWM
+
+sufi_concept:
+  حال: HAL
+  مقام: MAQAM
+  وجد: WAJD
+  وقت: WAQT
+  قبض وبسط: QABD_BAST
+  هيبة وأنس: HAYBA_UNS
+  فناء: FANA
+  بقاء: BAQA
+  جمع وفرق: JAMA_FARQ
+  صحو وسكر: SAHW_SUKR
+  سر: SIRR
+  سر السر: SIRR_AL_SIRR
+  لطيفة: LATIFA
+  روح: RUH
+  قلب: QALB
+  نفس: NAFS
+  سلسلة: SILSILA
+  إجازة صوفية: IJAZA_SUFIYYA
+  سلوك: SULUK
+  إرشاد: IRSHAD
+  مريد: MURID
+  مرشد: MURSHID
+  قطب: QUTB
+  أبدال: ABDAL
+  غوث: GHAWTH
+  ولي: WALI
+  بركة: BARAKA
+  همة: HIMMA
+  ذوق: DHAWQ
+  كشف: KASHF
+  مشاهدة: MUSHAHADA
+  محجوب: MAHJUB
+
+nafs_stage:
+  النفس الأمارة بالسوء: AMMARA
+  النفس اللوامة: LAWWAMA
+  النفس الملهمة: MULHAMA
+  النفس المطمئنة: MUTMAINNA
+  النفس الراضية: RADIYA
+  النفس المرضية: MARDIYYA
+  النفس الكاملة: KAMILA
+
+sufi_tariqa:
+  القادرية: QADIRIYYA
+  السهروردية: SUHRAWARDIYYA
+  الشاذلية: SHADHILIYYA
+  الرفاعية: RIFAIYYA
+  النقشبندية: NAQSHBANDIYYA
+  المولوية: MAWLAWIYYA
+  الجشتية: CHISHTIYYA
+  الخلوتية: KHALWATIYYA
+  البكتاشية: BEKTASHIYYA
+  التجانية: TIJANIYYA
+  السنوسية: SANUSIYYA
+  الإدريسية: IDRISIYYA
+  الدرقاوية: DARQAWIYYA
+  النعمة اللهية: NIMATULLAHIYYA
+  الذهبية: DHAHABIYYA
+  النوربخشية: NURBAKHSHIYYA
+  الكبروية: KUBRAWIYYA

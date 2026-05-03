@@ -1,0 +1,30 @@
+# Arabic surface forms → canonical IDs in `shia_imamate` registries.
+#
+# Mirrors the rijal lexicon model. Loader normalizes keys via
+# pipeline.utils.arabic.normalize_arabic before dict insertion.
+# Multiple surface forms may map to the same id (synonyms).
+
+shia_usul_al_din:
+  التوحيد: TAWHID
+  العدل: ADL
+  النبوة: NUBUWWA
+  الإمامة: IMAMA
+  المعاد: MAAD
+
+shia_imamate_concept:
+  النص: NASS
+  العصمة: ISMA
+  الغيبة: GHAYBA
+  الغيبة الصغرى: GHAYBA_SUGHRA
+  الغيبة الكبرى: GHAYBA_KUBRA
+  الرجعة: RAJA
+  التقية: TAQIYYA
+  الولاية: WALAYA
+  التولي: TAWALLI
+  البراءة: BARAA
+  البداء: BIDA
+  علم الإمام: ILM_AL_IMAM
+  المهدوية: MAHDAWIYYA
+  الشفاعة: SHAFAA
+  ولاية الفقيه: WILAYAT_AL_FAQIH
+  المرجعية: MARJAIYYA
