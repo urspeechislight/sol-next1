@@ -38,18 +38,10 @@ pre-commit:
       glob: '*.{py,ts,tsx,js,jsx,svelte,css,md}'
       run: python3 .claude/hooks/lint_staged.py {staged_files}
 
-# pre-push gate is intentionally disabled.
-# pnpm run ci fails at pnpm format:check because prettier-plugin-svelte 3.5.1
-# throws "getVisitorKeys is not a function" on every .svelte file
-# (peer-dep mismatch with Svelte 5; see pnpm install warnings). The
-# pre-commit gate (prettier on staged files only + the full handler chain
-# via harness-rules) remains active. GitHub Actions CI is the source of
-# truth on PR per docs/foundation.md until the prettier-plugin-svelte
-# issue is resolved.
-# pre-push:
-#   commands:
-#     full-ci:
-#       run: pnpm run ci
+pre-push:
+  commands:
+    full-ci:
+      run: pnpm run ci
 
 commit-msg:
   commands:
