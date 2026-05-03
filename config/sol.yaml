@@ -1,0 +1,37 @@
+# Pipeline configuration registry — entry point.
+#
+# All registries, thresholds, and feature flags live under config/.
+# Per ADR 0004 (graph ontology) and ADR 0005 (phase contracts).
+# Pipeline code never reads YAML directly — load_config() in
+# src/pipeline/config.py is the only reader.
+#
+# This file is the entry point. Vocabulary registries are sharded into
+# config/shards/<name>.yaml. The __includes__ list below names the shards;
+# load_config() expands each shard inline before validating the resulting
+# document. Per-key collisions across shards raise ConfigError.
+
+__includes__:
+  - shards/phase_contracts.yaml
+  - shards/book_categories.yaml
+  - shards/degraded_modes.yaml
+  - shards/alignment.yaml
+  - shards/events.yaml
+  - shards/hadith.yaml
+  - shards/rijal.yaml
+  - shards/disciplines.yaml
+  - shards/quranic.yaml
+  - shards/fiqh.yaml
+  - shards/graph_schema.yaml
+  - shards/masumin.yaml
+  - shards/shia_imamate.yaml
+  - shards/tasawwuf.yaml
+  - shards/kalam.yaml
+
+# === Feature flags ===========================================================
+features:
+  rijal_enabled: false
+  translation_enabled: false
+  embedding_enabled: false
+
+# === Numeric thresholds (Python NEVER hard-codes these) ======================
+thresholds: {}

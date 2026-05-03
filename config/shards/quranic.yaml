@@ -1,0 +1,239 @@
+# Quranic sciences (al-'ulum al-qur'aniyya) and their sub-classifications.
+#
+# [Source: al-Zarkashi, al-Burhan fi 'Ulum al-Qur'an, 4 volumes (sol_id
+#  oF_pDMSC) — the canonical pre-Suyuti classification of Quranic
+#  sciences into 47 anwāʿ. al-Suyuti's al-Itqan expanded but largely
+#  followed this taxonomy. Citations are to (volume:page) of al-Burhan.]
+
+# === Top-level: 47 anwa' (categories) ========================================
+# Major disciplines, organized by domain. Each maps to one or more anwa'.
+# Several major anwa' have their own sub-type registry below.
+quranic_science:
+  # === Revelation history & textual transmission ===
+  - ASBAB_NUZUL          # أسباب النزول — occasions of revelation (v1:42, anwa' 1)
+  - MAKKI_MADANI         # المكي والمدني (v1:207, anwa' 9)
+  - AWWAL_AKHIR_NUZUL    # أول وآخر ما نزل (v1:231, anwa' 10)
+  - KAYFIYYAT_INZAL      # كيفية إنزاله — mode of revelation (v1:248, anwa' 12)
+  - JAM_AL_QURAN         # جمع القرآن — compilation history (v1:253, anwa' 13)
+  - TAQSIM_AL_QURAN      # تقسيم القرآن — division: suras, ayat, juz' (v1:264, anwa' 14)
+  - ASMA_AL_QURAN        # أسماء القرآن — names of the Quran (v1:293, anwa' 15)
+  - TAWATUR              # تواتر القرآن — multi-chain transmission (v2:125, anwa' 39)
+  - MUDADAT_AL_SUNNA     # معاضدة السنة للقرآن (v2:130, anwa' 40)
+
+  # === Variant readings & orthography ===
+  - QIRAAT               # علم القراءات — canonical variant readings
+  - TAWJIH_QIRAAT        # توجيه القراءات (v1:359, anwa' 23)
+  - IKHTILAF_ALFAZ       # اختلاف الألفاظ (v1:338, anwa' 22)
+  - WAQF_IBTIDA          # الوقف والابتداء — pause / start (v1:362, anwa' 24)
+  - RASM_AL_MUSHAF       # مرسوم الخط — codex orthography (v1:396, anwa' 25)
+  - TAJWID               # علم التجويد — pronunciation rules
+
+  # === Lexical / linguistic ===
+  - GHARIB_AL_QURAN      # غريب القرآن — rare words (v1:311, anwa' 18)
+  - MUARRAB              # الكلمات غير العربية — non-Arabic words (v1:307, anwa' 17)
+  - LAHAJAT              # لهجات القبائل — tribal dialects (v1:303, anwa' 16)
+  - LUGHAT_NUZUL         # على كم لغة نزل (v1:231, anwa' 11)
+  - TASRIF_QURANI        # التصريف — Quranic morphology (v1:317, anwa' 19)
+  - MUFRADAT_ADAWAT      # المفردات والأدوات — particles (v4:175, anwa' 47)
+
+  # === Verse-level structure ===
+  - MUNASABAT            # المناسبات بين الآيات (v1:55, anwa' 2)
+  - FAWASIL              # الفواصل ورؤوس الآي — verse endings (v1:73, anwa' 3)
+  - WUJUH                # الوجوه — a single Qurʾanic word with multiple
+                         #   meanings across different verses (e.g., the word
+                         #   "ḍalāl" in different contexts; "ṣalāt" meaning
+                         #   prayer / blessing / mercy). al-Damaghani's
+                         #   "al-Wujuh wa al-Naza'ir" is the canonical work.
+                         #   (al-Burhan v1:122, anwa' 4)
+  - NAZAIR               # النظائر — multiple words / constructions in
+                         #   parallel positions across the Qurʾan; semantic
+                         #   parallels distinct from "wujuh" despite the
+                         #   pairing under one anwa' in al-Burhan.
+                         #   (al-Burhan v1:122, anwa' 4)
+  - ASRAR_FAWATIH        # أسرار الفواتح والسور (v1:184, anwa' 7)
+  - KHAWATIM_SUWAR       # خواتم السور (v1:202, anwa' 8)
+  - TAQDIM_TAKHIR        # التقديم والتأخير — word order (v3:239, distinct anwa')
+
+  # === Interpretive / hermeneutic ===
+  - TAFSIR               # علم التفسير — exegesis (v2:140, anwa' 41)
+  - TAWIL                # علم التأويل — esoteric / esoterically-oriented interp.
+  - MUHKAM_MUTASHABIH    # المحكم والمتشابه (v2:68, anwa' 36)
+  - MUTASHABIH_LAFZI     # المتشابه — verbal similarity across verses (v1:131, anwa' 5)
+  - MUBHAMAT             # المبهمات — unspecified references (v1:175, anwa' 6)
+  - NASIKH_MANSUKH       # الناسخ والمنسوخ — abrogation (v2:28, anwa' 34)
+  - MUWAHIM_MUKHTALIF    # الموهم والمختلف — apparent contradictions (v2:45, anwa' 35)
+  - AYAT_SIFAT           # آيات الصفات — divine attributes verses (v2:78, anwa' 37)
+  - WUJUH_MUKHATABAT     # وجوه المخاطبات — modes of address (v2:217, anwa' 42)
+                         # — 33 sub-types in `wujuh_mukhatabat_subtype` below
+  - ASBAH_AL_KALAM       # أساليب القرآن — Quranic rhetorical styles (v2:382, anwa' 46)
+                         # — sub-types in `uslub_category` below
+
+  # === Rhetoric (Quran-specific applications of balagha) ===
+  - IJAZ                 # إعجاز القرآن — inimitability (v2:90, anwa' 38)
+                         # — views in `ijaz_view` below
+  - HAQIQA_MAJAZ         # الحقيقة والمجاز (v2:255, anwa' 43)
+                         # — sub-types in `majaz_type` below
+  - KINAYA_TARID         # الكناية والتعريض (v2:300, anwa' 44)
+                         # — forms in `kinaya_form` below
+  - AMTHAL               # أمثال القرآن — parables (v1:506, anwa' 31)
+  - JADAL_AL_QURAN       # جدل القرآن — Quranic argumentation (v2:24, anwa' 33)
+  - FASAHA_QURANIYYA     # الفصاحة — Quranic eloquence (v1:331, anwa' 21)
+
+  # === Legal / pragmatic ===
+  - AHKAM_AL_QURAN       # أحكام القرآن — legal rulings (v2:3, anwa' 32)
+  - IHKAM_IFRAD_TARKIB   # الإحكام والإفراد والتركيب (v1:321, anwa' 20)
+  - AQSAM_AL_KALAM       # أقسام معنى الكلام (v2:316, anwa' 45)
+
+  # === Devotional / functional ===
+  - FADAIL_AL_QURAN      # فضائل القرآن — merits (v1:452, anwa' 26)
+  - KHAWASS_AL_QURAN     # خواص القرآن — special properties (v1:454, anwa' 27)
+  - TAFADUL_AYAT         # تفاضل الآي (v1:458, anwa' 28)
+  - ADAB_TILAWA          # آداب تلاوة — recitation etiquette (v1:469, anwa' 29)
+  - ISTIMAL_AYAT         # استعمال آيات في الكتابة (v1:501, anwa' 30)
+
+# === Sub-types of WUJUH_MUKHATABAT (anwa' 42) ================================
+# 33 sub-types of "modes of address" within anwa' 42 (al-Burhan v2:217-252).
+# Includes the famous "iyyāka aʿnī wa-smaʿī yā jāra" pattern (#18).
+wujuh_mukhatabat_subtype:
+  # Scope: general vs specific (v2:217-220)
+  - AL_AAMM_LIL_AAMM           # خطاب العام والمراد به العموم (v2:217)
+  - AL_KHASS_LIL_KHASS         # خطاب الخاص والمراد به الخصوص (v2:217)
+  - AL_KHASS_LIL_AAMM          # خطاب الخاص والمراد به العموم (v2:218)
+  - AL_AAMM_LIL_KHASS          # خطاب العام والمراد به الخصوص (v2:220)
+  # Genus / species / instance (v2:226-228)
+  - KHITAB_AL_JINS             # خطاب الجنس (v2:226)
+  - KHITAB_AL_NAW              # خطاب النوع (v2:227)
+  - KHITAB_AL_AYN              # خطاب العين — particular instance (v2:228)
+  # Evaluative tone (v2:228-231)
+  - KHITAB_AL_MADH             # خطاب المدح — praise (v2:228)
+  - KHITAB_AL_DHAMM            # خطاب الذم — blame (v2:230)
+  - KHITAB_AL_KARAMA           # خطاب الكرامة — honor (v2:231)
+  - KHITAB_AL_IHANA            # خطاب الإهانة — humiliation (v2:231)
+  - KHITAB_AL_TAHAKKUM         # خطاب التهكم — mockery (v2:231)
+  # Number-form mismatches (v2:233-241)
+  - JAM_BI_LAFZ_AL_WAHID       # خطاب الجمع بلفظ الواحد (v2:233)
+  - WAHID_BI_LAFZ_AL_JAM       # خطاب الواحد بلفظ الجمع (v2:234)
+  - WAHID_WA_JAM_BI_ITHNAYN    # خطاب الواحد والجمع بلفظ الاثنين (v2:239)
+  - ITHNAYN_BI_LAFZ_AL_WAHID   # خطاب الاثنين بلفظ الواحد (v2:240)
+  - JAMI_BI_LAFZ_AL_WAHID      # خطاب الجميع بلفظ الواحد (v2:241)
+  # Indirect address — including the "iyyāka aʿnī" pattern
+  - AYN_WAL_MURAD_GHAYRAHU     # خطاب عين والمراد غيره — "iyyāka aʿnī
+                               #   wa-smaʿī yā jāra" pattern: addressing
+                               #   one specific person but meaning another
+                               #   (v2:242, sub-type 18 of anwa' 42)
+  - KHITAB_AL_ITIBAR           # خطاب الاعتبار — consideration / lesson-drawing (v2:245)
+  - SHAKHS_THUMMA_UDUL         # خطاب الشخص ثم العدول إلى غيره — addressee-shift (v2:245)
+  - KHITAB_AL_TALWIN           # خطاب التلوين — variation / iltifāt (v2:245)
+  # Addressing what cannot literally be addressed
+  - KHITAB_AL_JAMADAT          # خطاب الجمادات خطاب من يعقل — addressing
+                               #   inanimates as if rational (v2:246)
+  - KHITAB_LIL_MADUM           # خطاب للمعدوم — addressing the non-existent (v2:252)
+  # Pragmatic-intent (v2:247-251)
+  - KHITAB_AL_TAHIJ            # خطاب التهييج — rousing (v2:247)
+  - KHITAB_AL_IGHDAB           # خطاب الإغضاب — provoking anger (v2:248)
+  - KHITAB_AL_TASHJI_TAHRID    # خطاب التشجيع والتحريض — encouragement (v2:248)
+  - KHITAB_AL_TANFIR           # خطاب التنفير — repulsion / dissuasion (v2:249)
+  - KHITAB_AL_TAHANNUN         # خطاب التحنن والاستعطاف — tenderness / seeking
+                               #   sympathy (v2:250)
+  - KHITAB_AL_TAHBIB           # خطاب التحبيب — endearment (v2:250)
+  - KHITAB_AL_TAJIZ            # خطاب التعجيز — incapacitation (v2:250)
+  - KHITAB_AL_TAHSIR_TALAHHUF  # خطاب التحسير والتلهف — regret / mourning (v2:251)
+  - KHITAB_AL_TAKDHIB          # التكذيب — giving the lie (v2:251)
+  - KHITAB_AL_TASHRIF          # خطاب التشريف — honoring (v2:251)
+
+# === Views on the aspect / nature of i'jāz (anwa' 38) ========================
+# al-Zarkashi compiles 10+ classical positions on what makes the Qur'an
+# inimitable (al-Burhan v2:93-108). These are intellectual *positions*
+# held by various scholars, not parallel "types" of i'jaz. Tag a scholarly
+# claim with the view(s) it argues for or against.
+ijaz_view:
+  - SARFA                # الصرفة — God prevented Arabs from matching it
+                         #         (held by some Mu'tazila; rejected by majority — v2:93-95)
+  - TALIF_KHASS          # التأليف الخاص — special composition: balance of
+                         #         words and structure (Ibn al-Zamlikani's view, v2:95)
+  - IKHBAR_GHAYBI        # الإخبار عن الغيوب المستقبلة — predictive
+                         #         (foretelling future events, v2:95-96)
+  - NAZM_FASAHA          # نظمه وفصاحته — wondrous arrangement and eloquence
+                         #         (Ibn 'Atiyya; held by majority of scholars, v2:97)
+  - LA_YUSAF             # لا يمكن وصفه — beyond verbal description (al-Sakkaki
+                         #         in al-Miftāḥ, v2:100)
+  - ISTIMRAR_FASAHA      # استمرار الفصاحة — sustained eloquence in every
+                         #         passage (Hazim al-Qartajanni, v2:101)
+
+# === Sub-types of MAJAZ in HAQIQA_MAJAZ (anwa' 43) ===========================
+# al-Zarkashi enumerates 26 specific types of figurative speech (al-Burhan
+# v2:259-298). This is a substantial classical taxonomy of how Qurʾanic
+# words can carry non-literal senses.
+majaz_type:
+  # Cause-effect substitution
+  - MUSABBAB_FOR_SABAB         # إيقاع المسبب موقع السبب — effect for cause (v2:259)
+  - SABAB_FOR_MUSABBAB         # عكسه — cause for effect (v2:260)
+  # Whole-part substitution
+  - KULL_FOR_JUZ               # إطلاق اسم الكل على الجزء — whole for part (v2:262)
+  - JUZ_FOR_KULL               # إطلاق اسم الجزء على الكل — part for whole (v2:263)
+  # Necessity-entailment
+  - MALZUM_FOR_LAZIM           # إطلاق اسم الملزوم على اللازم (v2:269)
+  - LAZIM_FOR_MALZUM           # إطلاق اسم اللازم على الملزوم (v2:270)
+  # Absolute-qualified
+  - MUTLAQ_FOR_MUQAYYAD        # إطلاق اسم المطلق على المقيد (v2:270)
+  - MUQAYYAD_FOR_MUTLAQ        # عكسه (v2:270)
+  # Specific-general
+  - KHASS_FOR_AAMM             # إطلاق اسم الخاص وإرادة العام (v2:270)
+  - AAMM_FOR_KHASS             # إطلاق اسم العام وإرادة الخاص (v2:271)
+  # Number
+  - JAM_FOR_MUTHANNA           # إطلاق الجمع وإرادة المثنى (v2:273)
+  # Omission / addition
+  - NUQSAN                     # النقصان — omission (v2:274)
+  - ZIYADA                     # الزيادة — addition (v2:274)
+  # Temporal naming
+  - NAME_BY_FUTURE_STATE       # تسمية الشئ بما يؤول إليه (v2:278)
+  - NAME_BY_FORMER_STATE       # تسمية الشئ بما كان عليه (v2:280)
+  # Locus-content
+  - MAHAL_FOR_HAL              # إطلاق اسم المحل على الحال (v2:281)
+  - HAL_FOR_MAHAL              # إطلاق اسم الحال على المحل (v2:282)
+  # Instrument
+  - INSTRUMENT_FOR_RESULT      # إطلاق اسم آلة الشئ على الآخر (v2:283)
+  # Opposites
+  - OPPOSITE_FOR_OPPOSITE      # إطلاق اسم الضدين على الآخر (v2:283)
+  - DAI_FOR_SARIF              # تسمية الداعي إلى الشئ باسم الصارف عنه
+                               #   — calling a cause by the name of its opposite (v2:284)
+  # Form-substitution
+  - SIGHA_FOR_SIGHA            # إقامة صيغة مقام أخرى — one form replacing another (v2:285)
+  # Command for non-imperative purpose
+  - AMR_FOR_TAHDID             # إطلاق الأمر وإرادة التهديد والتلوين
+                               #   — command-form expressing threat (v2:291)
+  - AMR_FOR_DAWAM              # إطلاق الأمر بالشئ للتلبس به والمراد دوامه
+                               #   — command for sustained engagement (v2:296)
+  # Verb-agent
+  - FIL_TO_NON_AGENT           # إضافة الفعل إلى ما ليس فاعله في الحقيقة
+                               #   — verb attributed to non-actual agent (v2:291)
+  # Verb-aspect
+  - FIL_FOR_PROXIMITY          # إطلاق الفعل والمراد مقاربته ومشارفته
+                               #   — verb for approach / impending state (v2:292)
+  # News
+  - BUSHRA_FOR_MUBASHSHAR_BIH  # إطلاق اسم البشرى على المبشر به
+                               #   — naming the news after what is announced (v2:296)
+
+# === Sub-forms of KINAYA / TARID (anwa' 44) ==================================
+# al-Zarkashi distinguishes four related forms (al-Burhan v2:300-315).
+kinaya_form:
+  - KINAYA               # الكناية — metonymy (saying X but meaning Y where the
+                         #          meaning is implied via the wording, v2:301)
+  - TARID                # التعريض — allusion (saying something whose meaning
+                         #          points obliquely at something else, v2:311)
+  - TALWIH               # التلويح — gesturing / hinting (v2:311; paired with tarīd)
+  - TAWJIH               # التوجيه — directional / dual-aspect speech that
+                         #          admits two opposing readings (v2:314)
+
+# === Sub-categories of ASBAH_AL_KALAM / Qur'anic styles (anwa' 46) ===========
+# al-Zarkashi organizes Qurʾanic stylistic devices under two main heads:
+# emphasis and qualification. (al-Burhan v2:382-440.)
+uslub_category:
+  - TAKID                # التأكيد — emphasis (v2:384) — sub-types: SINAI
+                         #         (constructed), JUMAL_FILIYYA (verbal-sentence
+                         #         emphasis at v2:417)
+  - TAKID_SINAI          # التأكيد الصناعي — constructed emphasis (v2:385)
+  - TAKID_JUMAL_FILIYYA  # مؤكدات الجمل الفعلية — verbal-sentence
+                         #         emphasizers (v2:417)
+  - SIFA                 # الصفة — descriptive qualification (v2:422) —
+                         #         numerous purposes and uses enumerated v2:422-440

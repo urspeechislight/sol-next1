@@ -1,0 +1,37 @@
+{
+  "name": "sol-next1",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Standalone foundation: SvelteKit frontend, FastAPI backend, agent guardrail harness.",
+  "type": "module",
+  "engines": {
+    "node": ">=22",
+    "pnpm": ">=9"
+  },
+  "packageManager": "pnpm@9.15.0",
+  "scripts": {
+    "dev": "pnpm --filter frontend dev",
+    "build": "pnpm --filter frontend build",
+    "preview": "pnpm --filter frontend preview",
+    "check": "pnpm --filter frontend check",
+    "lint": "pnpm --filter frontend lint",
+    "test": "pnpm --filter frontend test",
+    "test:e2e": "pnpm --filter frontend test:e2e",
+    "storybook": "pnpm --filter frontend storybook",
+    "storybook:build": "pnpm --filter frontend storybook:build",
+    "format": "prettier --write \"**/*.{ts,js,svelte,json,md,yaml,yml,css}\" --ignore-path .gitignore",
+    "format:check": "prettier --check \"**/*.{ts,js,svelte,json,md,yaml,yml,css}\" --ignore-path .gitignore",
+    "py:check": "uv run ruff check src tests && uv run ruff format --check src tests && uv run pyright",
+    "py:fix": "uv run ruff format src tests && uv run ruff check --fix src tests",
+    "py:test": "uv run pytest",
+    "harness:test": "uv run pytest .claude/tests",
+    "ci": "pnpm format:check && pnpm lint && pnpm check && pnpm test && pnpm py:check && pnpm py:test && pnpm harness:test",
+    "prepare": "lefthook install || true"
+  },
+  "devDependencies": {
+    "lefthook": "^1.8.0",
+    "prettier": "^3.4.0",
+    "prettier-plugin-svelte": "^3.3.0",
+    "prettier-plugin-tailwindcss": "^0.6.0"
+  }
+}

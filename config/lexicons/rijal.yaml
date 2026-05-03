@@ -1,0 +1,105 @@
+# Arabic surface forms → canonical ids in `rijal_grades_*` registries.
+#
+# The loader normalizes keys via pipeline.utils.arabic.normalize_arabic
+# (strips diacritics, normalizes alif/hamza/yāʾ/tāʾ marbūṭa, strips
+# kashida). Authors can write the canonical Arabic form with or without
+# diacritics; the normalizer canonicalizes them.
+#
+# Multiple surface forms may collapse to the same id (synonyms, common
+# variants). The lexicon enforces no within-registry collision: two
+# surfaces normalizing to the same form must map to the same id.
+#
+# Citations: cite the work that licenses non-obvious mappings.
+
+rijal_grades_sunni:
+  # Rank 1
+  صحابي: SAHABI
+
+  # Rank 2 — compound praise (Taqrib intro p. 25; Nukhbat al-Fikr p. 93)
+  أوثق الناس: AWTHAQ_AL_NAS
+  ثقة ثقة: THIQA_THIQA
+  ثقة حافظ: THIQA_HAFIZ
+  ثقة ثبت: THIQA_THABT
+
+  # Rank 3 — single-descriptor praise
+  ثقة: THIQA
+  متقن: MUTQIN
+  ثبت: THABT
+  عدل: ADL
+  حافظ: HAFIZ
+  حجة: HUJJA
+
+  # Rank 4
+  صدوق: SADUQ
+  لا بأس به: LA_BASA_BIHI
+  ليس به بأس: LAYSA_BIHI_BAS
+
+  # Rank 5 — truthful with errors (Taqrib uses YAHIM, not YAKHTI)
+  صدوق سيء الحفظ: SADUQ_SAYYI_AL_HIFZ
+  صدوق يهم: SADUQ_YAHIM
+  له أوهام: LAHU_AWHAM
+  يخطئ: YUKHTI
+  تغير بأخرة: TAGHAYYARA_BI_AKHARA
+
+  # Rank 6
+  مقبول: MAQBUL
+  لين الحديث: LAYYIN_AL_HADITH
+
+  # Rank 7 — Mastur synonym (Nukhbat p. 59 explicitly: mastur = majhul al-hal)
+  مستور: MASTUR
+  مجهول الحال: MAJHUL_AL_HAL
+
+  # Rank 8
+  ضعيف: DAIF
+  منكر الحديث: MUNKAR_AL_HADITH
+
+  # Rank 9 — single-transmitter MAJHUL (distinct from rank 7)
+  مجهول: MAJHUL
+
+  # Rank 10
+  متروك: MATRUK
+  متروك الحديث: MATRUK_AL_HADITH
+  واهي الحديث: WAHI_AL_HADITH
+  ساقط: SAQIT
+
+  # Rank 11
+  متهم بالكذب: MUTTAHAM_BI_L_KADHB
+
+  # Rank 12
+  كذاب: KADHDHAB
+  وضاع: WADDAA
+  دجال: DAJJAL
+
+  # Severity modifier
+  ضعيف جدا: DAIF_JIDDAN
+
+rijal_grades_shia:
+  # Najashi / Hilli central positive labels
+  ثقة: THIQA
+  حسن: HASAN
+  ممدوح: MAMDUH
+  عين: AYN
+  وجه: WAJH
+  مشكور: MASHKUR
+  حجة: HUJJA
+  موثق: MUWATHTHAQ
+  واجب الاعتماد: WAJIB_AL_ITIMAD
+  معتمد: MUTAMAD
+
+  # Negative grades
+  مجهول: MAJHUL
+  مهمل: MUHMAL
+  ضعيف: DAIF
+  غال: GHALI
+  فاسد المذهب: FASID_AL_MADHHAB
+  فاسد الاعتقاد: FASID_AL_ITIQAD
+
+# Sect-affiliation modifiers (Najashi / Tusi flag-conventions)
+narrator_sect_modifier_shia:
+  إمامي: IMAMI
+  واقفي: WAQIFI
+  فطحي: FATHI
+  زيدي: ZAYDI
+  إسماعيلي: ISMAILI
+  عامي: AMMI
+  غال: GHALI

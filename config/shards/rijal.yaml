@@ -1,0 +1,95 @@
+# Rijal grading — two traditions, namespaced.
+#
+# Per the agent audit and corpus reading: THIQA / HASAN means different
+# things in Sunni vs Shia rijal. Each tradition has its own term registry,
+# validated against the `tradition` field on `:GRADED` edges.
+
+traditions:
+  - SUNNI
+  - SHIA
+  - NEUTRAL            # cross-tradition (rare)
+
+# Sunni rijal terms — Ibn Hajar's authoritative 12-rank scheme.
+# [Source: Taqrib al-Tahdhib intro pp. 24-25 (qjQXdmB-_01).]
+rijal_grades_sunni:
+  # Rank 1
+  - SAHABI
+  # Rank 2 (compound praise)
+  - AWTHAQ_AL_NAS
+  - THIQA_THIQA
+  - THIQA_HAFIZ
+  - THIQA_THABT
+  # Rank 3 (single descriptor)
+  - THIQA
+  - MUTQIN
+  - THABT
+  - ADL
+  - HAFIZ
+  - HUJJA
+  # Rank 4 (slightly below)
+  - SADUQ
+  - LA_BASA_BIHI
+  - LAYSA_BIHI_BAS
+  # Rank 5 (with errors)
+  - SADUQ_SAYYI_AL_HIFZ
+  - SADUQ_YAHIM
+  - LAHU_AWHAM
+  - YUKHTI
+  - TAGHAYYARA_BI_AKHARA
+  # Rank 6
+  - MAQBUL
+  - LAYYIN_AL_HADITH
+  # Rank 7
+  - MASTUR              # = MAJHUL_AL_HAL (Ibn Hajar Nukhbat p.59)
+  - MAJHUL_AL_HAL
+  # Rank 8
+  - DAIF
+  - MUNKAR_AL_HADITH
+  # Rank 9
+  - MAJHUL              # single-transmitter only — distinct from rank 7!
+  # Rank 10
+  - MATRUK
+  - MATRUK_AL_HADITH
+  - WAHI_AL_HADITH
+  - SAQIT
+  # Rank 11
+  - MUTTAHAM_BI_L_KADHB
+  # Rank 12
+  - KADHDHAB
+  - WADDAA
+  - DAJJAL
+  # Severity modifier (any rank)
+  - DAIF_JIDDAN
+
+# Shia rijal terms. Less systematized than Ibn Hajar's scheme.
+# [Source: al-Hilli, Khulasat al-Aqwal pp. 43-44 (OzHS6N09);
+# al-Najashi, Rijal pp. 11-14 (mSWiBGL7).]
+rijal_grades_shia:
+  - THIQA               # primary positive label (different scope from Sunni THIQA)
+  - HASAN               # praised but not formally documented
+  - MAMDUH              # praised
+  - AYN                 # trustable and well-known
+  - WAJH                # well-reputed
+  - MASHKUR             # acknowledged
+  - HUJJA
+  - MUWATHTHAQ          # non-Imami trustworthy (no Sunni equivalent)
+  - WAJIB_AL_ITIMAD     # "obligation to rely on him" — al-Najashi formula
+  - MUTAMAD             # relied upon
+  - MAJHUL              # unknown
+  - MUHMAL              # neglected — no rijal entry (distinct from majhul)
+  - DAIF                # weak
+  - GHALI               # extremist (technical Shia rijal sense)
+  - FASID_AL_MADHHAB    # corrupt creed (used for ghulat in classical rijal)
+  - FASID_AL_ITIQAD     # corrupt belief
+
+# Sect-affiliation modifiers for Shia narrators. Per al-Najashi /
+# al-Tusi practice, these flag a narrator's doctrinal stance and
+# function as grading caveats rather than full grades.
+narrator_sect_modifier_shia:
+  - IMAMI               # twelver
+  - WAQIFI              # stopped at Imam Musa al-Kazim
+  - FATHI               # recognized ʿAbdallah al-Aftah
+  - ZAYDI
+  - ISMAILI
+  - AMMI                # Sunni (when used by Shia rijal)
+  - GHALI               # extremist

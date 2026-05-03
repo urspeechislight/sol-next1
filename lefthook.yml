@@ -1,0 +1,39 @@
+# Developer-machine git hooks. Defense-in-depth pair to the agent guardrails in .claude/.
+# pre-commit runs only on staged files for speed; pre-push runs the full CI matrix.
+
+pre-commit:
+  parallel: true
+  commands:
+    prettier:
+      glob: "*.{ts,js,svelte,json,md,yaml,yml,css}"
+      run: pnpm prettier --check {staged_files}
+    eslint:
+      glob: "*.{ts,js,svelte}"
+      run: pnpm --filter frontend exec eslint {staged_files} --max-warnings=0
+    svelte-check:
+      glob: "src/frontend/**/*.{ts,svelte}"
+      run: pnpm --filter frontend check
+    ruff-lint:
+      glob: "*.py"
+      run: uv run ruff check {staged_files}
+    ruff-format:
+      glob: "*.py"
+      run: uv run ruff format --check {staged_files}
+    pyright:
+      glob: "*.py"
+      run: uv run pyright {staged_files}
+    harness-self-test:
+      glob: ".claude/**/*.py"
+      run: uv run pytest .claude/tests -q
+
+pre-push:
+  commands:
+    full-ci:
+      run: pnpm ci
+
+commit-msg:
+  commands:
+    conventional:
+      run: |
+        head -1 "{1}" | grep -qE '^(feat|fix|chore|docs|refactor|perf|test|build|ci|style|revert)(\(.+\))?(!)?: .+' \
+          || (echo "Commit message must follow Conventional Commits (feat: ..., fix: ..., etc.)" && exit 1)

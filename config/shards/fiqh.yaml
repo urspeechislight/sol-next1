@@ -1,0 +1,173 @@
+# Fiqh registries — substantive law (furuʿ) and legal theory (usul).
+#
+# [Sources:
+#  - al-Ghazali, al-Mustasfa min ʿIlm al-Usul (sol_id lYO3ynGb,
+#    data/books/sunni-fiqh-principles/) — most influential post-Shafiʿi
+#    usul work. Frames usul as "four poles" (al-aqtab al-arbaʿa):
+#    al-hukm (the ruling), al-muthmir (sources), turuq al-istithmar
+#    (methods of derivation), al-mustathmir (the jurist).
+#  - al-Shafiʿi, al-Risala (sol_id NqavdhUN, data/books/shafii-fiqh/) —
+#    foundational work that established usul as a discipline.
+#  - Mughniyya, al-Fiqh ʿala al-Madhahib al-Khamsa (sol_id gcetLxeJ,
+#    data/books/independent-fiqh/) — comparative furuʿ across Hanafi,
+#    Maliki, Shafiʿi, Hanbali, Jaʿfari madhabs. Confirms canonical chapter
+#    structure (tahara → salat → zakat → sawm → hajj → ...) shared across
+#    all madhabs.]
+#
+# Note: juridical schools (madhabs) — Hanafi, Maliki, Shafiʿi, Hanbali,
+# Zahiri, Jaʿfari, Zaydi-fiqh, Ismaili-fiqh, Awzaʿi, Ibadi — live under
+# `juridical_school` in alignment.yaml. They are person-attribute axes, not
+# fiqh-internal structure.
+
+# === Types of legal ruling (al-ahkam al-khamsa) ==============================
+# The five canonical hukm categories. [Source: al-Mustasfa pp. 45-65,
+# Fann II of al-qutb al-awwal "in aqsam al-ahkam".]
+hukm_type:
+  - WAJIB             # واجب — obligatory
+  - MANDUB            # مندوب / مستحب — recommended
+  - MUBAH             # مباح — permissible / neutral
+  - MAKRUH            # مكروه — disliked
+  - HARAM             # حرام — forbidden
+
+# Wajib sub-classifications (al-Mustasfa pp. 54-58).
+wajib_subtype:
+  - WAJIB_AYNI        # individual obligation (each Muslim)
+  - WAJIB_KIFAI       # collective obligation (some Muslims suffices)
+  - WAJIB_MUDAYYAQ    # narrow time-window
+  - WAJIB_MUWASSA     # broad time-window
+  - WAJIB_MUTAAYYIN   # specifically determined object
+  - WAJIB_MUBHAM      # vague — choose from a defined set
+
+# === Sources of law (al-adilla / al-mathmar) =================================
+# What counts as a source varies by madhab. The first four are agreed
+# (Sunni mainstream); the rest vary. Marked with the madhabs that accept
+# each as a comment.
+usul_source:
+  - QURAN             # القرآن / الكتاب — agreed by all
+  - SUNNA             # السنة — agreed by all
+  - IJMA              # الإجماع — consensus; agreed (with definitional differences)
+  - QIYAS             # القياس — analogy; Sunni mainstream, rejected by Zahiri/Imami
+  - ISTIHSAN          # الاستحسان — juristic preference (esp. Hanafi)
+  - MASLAHA_MURSALA   # المصلحة المرسلة — public interest (esp. Maliki)
+  - SADD_AL_DHARAI    # سد الذرائع — blocking pretexts (Maliki, Hanbali)
+  - URF               # العرف — custom (esp. Hanafi)
+  - ISTISHAB          # الاستصحاب — presumption of continuity (Shafiʿi, Imami)
+  - QAWL_AL_SAHABI    # قول الصحابي — Companion's verdict (esp. Hanafi)
+  - SHARʿ_MAN_QABLANA # شرع من قبلنا — pre-Islamic revealed law (Hanafi)
+  - AQL               # العقل — reason (Imami principal source)
+  - IJMA_AHL_AL_BAYT  # إجماع أهل البيت — consensus of the Imams (Imami)
+
+# === Topics in usul al-fiqh ==================================================
+# al-Mustasfa frames usul as four poles plus methodological prerequisites.
+# This registry lists the canonical topic areas; specific concepts
+# (mantuq/mafhum, etc.) live as sub-properties of usul edges.
+usul_al_fiqh_topic:
+  # The four poles (al-aqtab al-arbaʿa) — al-Mustasfa p. 7
+  - AL_HUKM           # القطب الأول — the legal ruling itself
+  - AL_ADILLA         # القطب الثاني — sources / proofs (al-muthmir)
+  - TURUQ_ISTITHMAR   # القطب الثالث — methods of derivation
+  - AL_MUSTATHMIR     # القطب الرابع — the jurist (ijtihad / taqlid)
+  # Linguistic-indication topics
+  - AAMM_KHASS        # عام / خاص — general / specific
+  - MUTLAQ_MUQAYYAD   # مطلق / مقيد — absolute / qualified
+  - MUJMAL_MUBAYYAN   # مجمل / مبين — vague / clarified
+  - HAQIQA_MAJAZ      # حقيقة / مجاز — literal / figurative
+  - AMR_NAHY          # أمر / نهي — command / prohibition
+  - MANTUQ_MAFHUM     # منطوق / مفهوم — explicit / implicit indication
+  - DALALAT_AL_NASS   # دلالة النص — textual indication theory
+  # Hierarchy and conflict
+  - NASIKH_MANSUKH    # ناسخ / منسوخ — abrogation (legal sense)
+  - TAARUDH_AL_ADILLA # تعارض الأدلة — conflict of evidences
+  - TARJIH            # ترجيح — preponderance / weighing
+  # Practitioner topics
+  - IJTIHAD           # اجتهاد — independent reasoning
+  - TAQLID            # تقليد — following a mujtahid
+  - FATWA             # فتوى — issuing legal opinion
+  - IFTAA              # إفتاء — the act of fatwa-giving
+
+# === Furuʿ al-fiqh: canonical chapter structure ==============================
+# Substantive-law chapter ordering, consistent across madhabs as confirmed
+# by Mughniyya's comparative work. Volume 1 of his book covers ibadat
+# (worship) chapters; vol 2 covers muʿamalat (transactions); subsequent
+# volumes cover munakahat (family) and jinayat (criminal).
+furu_al_fiqh_chapter:
+  # === ʿIbadat (acts of worship) ===
+  - TAHARA            # الطهارة — purity
+  - SALAT             # الصلاة — prayer
+  - JANAIZ            # الجنائز — funerals
+  - ZAKAT             # الزكاة — alms-tax
+  - KHUMS             # الخمس — fifth-tax (esp. Imami)
+  - SAWM              # الصوم — fasting
+  - IʿTIKAF           # الاعتكاف — retreat in mosque
+  - HAJJ              # الحج — pilgrimage
+  - UMRA              # العمرة — minor pilgrimage
+  - JIHAD             # الجهاد — warfare / struggle
+  - AMR_BIL_MAʿRUF    # الأمر بالمعروف — enjoining good (esp. Shia chapter)
+
+  # === Muʿamalat (transactions / contracts) ===
+  - BUYUʿ             # البيوع — sales / commercial contracts
+  - SALAM             # السلم — forward sale
+  - SARF              # الصرف — currency exchange
+  - IJARA             # الإجارة — rental / lease
+  - JIʿALA            # الجعالة — reward contract
+  - SHARIKA           # الشركة — partnership
+  - MUDARABA          # المضاربة — silent partnership / commenda
+  - MUSAQAT_MUZARAʿA  # المساقاة والمزارعة — sharecropping / orchard
+  - WAKALA            # الوكالة — agency
+  - HAWALA            # الحوالة — transfer of debt
+  - DAMAN_KAFALA      # الضمان والكفالة — guarantee / surety
+  - RAHN              # الرهن — pledge / collateral
+  - QARD              # القرض — loan
+  - ARIYA             # العارية — gratuitous loan of usufruct
+  - WADIʿA            # الوديعة — deposit
+  - LUQATA            # اللقطة — lost / found property
+  - GHASB             # الغصب — usurpation
+  - SHUFʿA            # الشفعة — preemption right
+  - IHYA_AL_MAWAT     # إحياء الموات — revival of dead lands
+  - SABQ_RAMI         # السبق والرماية — racing / archery
+  - HIBA              # الهبة — gift
+  - SULH              # الصلح — amicable settlement
+  - WAQF              # الوقف — religious endowment
+  - WASAYA            # الوصايا — bequests
+  - ATʿIMA            # الأطعمة — food regulations
+  - ASHRIBA           # الأشربة — drink regulations
+  - SAYD_DHABH        # الصيد والذبائح — hunting / slaughter
+  - AYMAN             # الأيمان — oaths
+  - NUDHUR            # النذور — vows
+  - KAFFARAT          # الكفارات — expiations
+
+  # === Munakahat (marriage / family law) ===
+  - NIKAH             # النكاح — marriage
+  - MUTʿA             # المتعة — temporary marriage (Imami; rejected by Sunni)
+  - SADAQ_MAHR        # الصداق / المهر — dower
+  - KHULʿ             # الخلع — wife-initiated divorce
+  - TALAQ             # الطلاق — divorce
+  - ILA               # الإيلاء — oath of abstention
+  - ZIHAR             # الظهار — formula of separation
+  - LIʿAN             # اللعان — mutual cursing
+  - IDDA              # العدة — waiting period
+  - RIDA              # الرضاع — milk-kinship
+  - HADANA            # الحضانة — child custody
+  - NAFAQA            # النفقة — maintenance
+
+  # === Jinayat (criminal law) ===
+  - QISAS             # القصاص — retaliation
+  - DIYAT             # الديات — blood money
+  - HUDUD             # الحدود — fixed punishments
+  - TAʿZIR            # التعزير — discretionary punishment
+  - BUGHAT            # البغاة — rebellion law
+
+  # === Qadaʾ (judicial procedure) ===
+  - QADAʾ             # القضاء — judicial procedure
+  - DAʿWA             # الدعوى — claims
+  - BAYYINA           # البينة — evidence
+  - SHAHADA           # الشهادة — testimony
+  - YAMIN             # اليمين — judicial oaths
+  - QASAMA            # القسامة — collective oath (homicide)
+  - ADAB_AL_QADI      # آداب القاضي — judicial ethics
+
+  # === Mawarith / Faraʾid (inheritance) ===
+  - FARAID            # الفرائض — fixed shares of inheritance
+  - MIRATH            # الميراث — inheritance generally
+  - HAJB              # الحجب — exclusion rules in inheritance
+  - AWAL_RADD         # العول والرد — share-adjustment doctrines

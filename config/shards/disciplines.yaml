@@ -1,0 +1,65 @@
+# Linguistic, philosophical, and natural disciplines.
+# Quranic sciences live in shards/quranic.yaml.
+#
+# [Source: al-Tahanawi, Kashshaf Istilahat al-Funun, vol. 1 introduction
+#  pp. 57-118 (sol_id z_iqVsoq_01) — the authoritative classical taxonomy
+#  of Islamic sciences. Three groups: العلوم العربية (Arabic linguistic
+#  sciences), العلوم الشرعية (religious sciences — modeled by hadith /
+#  fiqh / kalam axes elsewhere), and العلوم الحقيقية (rational sciences =
+#  philosophy + natural sciences).]
+
+# === Arabic linguistic sciences (Kashshaf vol. 1 pp. 71-82) ==================
+linguistic_discipline:
+  - NAHW              # علم النحو — syntax (Kashshaf p. 77)
+  - SARF              # علم الصرف — morphology (Kashshaf p. 74)
+  - BALAGHA           # علم البلاغة — rhetoric (umbrella; subdivided below)
+  - ARUD              # علم العروض — prosody / metrics (Kashshaf p. 82)
+  - QAFIYA            # علم القافية — rhyme (Kashshaf p. 82)
+  - LUGHA             # علم اللغة — lexicography (Lisan al-'Arab tradition)
+  - FIQH_AL_LUGHA     # فقه اللغة — philology
+  - ISHTIQAQ          # علم الاشتقاق — etymology / derivation
+  - ASWAT             # علم الأصوات — phonetics
+  - KHATT             # علم الخط — orthography / calligraphy
+  - INSHA             # علم الإنشاء — composition / epistolary art
+  # Note: علم القراءة (Quranic recitation / variant readings — Kashshaf p.89)
+  # is registered under quranic_science.QIRAAT (shards/quranic.yaml) rather
+  # than as a linguistic discipline. While Tahanawi places it under linguistic
+  # sciences in his taxonomy, its content is Qur'an-specific and the canonical
+  # specialist literature (Ibn al-Jazari, al-Shatibi, al-Dani) treats it as
+  # one of the 'ulum al-Qur'an.
+
+# === Sub-disciplines of balagha (Kashshaf pp. 78-81) =========================
+balagha_subdiscipline:
+  - MAANI             # علم المعاني — semantics / pragmatics (Kashshaf p. 78)
+  - BAYAN             # علم البيان — clarity / metaphor / simile (Kashshaf p. 80)
+  - BADI              # علم البديع — embellishment / verbal beauty (Kashshaf p. 81)
+
+# === Philosophical and rational disciplines (Kashshaf pp. 97-118) ============
+philosophical_discipline:
+  - MANTIQ            # علم المنطق — logic (Kashshaf p. 98; formal Aristotelian)
+  - FALSAFA           # الفلسفة — philosophy (general umbrella)
+  - ILM_ILAHI         # العلم الإلهي — metaphysics / first philosophy (Kashshaf p. 107)
+  - ILM_TABII         # العلم الطبيعي — natural philosophy / physics (Kashshaf p. 109)
+  - ILM_RIYADI        # العلم الرياضي — mathematics (Kashshaf p. 108)
+  - HIKMA             # الحكمة — wisdom / philosophy (often used in Shia tradition)
+  - ISHRAQ            # الإشراق — illuminationist philosophy (Suhrawardi school)
+  - HIKMA_MUTAALIYA   # الحكمة المتعالية — transcendent philosophy (Mulla Sadra school)
+  - AKHLAQ            # علم الأخلاق — ethics (philosophical, distinct from suluk)
+
+# === Natural / mathematical sciences (Kashshaf pp. 110-118) ==================
+# Most are minor for our hadith / event / tafsir KG but appear in
+# arabic-language-sciences and logic-philosophy categories.
+natural_science:
+  - TIBB              # علم الطب — medicine (Kashshaf p. 110, 118)
+  - HANDASA           # علم الهندسة — geometry (Kashshaf p. 112)
+  - HAIA              # علم الهيئة — astronomy (Kashshaf p. 115)
+  - NUJUM             # علم النجوم / أحكام النجوم — astrology (Kashshaf p. 110, 119)
+  - MIQAT             # علم المواقيت — timekeeping (Kashshaf p. 117)
+  - ZIJAT             # علم الزيجات والتقاويم — astronomical tables (Kashshaf p. 117)
+  - ADAD              # علم العدد — arithmetic (Kashshaf p. 111)
+  - MISAHA            # علم المساحة — surveying (Kashshaf p. 114)
+  - MANAZIR           # علم المناظر — optics (Kashshaf p. 113)
+  - KIMIYA            # علم الكيمياء — alchemy / chemistry (Kashshaf p. 111)
+  - FALAHA            # علم الفلاحة — agriculture (Kashshaf p. 111)
+  - FIRASA            # علم الفراسة — physiognomy (Kashshaf p. 110)
+  - TABIR_AL_RUYA     # علم تعبير الرؤيا — oneirology (Kashshaf p. 110)

@@ -1,0 +1,34 @@
+# Phase contracts (ADR 0005 §2).
+# Each phase declares what it requires on input, what it guarantees on
+# output, and which degraded modes it tolerates / refuses.
+phase_contracts:
+  ingest:
+    requires_completed: []
+    requires_fields_populated: ["source_path"]
+    produces_fields: ["pages", "title", "author", "category"]
+    forbids_degraded: []
+    permits_degraded: []
+  segment:
+    requires_completed: ["ingest"]
+    requires_fields_populated: ["pages"]
+    produces_fields: ["spans"]
+    forbids_degraded: []
+    permits_degraded: []
+  extract:
+    requires_completed: ["segment"]
+    requires_fields_populated: ["spans"]
+    produces_fields: ["entities", "units"]
+    forbids_degraded: []
+    permits_degraded: ["NER_UNAVAILABLE", "GAZETTEER_UNAVAILABLE"]
+  enrich:
+    requires_completed: ["extract"]
+    requires_fields_populated: ["entities", "units"]
+    produces_fields: []
+    forbids_degraded: []
+    permits_degraded: ["RIJAL_UNAVAILABLE", "TRANSLATION_FAILED", "EMBEDDING_PARTIAL"]
+  graph:
+    requires_completed: ["enrich"]
+    requires_fields_populated: ["entities"]
+    produces_fields: ["edges"]
+    forbids_degraded: ["TRANSLATION_FAILED"]
+    permits_degraded: ["RIJAL_UNAVAILABLE", "EMBEDDING_PARTIAL"]

@@ -1,0 +1,13 @@
+node_modules
+.svelte-kit
+build
+dist
+.venv
+.pnpm-store
+coverage
+playwright-report
+test-results
+**/*.lock
+**/*.lockb
+pnpm-lock.yaml
+package-lock.json

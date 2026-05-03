@@ -1,0 +1,171 @@
+# Tasawwuf (Sufism) registries.
+#
+# [Source: al-Qushayri, al-Risala al-Qushayriyya (sol_id CB78uu0F,
+#  data/books/ethics-mysticism/) — the foundational Sufi handbook
+#  (5th/11th c.) that codified the maqamat / ahwal vocabulary. Page
+#  citations refer to its babs (chapter divisions).]
+#
+# Note: SUFI as a spiritual orientation is in alignment.yaml; this file
+# captures tasawwuf-internal structure.
+
+# === Spiritual stations and states (maqamat / ahwal) =========================
+# al-Qushayri organizes Sufism around ~50 babs covering stations (acquired)
+# and states (granted). He does not systematically distinguish maqam from
+# hal — he treats both as the practitioner's inner conditions. The list
+# below is the canonical catalog from his bab structure (pp. 168-539).
+#
+# Classical distinction: MAQAM = a stable station the wayfarer reaches by
+# his own striving; HAL = a transient state granted as a gift. Some entries
+# below are clearly stations (tawba, zuhd), others clearly states
+# (mahabba, shawq) — and some are debated.
+maqamat_ahwal:
+  # === Foundational stations (early stages) ===
+  - TAWBA               # التوبة — repentance (Risala p. 168)
+  - MUJAHADA            # المجاهدة — striving against the ego (p. 177)
+  - KHALWA_UZLA         # الخلوة والعزلة — solitude / withdrawal (p. 183)
+  - TAQWA               # التقوى — god-consciousness (p. 188)
+  - WARA                # الورع — scrupulousness (p. 194)
+  - ZUHD                # الزهد — asceticism (p. 200)
+  - SAMT                # الصمت — silence (p. 206)
+
+  # === Affective states (between hope and fear) ===
+  - KHAWF               # الخوف — fear of God (p. 212)
+  - RAJA                # الرجاء — hope (p. 221)
+  - HUZN                # الحزن — sacred sadness (p. 230)
+  - JU_TARK_SHAHWA      # الجوع وترك الشهوة — hunger / abstaining from desire (p. 233)
+
+  # === Inner-character stations ===
+  - KHUSHU_TAWADUI      # الخشوع والتواضع — humility (p. 238)
+  - MUKHALAFAT_NAFS     # مخالفة النفس — opposing the lower self (p. 246)
+  - QANAA               # القناعة — contentment (p. 257)
+  - TAWAKKUL            # التوكل — trust in God (p. 261)
+  - SHUKR               # الشكر — gratitude (p. 275)
+  - YAQIN               # اليقين — certainty (p. 281)
+  - SABR                # الصبر — patience (p. 286)
+
+  # === Vigilance and consent ===
+  - MURAQABA            # المراقبة — vigilance / inner watchfulness (p. 293)
+  - RIDA                # الرضا — acceptance / contentment with God's decree (p. 297)
+  - UBUDIYYA            # العبودية — servitude (p. 302)
+  - IRADA               # الإرادة — sincere aspiration (p. 306)
+  - ISTIQAMA            # الاستقامة — uprightness (p. 311)
+
+  # === Sincerity and truthfulness ===
+  - IKHLAS              # الإخلاص — sincerity (p. 314)
+  - SIDQ                # الصدق — truthfulness (p. 318)
+  - HAYA                # الحياء — modesty / shame before God (p. 323)
+  - HURRIYYA            # الحرية — spiritual freedom (p. 328)
+
+  # === Devotional practices ===
+  - DHIKR               # الذكر — remembrance of God (p. 331)
+  - DUA                 # الدعاء — supplication (p. 379)
+  - SAMAA               # السماع — mystical audition / listening to recitation (p. 466)
+
+  # === Character virtues ===
+  - FUTUWWA             # الفتوة — chivalry / spiritual generosity (p. 337)
+  - FIRASA              # الفراسة — spiritual insight (p. 343)
+  - KHULQ               # الخلق — character (p. 354)
+  - JUD_SAKHA           # الجود والسخاء — generosity (p. 360)
+  - GHIRA               # الغيرة — sacred zeal (p. 368)
+  - ADAB                # الأدب — proper conduct / etiquette (p. 405)
+
+  # === Vices to avoid (negative-station chapters) ===
+  - HASAD               # الحسد — envy (p. 251)
+  - GHIBA               # الغيبة — backbiting (p. 254)
+
+  # === Advanced spiritual states ===
+  - WALAYA              # الولاية — sainthood / friendship with God (p. 374)
+  - FAQR                # الفقر — spiritual poverty (p. 388)
+  - TASAWWUF_AS_STATE   # التصوف — Sufism itself as a station (p. 399)
+
+  # === Travel, companionship, terminus ===
+  - AHKAM_SAFAR         # أحكام السفر — rules of spiritual travel (p. 410)
+  - SUHBA               # الصحبة — companionship with shaykhs (p. 417)
+  - HIFZ_QULUB_MASHAYIKH # حفظ قلوب المشايخ — preserving the masters' hearts (p. 463)
+  - WASIYYA_LIL_MURIDIN # الوصية للمريدين — counsel for novices (p. 539)
+
+  # === Gnostic and unitive states ===
+  - TAWHID              # التوحيد — unification (p. 422; in Sufi sense)
+  - MARIFA_BILLAH       # المعرفة بالله — gnosis of God (p. 438)
+  - MAHABBA             # المحبة — love (of God) (p. 445)
+  - SHAWQ               # الشوق — yearning for God (p. 458)
+
+  # === Eschatological and visionary ===
+  - AHWAL_KHURUJ_DUNYA  # أحوال عند الخروج من الدنيا — states at death (p. 429)
+  - KARAMAT_AWLIYA      # كرامات الأولياء — saints' miracles (p. 485)
+  - RUYA_AL_QAWM        # رؤيا القوم — visions of the spiritual people (p. 526)
+
+# === Core Sufi conceptual vocabulary ============================================
+# Technical terms used in Sufi discourse. al-Qushayri devotes p. 121 onward to
+# explaining these "alfaz tadur bayna hadhihi al-taifa" (terms current among
+# this group). The list below is the standard Sufi technical lexicon.
+sufi_concept:
+  - HAL                # حال — transient state granted by God
+  - MAQAM              # مقام — stable station attained by effort
+  - WAJD               # وجد — ecstatic finding
+  - WAQT               # وقت — the present moment as spiritual locus
+  - QABD_BAST          # قبض وبسط — contraction / expansion
+  - HAYBA_UNS          # هيبة وأنس — awe / intimacy
+  - FANA               # فناء — annihilation in God
+  - BAQA               # بقاء — subsistence in God (post-fanaʾ)
+  - JAMA_FARQ          # جمع وفرق — gathered (in unity) / distinguished
+  - SAHW_SUKR          # صحو وسكر — sobriety / spiritual intoxication
+  - SIRR               # سر — the innermost secret of the heart
+  - SIRR_AL_SIRR       # سر السر — the secret of the secret
+  - LATIFA             # لطيفة — subtle reality
+  - RUH                # روح — spirit (in Sufi sense)
+  - QALB               # قلب — heart (as spiritual organ)
+  - NAFS               # نفس — ego / lower self (with subtypes below)
+  - SILSILA            # سلسلة — chain of spiritual transmission
+  - IJAZA_SUFIYYA      # إجازة صوفية — Sufi license / authorization
+  - SULUK              # سلوك — wayfaring / spiritual journey
+  - IRSHAD             # إرشاد — guidance (by a shaykh)
+  - MURID              # مريد — disciple
+  - MURSHID            # مرشد — guide / shaykh
+  - QUTB               # قطب — spiritual axis / pole of the saints
+  - ABDAL              # أبدال — substitute saints
+  - GHAWTH             # غوث — succor / supreme spiritual rank
+  - WALI               # ولي — friend of God / saint
+  - BARAKA             # بركة — divine grace channeled through holy persons / places
+  - HIMMA              # همة — spiritual aspiration
+  - DHAWQ              # ذوق — spiritual taste / experiential knowledge
+  - KASHF              # كشف — unveiling / spiritual disclosure
+  - MUSHAHADA          # مشاهدة — witnessing the divine
+  - MAHJUB             # محجوب — veiled (from divine reality)
+
+# === Stages of the lower self (nafs) ============================================
+# A Quranic-derived progression worked into Sufi anthropology. Cited in
+# Q. 12:53, 75:2, 89:27 — the three Quranic states. Later Sufis added
+# four more, yielding the classical seven.
+nafs_stage:
+  - AMMARA              # النفس الأمارة بالسوء — commanding to evil (Q. 12:53)
+  - LAWWAMA             # النفس اللوامة — self-reproaching (Q. 75:2)
+  - MULHAMA             # النفس الملهمة — inspired
+  - MUTMAINNA           # النفس المطمئنة — at peace (Q. 89:27)
+  - RADIYA              # النفس الراضية — content
+  - MARDIYYA            # النفس المرضية — God-pleased
+  - KAMILA              # النفس الكاملة — perfected
+
+# === Sufi orders (turuq) =========================================================
+# Major historical Sufi orders. al-Qushayri predates the formal tariqa
+# institution (5th/11th c.); these orders crystallized 6th/12th c. onward.
+# This list covers the principal ṭuruq with substantial corpus presence
+# and historical influence.
+sufi_tariqa:
+  - QADIRIYYA           # القادرية — ʿAbd al-Qadir al-Jilani (d. 561/1166)
+  - SUHRAWARDIYYA       # السهروردية — al-Suhrawardi (d. 632/1234)
+  - SHADHILIYYA         # الشاذلية — Abu al-Hasan al-Shadhili (d. 656/1258)
+  - RIFAIYYA            # الرفاعية — Ahmad al-Rifaʿi (d. 578/1182)
+  - NAQSHBANDIYYA       # النقشبندية — Bahaʾ al-Din Naqshband (d. 791/1389)
+  - MAWLAWIYYA          # المولوية — Jalal al-Din Rumi (d. 672/1273)
+  - CHISHTIYYA          # الجشتية — Muʿin al-Din Chishti (d. 633/1236)
+  - KHALWATIYYA         # الخلوتية
+  - BEKTASHIYYA         # البكتاشية
+  - TIJANIYYA           # التجانية — Ahmad al-Tijani (d. 1230/1815)
+  - SANUSIYYA           # السنوسية
+  - IDRISIYYA           # الإدريسية
+  - DARQAWIYYA          # الدرقاوية
+  - NIMATULLAHIYYA      # النعمة اللهية — Shia-affiliated
+  - DHAHABIYYA          # الذهبية — Shia-affiliated
+  - NURBAKHSHIYYA       # النوربخشية — Shia-affiliated
+  - KUBRAWIYYA          # الكبروية — Najm al-Din Kubra (d. 618/1221)

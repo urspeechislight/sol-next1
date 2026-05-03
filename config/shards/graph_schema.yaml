@@ -1,0 +1,260 @@
+# Graph schema — entity types and edge types per ADR 0004.
+#
+# This is the registry Phase 5's writer validates against. ADR 0004 §3:
+# "Phase 5 calls validate_edge(edge, registry) before every write. An edge
+# with an out-of-registry type, an out-of-registry source/target type, or
+# an unknown property raises GraphSchemaError. No silent coercion."
+#
+# Entity types: 15 node labels (ADR 0004 §1).
+# Edge types: ~30 typed relations with source/target constraints,
+# multiplicity, and allowed property maps (ADR 0004 §2).
+#
+# Cardinality conventions:
+#   one_to_one     - at most one of this edge between a given (source, target)
+#   one_to_many    - one source connects to multiple targets
+#   many_to_one    - multiple sources connect to one target
+#   many_to_many   - any-to-any
+#
+# Property type tokens (informal):
+#   int   float   str   bool   ref   enum:<registry_name>
+
+# === Node types ==============================================================
+# One Person type covers narrators, scholars, historical figures, authors —
+# roles are edges, not subtypes (ADR 0004 §1, "one Person type for everyone").
+entity_types:
+  - MANUSCRIPT          # one digitized book; container of pages
+  - PAGE                # one page of a manuscript
+  - SPAN                # structural text segment, bridge between text and graph
+  - UNIT                # atomic semantic unit extracted from a Span
+  - PERSON              # any human (narrator, scholar, historical figure, author)
+  - FACTION             # controlled-vocabulary stance/alignment node (singletons)
+  - EVENT               # historical event (battle, treaty, oath, martyrdom, ...)
+  - PLACE               # geographic location
+  - VERSE               # Qur'anic verse (sura, ayah)
+  - HADITH              # logical tradition (matn + one-or-more sanads)
+  - SANAD               # single isnad chain instance
+  - CHAIN_DEFECT        # defect attached to a Sanad (tadlis, irsal, ...)
+  - WORK                # abstract work, independent of manifestation/edition
+  - ROOT                # Arabic linguistic root (3- or 4-letter)
+  - LEMMA               # canonical form / lexeme
+
+# === Edge types ==============================================================
+edge_types:
+
+  # --- Structural (deterministic, confidence = 1.0) --------------------------
+  CONTAINS:
+    source_types: [MANUSCRIPT, SPAN]
+    target_types: [PAGE, SPAN]
+    multiplicity: one_to_many
+    properties: {}
+    note: "Manuscript→Page or Span→Span (hierarchy)"
+
+  NEXT:
+    source_types: [PAGE, SPAN]
+    target_types: [PAGE, SPAN]
+    multiplicity: one_to_one
+    properties: {}
+    note: "Page→Page or Span→Span sequencing"
+
+  HAS_SECTION:
+    source_types: [SPAN]
+    target_types: [SPAN]
+    multiplicity: one_to_many
+    properties: {}
+    note: "Span (heading) → Span (body)"
+
+  HAS_FOOTNOTE:
+    source_types: [SPAN]
+    target_types: [SPAN]
+    multiplicity: one_to_many
+    properties: {}
+
+  HAS_UNIT:
+    source_types: [SPAN]
+    target_types: [UNIT]
+    multiplicity: one_to_many
+    properties: {}
+
+  MANIFESTS:
+    source_types: [MANUSCRIPT]
+    target_types: [WORK]
+    multiplicity: many_to_one
+    properties: {}
+    note: "Concrete manuscript manifests an abstract Work"
+
+  # --- Hadith / isnad --------------------------------------------------------
+  HAS_SANAD:
+    source_types: [HADITH]
+    target_types: [SANAD]
+    multiplicity: one_to_many
+    properties: {}
+
+  HAS_MATN:
+    source_types: [HADITH]
+    target_types: [SPAN]
+    multiplicity: one_to_one
+    properties: {}
+
+  INCLUDES_NARRATOR:
+    source_types: [SANAD]
+    target_types: [PERSON]
+    multiplicity: one_to_many
+    properties:
+      position: int           # 0 = closest to source (Prophet/Companion)
+    note: "Authoritative chain composition; NARRATES_FROM is denormalized projection"
+
+  NARRATES_FROM:
+    source_types: [PERSON]
+    target_types: [PERSON]
+    multiplicity: many_to_many
+    properties:
+      evidence_anchor: ref
+    note: "Denormalized for fast traversal; primary truth is INCLUDES_NARRATOR"
+
+  HAS_DEFECT:
+    source_types: [SANAD]
+    target_types: [CHAIN_DEFECT]
+    multiplicity: one_to_many
+    properties:
+      component: enum:hadith_component  # ISNAD/MATN/BOTH (hadith.yaml)
+
+  PARALLEL_TO:
+    source_types: [HADITH]
+    target_types: [HADITH]
+    multiplicity: many_to_many
+    properties:
+      confidence: float
+      alignment_method: str
+
+  # --- Person and stance -----------------------------------------------------
+  HAS_STANCE:
+    source_types: [PERSON]
+    target_types: [FACTION]
+    multiplicity: many_to_many
+    properties:
+      source_work_id: ref
+      source_passage_id: ref
+      confidence: float
+      evidence_anchor: ref
+    note: "Multiple HAS_STANCE edges per Person allowed; each carries its own attribution"
+
+  STUDENT_OF:
+    source_types: [PERSON]
+    target_types: [PERSON]
+    multiplicity: many_to_many
+    properties:
+      source_work_id: ref
+      evidence_anchor: ref
+    note: "TEACHER_OF is NOT stored — query inverse direction instead"
+
+  BIOGRAPHY_OF:
+    source_types: [SPAN]
+    target_types: [PERSON]
+    multiplicity: many_to_one
+    properties: {}
+    note: "Span is biographical material about the target Person"
+
+  # --- Events ----------------------------------------------------------------
+  PARTICIPATED_IN:
+    source_types: [PERSON]
+    target_types: [EVENT]
+    multiplicity: many_to_many
+    properties:
+      role: enum:participation_roles
+      side: str                              # event-local, not corpus-global
+      outcome_event: enum:participation_outcomes
+      manner_of_death: enum:manner_of_death  # if applicable
+      evaluative_classification: enum:evaluative_classification
+                                              # source-relative; tag with source perspective
+      source_work_id: ref
+      source_passage_id: ref
+      evidence_anchor: ref
+
+  OCCURRED_AT:
+    source_types: [EVENT]
+    target_types: [PLACE]
+    multiplicity: many_to_many
+    properties: {}
+
+  WITNESSED_BY:
+    source_types: [EVENT]
+    target_types: [PERSON]
+    multiplicity: many_to_many
+    properties: {}
+    note: "Weaker than PARTICIPATED_IN; for mention-only witnesses"
+
+  # --- Tafsir, verse, linguistics --------------------------------------------
+  INTERPRETS_VERSE:
+    source_types: [SPAN]
+    target_types: [VERSE]
+    multiplicity: many_to_many
+    properties: {}
+    note: "Span has tafsir behavior and links to the verse it interprets"
+
+  REFERENCES_VERSE:
+    source_types: [SPAN]
+    target_types: [VERSE]
+    multiplicity: many_to_many
+    properties: {}
+    note: "Verse mentioned but not interpreted (weaker than INTERPRETS_VERSE)"
+
+  HAS_LEMMA:
+    source_types: [SPAN]
+    target_types: [LEMMA]
+    multiplicity: one_to_many
+    properties:
+      position: int
+      confidence: float
+
+  HAS_ROOT:
+    source_types: [LEMMA]
+    target_types: [ROOT]
+    multiplicity: many_to_one
+    properties: {}
+
+  # --- Rijal grading (per-narrator) ------------------------------------------
+  GRADED:
+    source_types: [PERSON]
+    target_types: [PERSON]
+    multiplicity: many_to_many
+    properties:
+      tradition: enum:traditions             # SUNNI/SHIA/NEUTRAL — required
+      term: str                              # validated against per-tradition list
+      grade_numeric: float                   # optional 0..1 normalized score
+      source_work_id: ref
+      source_passage_id: ref
+      evidence_anchor: ref
+    note: "Source = grading scholar; Target = narrator. Term validated against rijal_grades_<tradition>."
+
+  # --- Generic mention edges (Phase 3 produces, before resolution) -----------
+  MENTIONS_PERSON:
+    source_types: [SPAN]
+    target_types: [PERSON]
+    multiplicity: many_to_many
+    properties: {}
+
+  MENTIONS_EVENT:
+    source_types: [SPAN]
+    target_types: [EVENT]
+    multiplicity: many_to_many
+    properties: {}
+
+  MENTIONS_PLACE:
+    source_types: [SPAN]
+    target_types: [PLACE]
+    multiplicity: many_to_many
+    properties: {}
+
+  MENTIONS_VERSE:
+    source_types: [SPAN]
+    target_types: [VERSE]
+    multiplicity: many_to_many
+    properties: {}
+
+  CITES:
+    source_types: [SPAN]
+    target_types: [HADITH, WORK]
+    multiplicity: many_to_many
+    properties:
+      confidence: float
+      resolution_status: str                 # candidate | resolved | ambiguous

@@ -1,0 +1,153 @@
+# Kalam (theological) registries.
+#
+# [Sources:
+#  - al-Hilli, al-Bab al-Hadi ʿAshar (sol_id yMuDJtbi,
+#    data/books/shia-theology/) — the standard Imami Shia introductory
+#    kalam textbook (8th/14th c.). Frames Imami theology around the
+#    five usul al-din. Page citations refer to its faslchapter divisions.
+#  - al-Taftazani, Sharh al-ʿAqaʾid al-Nasafiyya (sol_id pozK-F7D,
+#    data/books/sunni-theology/) — the standard Maturidi Sunni kalam
+#    creed-commentary (8th/14th c.).
+#  - al-Taftazani, Sharh al-Maqasid (5 vols, sol_id juyWaHEe,
+#    data/books/sunni-theology/) — comprehensive Sunni kalam.
+#  - Standard Muʿtazili al-usul al-khamsa attested across the school's
+#    self-presentations (Qadi ʿAbd al-Jabbar's Sharh al-Usul al-Khamsa).]
+#
+# Note: theological school *names* (Mu'tazili, Ash'ari, Maturidi, etc.)
+# live under `theological_school` in alignment.yaml. This file captures
+# the shared and tradition-specific *topic* structure of kalam.
+
+# === Imami Shia foundations: see shia_imamate.yaml ===========================
+# The Imami five usul al-din are in `shia_usul_al_din` (shia_imamate.yaml)
+# and the imamate-specific concepts (nass, isma, ghayba, taqiyya, bada,
+# walaya, etc.) are in `shia_imamate_concept` (same shard). Not duplicated
+# here.
+
+# === Sunni: the six articles of faith (arkan al-iman) ========================
+# From the canonical hadith of Gabriel (Bukhari, Muslim) — the six things
+# a believer must affirm. Structurally distinct from the Imami five usul.
+sunni_arkan_al_iman:
+  - IMAN_BILLAH        # الإيمان بالله
+  - IMAN_BIL_MALAIKA   # الإيمان بالملائكة — angels
+  - IMAN_BIL_KUTUB     # الإيمان بالكتب — revealed books
+  - IMAN_BIL_RUSUL     # الإيمان بالرسل — messengers
+  - IMAN_BIL_YAWM_AKHIR # الإيمان باليوم الآخر — the Last Day
+  - IMAN_BIL_QADAR     # الإيمان بالقدر خيره وشره — divine decree (good and ill)
+
+# === Mu'tazila: the five principles (al-usul al-khamsa) ======================
+# The Muʿtazila's self-defining doctrinal scheme, preserved in Qadi ʿAbd
+# al-Jabbar's eponymous work. Imami theology shares the first two
+# (al-Tawhid, al-ʿAdl) — hence the Twelver Shia self-designation
+# "ʿAdliyya" alongside Muʿtazila.
+mutazili_usul_khamsa:
+  - TAWHID                       # التوحيد
+  - ADL                          # العدل
+  - WAD_WA_WAID                  # الوعد والوعيد — promise (of reward) and threat (of punishment)
+  - MANZILA_BAYNA_AL_MANZILATAYN # المنزلة بين المنزلتين — intermediate position
+  - AMR_NAHY_KALAMI              # الأمر بالمعروف والنهي عن المنكر — commanding good (kalam-side)
+
+# === Recurring kalam topics (cross-tradition) ================================
+# Major topic areas debated across Sunni and Shia kalam schools.
+kalam_topic:
+  # Divine being
+  - WUJUD_WAJIB        # وجود واجب الوجود — existence of the Necessary Being
+  - SIFAT_THUBUTIYYA   # الصفات الثبوتية — positive (essential / active) attributes
+  - SIFAT_SALBIYYA     # الصفات السلبية — negative attributes (incomparability)
+  - SIFAT_FILIYYA      # الصفات الفعلية — attributes of action
+  - SIFAT_DHATIYYA     # الصفات الذاتية — attributes of essence
+  - DHAT_WA_SIFAT      # الذات والصفات — essence-vs-attributes problem
+  - TASHBIH_TANZIH     # التشبيه والتنزيه — anthropomorphism vs incomparability
+  - TAJSIM_TATIL       # التجسيم والتعطيل — corporealism vs negation (heresies in tension)
+  # Action and decree
+  - JABR_IKHTIYAR      # الجبر والاختيار — determinism vs free will
+  - KASB               # الكسب — Ash'ari "acquisition" of acts
+  - QADAR_QADAA        # القدر والقضاء — predestination and decree
+  - LUTF               # اللطف — divine grace (esp. Imami / Muʿtazili)
+  - KHALQ_AL_AFAL      # خلق الأفعال — God's creation of human acts
+  # Speech and revelation
+  - KHALQ_AL_QURAN     # خلق القرآن — createdness of the Quran (mihna controversy)
+  - KALAM_NAFSI        # الكلام النفسي — God's interior speech (Ash'ari)
+  - KALAM_LAFZI        # الكلام اللفظي — God's expressed speech
+  # Eschatology
+  - RUYA               # الرؤية — beatific vision of God in the Hereafter
+  - SHAFAA             # الشفاعة — intercession
+  - WUJUB_AL_MAAD      # وجوب المعاد — necessity of resurrection
+  - HISAB_THAWAB_IQAB  # الحساب والثواب والعقاب — judgment, reward, punishment
+  - JANNA_NAR          # الجنة والنار — Paradise and Hell
+  - SIRAT              # الصراط — the bridge over Hell
+  - MIZAN              # الميزان — the balance of deeds
+  # Prophethood
+  - WUJUB_NUBUWWA      # وجوب النبوة — necessity of prophethood
+  - ISMAT_ANBIYA       # عصمة الأنبياء — prophetic infallibility
+  - MUJIZA             # المعجزة — miraculous proof of prophethood
+  - KARAMA             # الكرامة — saintly miracle (vs muʿjiza)
+  - KHATM_NUBUWWA      # ختم النبوة — finality of prophethood
+  # Imamate (esp. but not only Imami)
+  - WUJUB_IMAMA        # وجوب الإمامة — necessity of the imamate
+  - ISMAT_IMAM         # عصمة الإمام — infallibility of the imam
+  - NASS_AL_IMAMA      # النص على الإمامة — designation of the imam
+  - GHAYBA             # الغيبة — occultation of the Imam (Imami)
+  - RAJAA              # الرجعة — return of the Imam (Imami)
+  - TAQIYYA            # التقية — pious dissimulation (Imami)
+  - WALAYA_KALAMI      # الولاية — devotional and political authority (Imami)
+  - BADAA              # البداء — divine modification of decree (Imami)
+  # Faith and major sin
+  - KABIRA_KUFR        # الكبيرة والكفر — major sin's relation to disbelief
+  - IMAN_AML           # الإيمان والعمل — does faith include works?
+  - ZIYADA_NUQSAN_IMAN # زيادة الإيمان ونقصانه — does faith increase / decrease?
+  - TAKFIR             # التكفير — declaring someone an unbeliever
+  # Justice
+  - HUSN_QUBH_AQLI     # الحسن والقبح العقليان — rational good/bad
+  - TAKLIF_MA_LA_YUTAQ # تكليف ما لا يطاق — obligation beyond capacity
+  - IWAD_AL_ALAM       # عوض الآلام — compensation for suffering
+
+# === Divine attributes — canonical lists =====================================
+# The Ashʿari "seven attributes of meaning" (sifat al-maʿani). These are
+# the meta-attributes that Sunni Asharism considers ontologically real
+# concomitants of the divine essence.
+sunni_sifat_al_maani:
+  - HAYAT             # الحياة — life
+  - ILM               # العلم — knowledge
+  - QUDRA             # القدرة — power
+  - IRADA             # الإرادة — will
+  - SAM               # السمع — hearing
+  - BASAR             # البصر — sight
+  - KALAM             # الكلام — speech
+
+# Imami sifat thubutiyya — al-Hilli enumerates 8 positive attributes
+# (al-Bab fasl 2, pp. 31-40). Slightly different ordering and content.
+imami_sifat_thubutiyya:
+  - QADIR_MUKHTAR     # قادر مختار — powerful, free-willed (p. 31)
+  - ALIM              # عالم — knowing (p. 34)
+  - HAYY              # حي — living (p. 35)
+  - MURID_KARIH       # مريد كاره — willing / disliking (p. 36)
+  - MUDRIK            # مدرك — perceiving (p. 37)
+  - QADIM_AZALI_BAQI  # قديم أزلي باقي أبدي — eternal-pre / -post (p. 38)
+  - MUTAKALLIM        # متكلم — speaking (p. 38)
+  - SADIQ             # صادق — truthful (p. 40)
+
+# Imami sifat salbiyya — what God is NOT (al-Bab fasl 3, pp. 40-46).
+imami_sifat_salbiyya:
+  - LAYSA_BI_JISM     # ليس بجسم ولا عرض — not a body or accident (p. 41)
+  - LA_FI_MAHALL      # لا في محل — not in a place (p. 41)
+  - LA_LADHDHA_ALAM   # لا لذة ولا ألم — no pleasure or pain (p. 42)
+  - LA_YATTAHID       # لا يتحد بغيره — not united with another (p. 43)
+  - LAYSA_MAHALL_HAWADITH # ليس محلا للحوادث — not a locus of contingents (p. 43)
+  - LA_RUYA           # لا تجوز عليه الرؤية — vision impossible (p. 44)
+  - LA_SHARIK         # لا شريك له — no partner (p. 45)
+  - GHANI             # غني — self-sufficient (p. 46)
+  - LA_MAANI_AHWAL    # لا معاني ولا أحوال — no states or modes (p. 46)
+
+# === Major historical kalam controversies ====================================
+# Disputes that historically defined sectarian identity and produced
+# distinct theological literatures. Each is a `kalam_topic` upgraded to a
+# named historical event/debate.
+kalam_controversy:
+  - MIHNA              # المحنة — the Abbasid inquisition over khalq al-Quran (218-234 AH)
+  - QADAR_DEBATE       # debate on free will (early Umayyad period)
+  - TAKFIR_AL_KHARIJI  # Khariji takfir of major-sinners
+  - MURJII_DEBATE      # Murjiʿi position on faith and works
+  - JAHMI_DEBATE       # Jahm b. Safwan's denial of attributes
+  - NASS_BAYAA         # Imami debate on naṣṣ vs bayʿa as legitimating principle
+  - KHILAFA_VS_IMAMA   # Sunni khilafa concept vs Imami imama
+  - GHADIR_DEBATE      # debates over the meaning of Ghadir Khumm

@@ -1,0 +1,180 @@
+# The 14 Maʿsūmīn — the Infallibles of Imami Shia tradition.
+#
+# Per Imami doctrine, infallibility (ʿiṣma) attaches to the Prophet Muhammad,
+# his daughter Fatima al-Zahra, and the 12 Imams. This is a closed canonical
+# set; references to "the seventh Imam" or "al-Sadiq" or "al-Mahdi" in any
+# corpus document resolve to one of these 14 entities.
+#
+# Each entry carries: id (stable handle for graph use), titles (canonical
+# Arabic forms), kunya, laqab (most common epithet), birth_year_ah,
+# death_year_ah (or 'living' for the 12th Imam in occultation).
+#
+# Pipeline use: extractors that find titles like "الإمام الصادق" or
+# "أمير المؤمنين" should resolve to the canonical id below. Phase 4
+# (entity resolution) uses this list as the seed for Person canonicalization
+# of the Maʿsūmīn.
+#
+# Tradition note: Sunni sources recognize all 14 as historical figures and
+# revere most as scholars / Companions / family of the Prophet, but do not
+# share the doctrinal claim of ʿiṣma for the 12 Imams. Reference here is
+# doctrinal-Imami; corpus annotations should not assume Sunni acceptance of
+# the ʿiṣma attribute.
+#
+# [Sources for the canonical list: al-Mufid, al-Irshad fi Ma'rifat Hujaj
+# Allah ʿala al-ʿIbad; al-Tabarsi, Iʿlam al-Wara bi Aʿlam al-Huda;
+# al-Shahrudi, Mustadrakat ʿIlm Rijal al-Hadith.]
+
+masumin:
+  - id: PROPHET_MUHAMMAD
+    rank: 1
+    role: PROPHET
+    name_ar: محمد بن عبد الله
+    name_en: Muhammad b. ʿAbd Allah
+    kunya: أبو القاسم
+    laqab: المصطفى / رسول الله
+    birth_year_ah: -53        # ~570 CE; 53 years before Hijra
+    death_year_ah: 11         # 632 CE
+
+  - id: FATIMA_AL_ZAHRA
+    rank: 2
+    role: FATIMA
+    name_ar: فاطمة الزهراء
+    name_en: Fatima al-Zahra
+    kunya: أم أبيها
+    laqab: الصدّيقة / البتول / سيدة نساء العالمين
+    birth_year_ah: -8         # ~615 CE
+    death_year_ah: 11         # within months of Prophet's death
+
+  - id: IMAM_ALI_IBN_ABI_TALIB
+    rank: 3
+    role: IMAM
+    imam_number: 1
+    name_ar: علي بن أبي طالب
+    name_en: ʿAli b. Abi Talib
+    kunya: أبو الحسن / أبو تراب
+    laqab: أمير المؤمنين / المرتضى / حيدر
+    birth_year_ah: -23        # ~600 CE
+    death_year_ah: 40         # 661 CE; assassinated in Kufa
+
+  - id: IMAM_AL_HASAN
+    rank: 4
+    role: IMAM
+    imam_number: 2
+    name_ar: الحسن بن علي
+    name_en: al-Hasan b. ʿAli
+    kunya: أبو محمد
+    laqab: المجتبى / السبط الأكبر
+    birth_year_ah: 3
+    death_year_ah: 50         # 670 CE; reportedly poisoned
+
+  - id: IMAM_AL_HUSAYN
+    rank: 5
+    role: IMAM
+    imam_number: 3
+    name_ar: الحسين بن علي
+    name_en: al-Husayn b. ʿAli
+    kunya: أبو عبد الله
+    laqab: سيد الشهداء / الشهيد / السبط
+    birth_year_ah: 4
+    death_year_ah: 61         # 680 CE; martyred at Karbala (10 Muharram)
+
+  - id: IMAM_ALI_ZAYN_AL_ABIDIN
+    rank: 6
+    role: IMAM
+    imam_number: 4
+    name_ar: علي بن الحسين
+    name_en: ʿAli b. al-Husayn
+    kunya: أبو محمد / أبو الحسن
+    laqab: زين العابدين / السجّاد
+    birth_year_ah: 38
+    death_year_ah: 95         # 713 CE
+
+  - id: IMAM_AL_BAQIR
+    rank: 7
+    role: IMAM
+    imam_number: 5
+    name_ar: محمد بن علي
+    name_en: Muhammad b. ʿAli
+    kunya: أبو جعفر
+    laqab: الباقر / باقر العلوم
+    birth_year_ah: 57
+    death_year_ah: 114        # 732 CE
+
+  - id: IMAM_AL_SADIQ
+    rank: 8
+    role: IMAM
+    imam_number: 6
+    name_ar: جعفر بن محمد
+    name_en: Jaʿfar b. Muhammad
+    kunya: أبو عبد الله
+    laqab: الصادق
+    birth_year_ah: 83
+    death_year_ah: 148        # 765 CE; eponym of Jaʿfari madhhab
+
+  - id: IMAM_AL_KAZIM
+    rank: 9
+    role: IMAM
+    imam_number: 7
+    name_ar: موسى بن جعفر
+    name_en: Musa b. Jaʿfar
+    kunya: أبو الحسن / أبو إبراهيم
+    laqab: الكاظم / باب الحوائج
+    birth_year_ah: 128
+    death_year_ah: 183        # 799 CE; Wāqifī Shia stop here (cf. ahl_al_bayt_stance.WAQIFI)
+
+  - id: IMAM_AL_RIDA
+    rank: 10
+    role: IMAM
+    imam_number: 8
+    name_ar: علي بن موسى
+    name_en: ʿAli b. Musa
+    kunya: أبو الحسن
+    laqab: الرضا
+    birth_year_ah: 148
+    death_year_ah: 203        # 818 CE; tomb at Mashhad
+
+  - id: IMAM_AL_JAWAD
+    rank: 11
+    role: IMAM
+    imam_number: 9
+    name_ar: محمد بن علي
+    name_en: Muhammad b. ʿAli
+    kunya: أبو جعفر
+    laqab: الجواد / التقي
+    birth_year_ah: 195
+    death_year_ah: 220        # 835 CE
+
+  - id: IMAM_AL_HADI
+    rank: 12
+    role: IMAM
+    imam_number: 10
+    name_ar: علي بن محمد
+    name_en: ʿAli b. Muhammad
+    kunya: أبو الحسن
+    laqab: الهادي / النقي
+    birth_year_ah: 212
+    death_year_ah: 254        # 868 CE
+
+  - id: IMAM_AL_ASKARI
+    rank: 13
+    role: IMAM
+    imam_number: 11
+    name_ar: الحسن بن علي
+    name_en: al-Hasan b. ʿAli
+    kunya: أبو محمد
+    laqab: العسكري
+    birth_year_ah: 232
+    death_year_ah: 260        # 874 CE; start of ghayba ṣughrā
+
+  - id: IMAM_AL_MAHDI
+    rank: 14
+    role: IMAM
+    imam_number: 12
+    name_ar: محمد بن الحسن
+    name_en: Muhammad b. al-Hasan
+    kunya: أبو القاسم
+    laqab: المهدي / صاحب الزمان / القائم / الحجة
+    birth_year_ah: 255
+    death_year_ah: living     # in occultation per Imami doctrine
+    ghayba_sughra_start_ah: 260
+    ghayba_kubra_start_ah: 329
