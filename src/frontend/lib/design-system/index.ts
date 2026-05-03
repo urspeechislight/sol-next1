@@ -25,8 +25,16 @@ export {
   healthBandLabel,
   trendToStatus,
   trendGlyph,
+  sectToStatus,
+  sectLabel,
+  canonicalTierToStatus,
+  canonicalTierLabel,
+  ingestPhaseToStatus,
   type HealthBand,
   type TrendDirection,
+  type Sect,
+  type CanonicalTier,
+  type IngestPhaseStatus,
 } from './variants.js';
 export type { BaseProps, ElementProps, VariantProps } from './contracts.js';
 
