@@ -5,26 +5,33 @@ pre-commit:
   parallel: true
   commands:
     prettier:
-      glob: "*.{ts,js,svelte,json,md,yaml,yml,css}"
+      glob: '*.{ts,js,svelte,json,md,yaml,yml,css}'
       run: pnpm prettier --check {staged_files}
     eslint:
-      glob: "*.{ts,js,svelte}"
+      glob: '*.{ts,js,svelte}'
       run: pnpm --filter frontend exec eslint {staged_files} --max-warnings=0
     svelte-check:
-      glob: "src/frontend/**/*.{ts,svelte}"
+      glob: 'src/frontend/**/*.{ts,svelte}'
       run: pnpm --filter frontend check
     ruff-lint:
-      glob: "*.py"
+      glob: '*.py'
       run: uv run ruff check {staged_files}
     ruff-format:
-      glob: "*.py"
+      glob: '*.py'
       run: uv run ruff format --check {staged_files}
     pyright:
-      glob: "*.py"
+      glob: '*.py'
       run: uv run pyright {staged_files}
     harness-self-test:
-      glob: ".claude/**/*.py"
+      glob: '.claude/**/*.py'
       run: uv run pytest .claude/tests -q
+    harness-rules:
+      # Mirrors the in-session PreToolUse:Write handler chain. Catches
+      # SSOT/DRY/size-cap/typed_python/etc. violations at commit time so
+      # commits authored from laptop sessions (which bypass the in-session
+      # hook) still pass the same gates.
+      glob: '*.{py,ts,tsx,js,jsx,svelte,css,md}'
+      run: python3 .claude/hooks/lint_staged.py {staged_files}
 
 pre-push:
   commands:
