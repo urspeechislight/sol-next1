@@ -2,17 +2,55 @@
 
 ## What this project is
 
-A pipeline that transforms digitized classical Arabic manuscripts into a
-structured, searchable, multilingual knowledge graph — together with the
-web application that lets scholars explore it.
+A pipeline that transforms ~18,000 digitized classical Arabic manuscripts
+across 39 disciplinary categories into a structured, searchable,
+multilingual knowledge graph — together with the web application that lets
+scholars explore it. The corpus spans the full breadth of classical
+Islamic scholarship: hadith and rijal; tafsir and Qurʾanic sciences;
+fiqh across all major madhabs (Hanafi, Maliki, Shafiʿi, Hanbali, Zahiri,
+Jaʿfari, Zaydi, Ismaili, Ibadi, plus comparative); kalam (Sunni, Shia,
+Muʿtazili); tasawwuf; sira and imamate; Arabic linguistic sciences (nahw,
+sarf, balagha, ʿarud, lugha); falsafa and mantiq; medicine and natural
+sciences; history and geography; rijal and biographical literature;
+poetry; and devotional works. See `docs/corpus-scope.md` for the
+authoritative inventory.
 
-A scholar reading Ibn Hajar's *Fath al-Bari* should be able to follow a
-hadith's isnad back through its narrators, trace its parallel transmissions
-across other collections, read the Arabic alongside an English translation,
-and discover which later scholars cited or commented on the same hadith.
-Today none of that is possible without years of specialized knowledge and
-manual effort. This system makes it possible — at scale, across the entire
-corpus.
+The system targets queries that today require years of specialized
+training and manual effort. A few representative scholarly use cases
+the knowledge graph serves:
+
+- **Hadith / rijal** — follow a hadith's isnad back through its
+  narrators, trace parallel transmissions across collections, surface
+  per-narrator grading from primary rijal works (Sunni: Ibn Hajar's
+  Taqrib; Shia: al-Najashi, al-Hilli's Khulasat al-Aqwal), and discover
+  which later scholars cited or commented on the same report.
+- **Tafsir** — compare exegesis of a single Qurʾanic verse across Sunni
+  and Shia tafsir traditions, with citations to the hadith and rijal
+  authorities each commentator invokes.
+- **Fiqh** — trace a single legal ruling (e.g., ablution prerequisites,
+  inheritance shares, mutʿa marriage) across all five major madhabs and
+  through their internal evolution, with links to the foundational
+  texts and disputants.
+- **Kalam** — follow a doctrinal concept (ʿisma, ghayba, divine
+  attributes, khalq al-Qurʾan, walāya) across Imami, Muʿtazili,
+  Ashʿari, and Maturidi treatments, with the historical controversies
+  (mihna, qadar debate, naṣṣ vs bayʿa) that shaped each position.
+- **Tasawwuf** — map the maqamat / aḥwāl through al-Qushayri's
+  *al-Risāla*, al-Hujwiri's *Kashf al-Mahjub*, al-Suhrawardi's
+  *ʿAwārif*, and trace which Sufi ṭuruq trace their silsila through
+  which historical shaykhs.
+- **Sira / Imamate** — reconstruct the historiography of an event
+  (Ghadir Khumm, Karbala, Siffin, Mubahala) across hostile and
+  sympathetic sources, surfacing each narrator's stance and the chains
+  through which the report reached the compiler.
+- **Linguistic sciences** — trace a grammatical concept (i'rab, idafa,
+  particles, broken plurals) through nahw and sarf works, or follow a
+  rare Quranic word (gharib al-Qurʾan) through the lexicographic
+  tradition (Lisan al-ʿArab, Tahdhib al-Lugha, al-Qamus).
+
+Today none of these is possible without years of specialized knowledge
+and manual cross-referencing across hundreds of works. This system
+makes it possible — at scale, across the entire corpus.
 
 ## The architecture: five phases plus an application
 
