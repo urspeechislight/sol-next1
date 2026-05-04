@@ -67,6 +67,20 @@
   --color-crimson: oklch(0.55 0.18 25);
   --color-crimson-soft: oklch(0.55 0.18 25 / 0.18);
 
+  /* ----- Reader themes (classical / bright / dark) ---------------------------- */
+  --reader-classical-bg: oklch(0.92 0.04 80);
+  --reader-classical-fg: oklch(0.18 0.025 50);
+  --reader-classical-rule: oklch(0.18 0.025 50 / 0.18);
+  --reader-classical-honorific: oklch(0.4 0.12 30);
+  --reader-classical-quote-bg: oklch(0.85 0.04 80 / 0.6);
+  --reader-classical-toolbar-bg: oklch(0.86 0.03 80);
+
+  --reader-bright-bg: oklch(0.98 0.005 80);
+  --reader-bright-fg: oklch(0.18 0.012 250);
+  --reader-bright-rule: oklch(0.18 0.012 250 / 0.14);
+  --reader-bright-quote-bg: oklch(0.94 0.01 80);
+  --reader-bright-toolbar-bg: oklch(0.96 0.005 80);
+
   /* ----- Borders -------------------------------------------------------------- */
   --color-border-1: oklch(0.8 0.1 80 / 0.14);
   --color-border-2: oklch(0.8 0.1 80 / 0.22);
