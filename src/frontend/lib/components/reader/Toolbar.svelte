@@ -2,7 +2,7 @@
   Reader toolbar — three rows: context strip, pagination, settings.
 -->
 <script lang="ts">
-  import { Pressable } from '$lib/design-system';
+  import { Pressable, Input } from '$lib/design-system';
   import type { Book } from '$lib/fixtures';
 
   interface Props {
@@ -14,12 +14,14 @@
     fontSize: number;
     tocOpen: boolean;
     isnadOpen: boolean;
+    bookSearch: string;
     onTheme: (t: 'bright' | 'dark' | 'classical') => void;
     onLang: (l: 'ar' | 'both' | 'en') => void;
     onFontSize: (n: number) => void;
     onToggleToc: () => void;
     onToggleIsnad: () => void;
     onNav: (page: number) => void;
+    onBookSearch: (q: string) => void;
   }
   let {
     book,
@@ -30,13 +32,65 @@
     fontSize,
     tocOpen,
     isnadOpen,
+    bookSearch,
     onTheme,
     onLang,
     onFontSize,
     onToggleToc,
     onToggleIsnad,
     onNav,
+    onBookSearch,
   }: Props = $props();
+
+  // Page-jump: indicator becomes editable on click.
+  let jumping = $state(false);
+  let jumpInput = $state('');
+  function startJump() {
+    jumpInput = String(pageNum);
+    jumping = true;
+  }
+  function commitJump() {
+    const n = parseInt(jumpInput, 10);
+    if (!Number.isNaN(n) && n >= 1) onNav(Math.min(n, totalPages));
+    jumping = false;
+  }
+  function jumpKey(e: KeyboardEvent) {
+    if (e.key === 'Enter') commitJump();
+    if (e.key === 'Escape') jumping = false;
+  }
+
+  // Search-in-book inline field.
+  let searchOpen = $state(false);
+  let searchQ = $state('');
+  $effect(() => {
+    searchQ = bookSearch;
+  });
+  function toggleSearch() {
+    searchOpen = !searchOpen;
+    if (!searchOpen) {
+      searchQ = '';
+      onBookSearch('');
+    }
+  }
+  function searchKey(e: KeyboardEvent) {
+    if (e.key === 'Enter') onBookSearch(searchQ);
+    if (e.key === 'Escape') {
+      searchOpen = false;
+      searchQ = '';
+      onBookSearch('');
+    }
+  }
+
+  // Svelte action: focus the inner text field of a wrapper element on
+  // mount. Avoids a11y_autofocus while keeping the same UX (the user
+  // just clicked the field's container so focus is intentional).
+  function wrapFocus(node: HTMLElement) {
+    queueMicrotask(() => {
+      const field = node.querySelector('input');
+      field?.focus();
+      field?.select();
+    });
+  }
 
   const themes: { v: typeof theme; l: string }[] = [
     { v: 'bright', l: 'Bright' },
@@ -66,11 +120,27 @@
       onclick={() => onNav(Math.max(1, pageNum - 1))}
       aria-label="Previous page">‹</Pressable
     >
-    <span class="rt__page">
-      <span class="rt__page-n">{pageNum.toLocaleString()}</span>
-      <span class="rt__page-sep">/</span>
-      <span class="rt__page-tot">{totalPages.toLocaleString()}</span>
-    </span>
+    {#if jumping}
+      <span class="rt__page rt__page--edit" use:wrapFocus>
+        <Input
+          size="sm"
+          inputmode="numeric"
+          bind:value={jumpInput}
+          onkeydown={jumpKey}
+          onblur={commitJump}
+          aria-label="Jump to page"
+          class="rt__page-input"
+        />
+        <span class="rt__page-sep">/</span>
+        <span class="rt__page-tot">{totalPages.toLocaleString()}</span>
+      </span>
+    {:else}
+      <Pressable class="rt__page" onclick={startJump} aria-label="Jump to page">
+        <span class="rt__page-n">{pageNum.toLocaleString()}</span>
+        <span class="rt__page-sep">/</span>
+        <span class="rt__page-tot">{totalPages.toLocaleString()}</span>
+      </Pressable>
+    {/if}
     <Pressable class="rt__pill" onclick={() => onNav(pageNum + 1)} aria-label="Next page"
       >›</Pressable
     >
@@ -105,6 +175,9 @@
       {/each}
     </div>
 
+    <Pressable class="rt__pill {searchOpen ? 'is-active' : ''}" onclick={toggleSearch}>
+      ⌕ {searchOpen ? 'Close search' : 'Search book'}
+    </Pressable>
     <Pressable class="rt__pill {tocOpen ? 'is-active' : ''}" onclick={onToggleToc}
       >Contents</Pressable
     >
@@ -112,6 +185,21 @@
       >Isnād</Pressable
     >
   </div>
+
+  {#if searchOpen}
+    <div class="rt__row rt__row--search">
+      <Input
+        size="sm"
+        bind:value={searchQ}
+        onkeydown={searchKey}
+        placeholder="Search this book — Arabic or English…"
+      />
+      <Pressable class="rt__pill" onclick={() => onBookSearch(searchQ)}>Find</Pressable>
+      {#if bookSearch}
+        <span class="rt__search-info">Highlighting: <em>{bookSearch}</em></span>
+      {/if}
+    </div>
+  {/if}
 </header>
 
 <style>
@@ -205,12 +293,24 @@
     border-color: var(--color-accent);
   }
 
-  .rt__page {
+  :global(.rt__page) {
     display: inline-flex;
     align-items: baseline;
     gap: 8px;
     font-family: var(--font-mono);
     font-size: var(--text-base);
+    padding: 4px 14px;
+    border-radius: var(--radius-full);
+    border: 1px solid var(--reader-rule);
+    background: transparent;
+    color: inherit;
+    cursor: pointer;
+  }
+  :global(.rt__page:hover) {
+    border-color: var(--color-accent);
+  }
+  .rt__page--edit {
+    cursor: text;
   }
   .rt__page-n {
     font-weight: 600;
@@ -221,6 +321,41 @@
   .rt__page-tot {
     opacity: 0.65;
     font-size: var(--text-sm);
+  }
+  :global(.rt__page-input) {
+    width: 64px;
+    background: transparent;
+    border: none;
+    text-align: right;
+    font-weight: 600;
+    height: auto;
+    padding: 0;
+    color: inherit;
+  }
+
+  .rt__row--search {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .rt__row--search :global(input) {
+    flex: 1;
+    background: transparent;
+    color: inherit;
+    border-color: var(--reader-rule);
+  }
+  .rt__search-info {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--reader-honorific);
+    letter-spacing: 0.1em;
+  }
+  .rt__search-info em {
+    font-family: var(--font-display);
+    font-style: italic;
+    color: var(--color-accent);
+    text-transform: none;
+    letter-spacing: 0;
   }
 
   .rt__seg {

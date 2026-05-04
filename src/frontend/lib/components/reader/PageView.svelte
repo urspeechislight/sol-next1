@@ -11,9 +11,26 @@
     langMode: 'ar' | 'both' | 'en';
     fontSize: number;
     activeIsnad: number;
+    bookSearch: string;
     onActivate: (i: number) => void;
   }
-  let { page, langMode, fontSize, activeIsnad, onActivate }: Props = $props();
+  let { page, langMode, fontSize, activeIsnad, bookSearch, onActivate }: Props = $props();
+
+  // Highlight matches by splitting the text into a parts array of
+  // { text, hit } pairs. The template renders each part as a span,
+  // wrapping hits in <mark>. Avoids {@html} entirely — Svelte escapes
+  // text content automatically.
+  function escapeRe(s: string): string {
+    return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  }
+  function splitHighlight(text: string, q: string): { text: string; hit: boolean }[] {
+    if (!q) return [{ text, hit: false }];
+    const re = new RegExp(`(${escapeRe(q)})`, 'gi');
+    const parts = text.split(re);
+    return parts
+      .filter((p) => p.length > 0)
+      .map((p) => ({ text: p, hit: re.test(p) && p.toLowerCase() === q.toLowerCase() }));
+  }
 
   const showAr = $derived(langMode === 'ar' || langMode === 'both');
   const showEn = $derived(langMode === 'en' || langMode === 'both');
@@ -59,10 +76,26 @@
 
       <div class="hb__matn" class:grid>
         {#if showAr}
-          <p class="hb__matn-ar" dir="rtl">{h.matnAr}</p>
+          <p class="hb__matn-ar" dir="rtl">
+            {#each splitHighlight(h.matnAr, bookSearch) as part, pi (pi)}
+              {#if part.hit}
+                <mark class="qhit">{part.text}</mark>
+              {:else}
+                <span>{part.text}</span>
+              {/if}
+            {/each}
+          </p>
         {/if}
         {#if showEn}
-          <p class="hb__matn-en">{h.matnEn}</p>
+          <p class="hb__matn-en">
+            {#each splitHighlight(h.matnEn, bookSearch) as part, pi (pi)}
+              {#if part.hit}
+                <mark class="qhit">{part.text}</mark>
+              {:else}
+                <span>{part.text}</span>
+              {/if}
+            {/each}
+          </p>
         {/if}
       </div>
 
@@ -309,5 +342,13 @@
     font-size: var(--text-sm);
     line-height: 1.9;
     opacity: 0.78;
+  }
+
+  /* Highlight applied via {@html} from the highlight() helper. */
+  :global(.qhit) {
+    background: var(--color-accent-soft);
+    color: var(--color-accent);
+    padding: 0 2px;
+    border-radius: 3px;
   }
 </style>

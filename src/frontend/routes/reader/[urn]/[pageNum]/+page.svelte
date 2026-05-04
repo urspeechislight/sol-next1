@@ -26,6 +26,7 @@
   let tocOpen = $state(true);
   let isnadOpen = $state(true);
   let activeIsnad = $state(0);
+  let bookSearch = $state('');
 
   function navTo(p: number) {
     void goto(`/reader/${urn}/${p}`);
@@ -49,12 +50,14 @@
     {fontSize}
     {tocOpen}
     {isnadOpen}
+    {bookSearch}
     onTheme={(t: 'bright' | 'dark' | 'classical') => (theme = t)}
     onLang={(l: 'ar' | 'both' | 'en') => (langMode = l)}
     onFontSize={(n: number) => (fontSize = Math.max(14, Math.min(28, n)))}
     onToggleToc={() => (tocOpen = !tocOpen)}
     onToggleIsnad={() => (isnadOpen = !isnadOpen)}
     onNav={navTo}
+    onBookSearch={(q: string) => (bookSearch = q)}
   />
 
   <div class="reader__layout">
@@ -68,6 +71,7 @@
         {langMode}
         {fontSize}
         {activeIsnad}
+        {bookSearch}
         onActivate={(i: number) => (activeIsnad = i)}
       />
     </main>
